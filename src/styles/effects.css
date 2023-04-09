@@ -1,0 +1,6 @@
+:root {
+  /* shadows */
+  --boxShadow1: 0 2px 8px rgb(0, 0, 0, 0.1);
+  --boxShadow2: 0 8px 24px rgb(0, 0, 0, 0.1);
+  --boxShadow3: 0 12px 40px rgb(0, 0, 0, 0.1);
+}

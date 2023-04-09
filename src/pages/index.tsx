@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import styles from '@/styles/Home.module.css';
 
 export default function Home() {
   return (
@@ -18,7 +17,7 @@ export default function Home() {
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff"></meta>
       </Head>
-      <main className={styles.main}>공적인사적모임 홈페이지를 드디어..!</main>
+      <main>공적인사적모임 홈페이지를 드디어..! ♪(๑ᴖ◡ᴖ๑)♪</main>
     </>
   );
 }
