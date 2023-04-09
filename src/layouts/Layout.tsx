@@ -1,5 +1,7 @@
 import AppScripts from '@/components/AppScripts/AppScripts';
 import { GlobalStyle } from '@/styles';
+import theme from '@/styles/theme';
+import { ThemeProvider } from '@emotion/react';
 import Head from 'next/head';
 import React from 'react';
 
@@ -17,9 +19,10 @@ const Layout = ({ children }: LayoutProps) => {
         />
       </Head>
       <AppScripts />
-      <GlobalStyle />
-
-      <div>{children}</div>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <div>{children}</div>
+      </ThemeProvider>
     </div>
   );
 };
