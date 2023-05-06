@@ -1,7 +1,7 @@
-import React from "react";
-import { TextProps, TextStyle } from "../text-style";
+import React from 'react';
+import { TextProps, TextStyle } from '../TextStyle';
 
-export const Body3: React.FC<TextProps> = ({
+export const Body4: React.FC<TextProps> = ({
   type,
   text,
   color,
@@ -17,21 +17,21 @@ export const Body3: React.FC<TextProps> = ({
 }) => {
   return (
     <TextStyle
-      type={type ?? "p"}
+      type={type ?? 'p'}
       text={text}
       color={color}
       weight={weight ?? 400}
       textSize={{
-        desktop: "1.3rem",
-        mobile: "1.3rem",
+        desktop: '1.1rem',
+        mobile: '1.1rem',
       }}
       lineHeight={{
-        desktop: "1.8rem",
-        mobile: "1.8rem",
+        desktop: '1.6rem',
+        mobile: '1.6rem',
       }}
       letterSpacing={{
-        desktop: "0rem",
-        mobile: "0rem",
+        desktop: '0rem',
+        mobile: '0rem',
       }}
       marginTop={marginTop}
       opacity={opacity}
@@ -40,7 +40,7 @@ export const Body3: React.FC<TextProps> = ({
       variants={variants}
       initial={initial}
       animate={animate}
-      data-testid={`slid-ips-body3`}
+      data-testid={`slid-ips-body4`}
       {...HTMLParagraphElement}
     />
   );

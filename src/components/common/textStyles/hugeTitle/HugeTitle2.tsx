@@ -1,5 +1,5 @@
-import React from "react";
-import { TextProps, TextStyle } from "../text-style";
+import React from 'react';
+import { TextProps, TextStyle } from '../TextStyle';
 
 export const HugeTitle2: React.FC<TextProps> = ({
   type,
@@ -17,21 +17,21 @@ export const HugeTitle2: React.FC<TextProps> = ({
 }) => {
   return (
     <TextStyle
-      type={type ?? "h2"}
+      type={type ?? 'h2'}
       text={text}
       color={color}
       weight={weight ?? 700}
       textSize={{
-        desktop: "4.8rem",
-        mobile: "4.8rem",
+        desktop: '4.8rem',
+        mobile: '4.8rem',
       }}
       lineHeight={{
-        desktop: "5.6rem",
-        mobile: "5.6rem",
+        desktop: '5.6rem',
+        mobile: '5.6rem',
       }}
       letterSpacing={{
-        desktop: "0rem",
-        mobile: "0rem",
+        desktop: '0rem',
+        mobile: '0rem',
       }}
       marginTop={marginTop}
       opacity={opacity}

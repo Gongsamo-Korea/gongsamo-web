@@ -1,4 +1,5 @@
 import AppScripts from '@/components/AppScripts/AppScripts';
+import Header from '@/components/common/headers/Header';
 import { GlobalStyle } from '@/styles';
 import Head from 'next/head';
 import React from 'react';
@@ -18,6 +19,7 @@ const Layout = ({ children }: LayoutProps) => {
       </Head>
       <AppScripts />
       <GlobalStyle />
+      <Header />
       <div>{children}</div>
     </div>
   );
