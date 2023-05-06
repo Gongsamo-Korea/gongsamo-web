@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import React from 'react';
 import Layout from '@/components/common/layouts/Layout';
 import '@/styles/colors.css';
 import '@/styles/effects.css';

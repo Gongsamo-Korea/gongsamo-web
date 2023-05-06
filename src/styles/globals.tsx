@@ -69,6 +69,10 @@ const style = css`
     border-radius: 0;
     border: 0;
   }
+  button:focus,
+  input:focus {
+    outline: none;
+  }
   a,
   a:active,
   a:hover {
