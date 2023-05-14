@@ -2,7 +2,7 @@ import AppScripts from '@/components/AppScripts/AppScripts';
 import Header from '@/components/common/headers/Header';
 import { GlobalStyle } from '@/styles';
 import Head from 'next/head';
-import React from 'react';
+import Footer from '@/components/common/footers/Footer';
 
 interface LayoutProps {
   children: JSX.Element;
@@ -21,6 +21,7 @@ const Layout = ({ children }: LayoutProps) => {
       <GlobalStyle />
       <Header />
       <div>{children}</div>
+      <Footer />
     </div>
   );
 };
