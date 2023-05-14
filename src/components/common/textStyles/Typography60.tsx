@@ -40,7 +40,7 @@ export const Typography60: React.FC<TextProps> = ({
       variants={variants}
       initial={initial}
       animate={animate}
-      data-testid={`slid-ips-huge-title1`}
+      data-testid={`typography60`}
       {...HTMLParagraphElement}
     />
   );
