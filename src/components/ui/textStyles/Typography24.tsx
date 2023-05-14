@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextProps, TextStyle } from './TextStyle';
 
-export const Typography24: React.FC<TextProps> = ({
+const Typography24: React.FC<TextProps> = ({
   type,
   text,
   color,
@@ -45,3 +45,5 @@ export const Typography24: React.FC<TextProps> = ({
     />
   );
 };
+
+export default Typography24;

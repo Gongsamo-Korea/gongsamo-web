@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import { Typography15 } from '@/components/common/textStyles/Typography15';
-import { MENU_ITEMS } from '@/components/common/headers/Header';
-import Divider from '@/components/common/dividers/Divider';
-import KakaoIcon from '@/components/common/icons/KakaoIcon';
-import InstagramIcon from '../icons/InstagramIcon';
-import env from '@/config/env';
+import Typography15 from '@/components/ui/textStyles/Typography15';
+import { MENU_ITEMS } from '@/components/layout/headers/Header';
+import Divider from '@/components/ui/dividers/Divider';
+import KakaoIcon from '@/components/ui/icons/KakaoIcon';
+import InstagramIcon from '../../ui/icons/InstagramIcon';
+import env from '@/config';
 
 const Footer = () => {
   return (

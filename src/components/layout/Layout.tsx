@@ -1,8 +1,8 @@
-import AppScripts from '@/components/AppScripts/AppScripts';
-import Header from '@/components/common/headers/Header';
 import { GlobalStyle } from '@/styles';
 import Head from 'next/head';
-import Footer from '@/components/common/footers/Footer';
+import Header from '@/components/layout/headers/Header';
+import Footer from '@/components/layout/footers/Footer';
+import AppScripts from '@/components/AppScripts/AppScripts';
 
 interface LayoutProps {
   children: JSX.Element;

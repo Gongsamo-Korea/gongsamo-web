@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextProps, TextStyle } from './TextStyle';
 
-export const Typography11: React.FC<TextProps> = ({
+const Typography20: React.FC<TextProps> = ({
   type,
   text,
   color,
@@ -17,17 +17,17 @@ export const Typography11: React.FC<TextProps> = ({
 }) => {
   return (
     <TextStyle
-      type={type ?? 'p'}
+      type={type ?? 'h4'}
       text={text}
       color={color}
-      weight={weight ?? 400}
+      weight={weight ?? 700}
       textSize={{
-        desktop: '1.1rem',
-        mobile: '1.1rem',
+        desktop: '2rem',
+        mobile: '2rem',
       }}
       lineHeight={{
-        desktop: '1.6rem',
-        mobile: '1.6rem',
+        desktop: '2.8rem',
+        mobile: '2.8rem',
       }}
       letterSpacing={{
         desktop: '0rem',
@@ -40,8 +40,10 @@ export const Typography11: React.FC<TextProps> = ({
       variants={variants}
       initial={initial}
       animate={animate}
-      data-testid={`typography11`}
+      data-testid={`typography20`}
       {...HTMLParagraphElement}
     />
   );
 };
+
+export default Typography20;

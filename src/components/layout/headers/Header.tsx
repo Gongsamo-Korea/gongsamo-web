@@ -1,8 +1,7 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import SearchInput from '@/components/common/inputs/SearchInput';
-import { Typography15 } from '@/components/common/textStyles/Typography15';
+import SearchInput from '@/components/ui/inputs/SearchInput';
+import Typography15 from '@/components/ui/textStyles/Typography15';
 
 export const MENU_ITEMS = [
   {
