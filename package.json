@@ -5,16 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "lint": "next lint",
     "start": "next start",
-    "lint": "next lint"
+    "test": "jest"
   },
   "dependencies": {
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.33",
-    "@types/react-dom": "18.0.11",
-    "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
+    "@tanstack/react-query": "^4.29.5",
     "next": "13.3.0",
+    "qs": "^6.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.4"
@@ -23,7 +21,28 @@
     "@emotion/css": "^11.10.6",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@tanstack/eslint-plugin-query": "^4.29.4",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.1",
+    "@types/node": "18.15.11",
+    "@types/qs": "^6.9.7",
+    "@types/react": "18.0.33",
+    "@types/react-dom": "18.0.11",
+    "@types/testing-library__jest-dom": "^5.14.5",
+    "axios": "^1.4.0",
+    "eslint": "8.38.0",
+    "eslint-config-next": "13.3.0",
     "framer-motion": "^10.11.2",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "msw": "^1.2.1",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
     "zustand": "^4.3.7"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
