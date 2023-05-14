@@ -50,7 +50,7 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.6rem 2rem;
+  padding: 1.6rem 14.4rem;
   border-bottom: 1px solid var(--gray5);
   position: sticky;
   top: 0;
