@@ -2,9 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import SearchInput from '@/components/common/inputs/SearchInput';
-import { Body2 } from '@/components/common/textStyles/body/Body2';
+import { Typography15 } from '@/components/common/textStyles/Typography15';
 
-const MENU_ITEMS = [
+export const MENU_ITEMS = [
   {
     id: 1,
     name: '웰컴투공사모',
@@ -35,7 +35,7 @@ const Header = () => {
           return (
             <Link href={item.url} key={item.id}>
               <MenuLink>
-                <Body2 text={item.name} color={'--gray9'} />
+                <Typography15 text={item.name} color={'--gray9'} />
               </MenuLink>
             </Link>
           );
@@ -50,7 +50,7 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
+  padding: 1.6rem 2rem;
   border-bottom: 1px solid var(--gray5);
   position: sticky;
   top: 0;
