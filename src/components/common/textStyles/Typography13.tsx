@@ -1,7 +1,7 @@
 import React from 'react';
-import { TextProps, TextStyle } from '../TextStyle';
+import { TextProps, TextStyle } from './TextStyle';
 
-export const LargeTitle1: React.FC<TextProps> = ({
+export const Body3: React.FC<TextProps> = ({
   type,
   text,
   color,
@@ -17,17 +17,17 @@ export const LargeTitle1: React.FC<TextProps> = ({
 }) => {
   return (
     <TextStyle
-      type={type ?? 'h1'}
+      type={type ?? 'p'}
       text={text}
       color={color}
-      weight={weight ?? 700}
+      weight={weight ?? 400}
       textSize={{
-        desktop: '3.4rem',
-        mobile: '3.4rem',
+        desktop: '1.3rem',
+        mobile: '1.3rem',
       }}
       lineHeight={{
-        desktop: '4.2rem',
-        mobile: '4.2rem',
+        desktop: '1.8rem',
+        mobile: '1.8rem',
       }}
       letterSpacing={{
         desktop: '0rem',
@@ -40,7 +40,7 @@ export const LargeTitle1: React.FC<TextProps> = ({
       variants={variants}
       initial={initial}
       animate={animate}
-      data-testid={`slid-ips-large-title1`}
+      data-testid={`typography13`}
       {...HTMLParagraphElement}
     />
   );

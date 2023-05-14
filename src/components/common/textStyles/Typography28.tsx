@@ -1,7 +1,7 @@
 import React from 'react';
-import { TextProps, TextStyle } from '../TextStyle';
+import { TextProps, TextStyle } from './TextStyle';
 
-export const HugeTitle2: React.FC<TextProps> = ({
+export const Typography28: React.FC<TextProps> = ({
   type,
   text,
   color,
@@ -22,12 +22,12 @@ export const HugeTitle2: React.FC<TextProps> = ({
       color={color}
       weight={weight ?? 700}
       textSize={{
-        desktop: '4.8rem',
-        mobile: '4.8rem',
+        desktop: '2.8rem',
+        mobile: '2.8rem',
       }}
       lineHeight={{
-        desktop: '5.6rem',
-        mobile: '5.6rem',
+        desktop: '3.6rem',
+        mobile: '3.6rem',
       }}
       letterSpacing={{
         desktop: '0rem',
@@ -40,7 +40,7 @@ export const HugeTitle2: React.FC<TextProps> = ({
       variants={variants}
       initial={initial}
       animate={animate}
-      data-testid={`slid-ips-huge-title2`}
+      data-testid={`slid-ips-title1`}
       {...HTMLParagraphElement}
     />
   );

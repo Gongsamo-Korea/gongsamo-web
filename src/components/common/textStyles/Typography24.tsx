@@ -1,7 +1,7 @@
 import React from 'react';
-import { TextProps, TextStyle } from '../TextStyle';
+import { TextProps, TextStyle } from './TextStyle';
 
-export const Title3: React.FC<TextProps> = ({
+export const Typography24: React.FC<TextProps> = ({
   type,
   text,
   color,
@@ -17,17 +17,17 @@ export const Title3: React.FC<TextProps> = ({
 }) => {
   return (
     <TextStyle
-      type={type ?? 'h4'}
+      type={type ?? 'h3'}
       text={text}
       color={color}
       weight={weight ?? 700}
       textSize={{
-        desktop: '2rem',
-        mobile: '2rem',
+        desktop: '2.4rem',
+        mobile: '2.4rem',
       }}
       lineHeight={{
-        desktop: '2.8rem',
-        mobile: '2.8rem',
+        desktop: '3.1rem',
+        mobile: '3.1rem',
       }}
       letterSpacing={{
         desktop: '0rem',
@@ -40,7 +40,7 @@ export const Title3: React.FC<TextProps> = ({
       variants={variants}
       initial={initial}
       animate={animate}
-      data-testid={`slid-ips-title3`}
+      data-testid={`slid-ips-title2`}
       {...HTMLParagraphElement}
     />
   );
