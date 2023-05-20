@@ -1,4 +1,3 @@
-import { GlobalStyle } from '@/styles';
 import Head from 'next/head';
 import Header from '@/components/layout/headers/Header';
 import Footer from '@/components/layout/footers/Footer';
@@ -18,7 +17,6 @@ const Layout = ({ children }: LayoutProps) => {
         />
       </Head>
       <AppScripts />
-      <GlobalStyle />
       <Header />
       <div>{children}</div>
       <Footer />

@@ -6,8 +6,10 @@ import Divider from '@/components/ui/dividers/Divider';
 import KakaoIcon from '@/components/ui/icons/KakaoIcon';
 import InstagramIcon from '../../ui/icons/InstagramIcon';
 import env from '@/config';
+import { useTheme } from '@emotion/react';
 
 const Footer = () => {
+  const theme = useTheme();
   return (
     <Wrapper>
       <LogoWrapper>
@@ -15,9 +17,12 @@ const Footer = () => {
       </LogoWrapper>
       <ContentWrapper>
         <address>
-          <Typography15 text={'서울시 종로구 삼일대로 428 500호 공익경영센터'} color={'--gray6'} />
-          <Typography15 text={'555-555-5555'} color={'--gray6'} />
-          <Typography15 text={'0044moim@gmail.com'} color={'--gray6'} />
+          <Typography15
+            text={'서울시 종로구 삼일대로 428 500호 공익경영센터'}
+            color={theme.colors.gray6}
+          />
+          <Typography15 text={'555-555-5555'} color={theme.colors.gray6} />
+          <Typography15 text={'0044moim@gmail.com'} color={theme.colors.gray6} />
         </address>
       </ContentWrapper>
       <MenuContainer>
@@ -26,7 +31,7 @@ const Footer = () => {
             return (
               <Link href={item.url} key={item.id}>
                 <MenuLink>
-                  <Typography15 text={item.name} color={'--gray6'} />
+                  <Typography15 text={item.name} color={theme.colors.gray6} />
                 </MenuLink>
               </Link>
             );
@@ -36,16 +41,19 @@ const Footer = () => {
 
       <Divider marginTop="4rem" marginBottom="2rem" />
       <BottomWrapper>
-        <Typography15 text={`\u00A92023 Gongsamo. All rights reserved.`} color={`--gray6`} />
+        <Typography15
+          text={`\u00A92023 Gongsamo. All rights reserved.`}
+          color={theme.colors.gray6}
+        />
         <SocialMediaWrapper>
           <Link href={env.links.subcribe_newsletter} target="_blank">
-            <Typography15 text={'뉴스레터 구독하기'} color={'--gray6'} />
+            <Typography15 text={'뉴스레터 구독하기'} color={theme.colors.gray6} />
           </Link>
           <Link href={env.links.kakao} target="_blank">
-            <KakaoIcon color={`var(--gray6)`} />
+            <KakaoIcon color={theme.colors.gray6} />
           </Link>
           <Link href={env.links.instagram} target="_blank">
-            <InstagramIcon color={`var(--gray6)`} />
+            <InstagramIcon color={theme.colors.gray6} />
           </Link>
         </SocialMediaWrapper>
       </BottomWrapper>
@@ -63,7 +71,7 @@ const Wrapper = styled.footer`
 
   width: 100%;
 
-  background: var(--gray2);
+  background: ${({ theme }) => theme.colors.gray2};
 
   /* Inside auto layout */
 

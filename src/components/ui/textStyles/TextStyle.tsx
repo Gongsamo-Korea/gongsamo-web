@@ -1,13 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
-import type { ColorProps } from '@/types/color';
 
-export interface ColorUnionType extends React.HTMLAttributes<HTMLParagraphElement> {
-  color: ColorProps;
-}
-
-export interface TextProps extends ColorUnionType {
+export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
   type?: string;
   text: string;
   weight?: 400 | 700;
@@ -20,7 +15,7 @@ export interface TextProps extends ColorUnionType {
   animate?: string;
 }
 
-export interface TextStyleProps extends ColorUnionType {
+export interface TextStyleProps extends React.HTMLAttributes<HTMLParagraphElement> {
   type: any;
   text: string;
   weight: number;
@@ -115,7 +110,7 @@ export const TextStyle: React.FC<TextStyleProps> = ({
   }
 };
 
-interface TextStyledComponentsProps extends ColorUnionType {
+interface TextStyledComponentsProps extends React.HTMLAttributes<HTMLParagraphElement> {
   weight: number;
   desktopFontSize: string;
   mobileFontSize: string;
@@ -130,7 +125,7 @@ interface TextStyledComponentsProps extends ColorUnionType {
 
 const Text = styled.p<TextStyledComponentsProps>`
   white-space: pre-wrap;
-  color: var(${({ color }) => color});
+  color: ${({ color }) => color};
   font-weight: ${({ weight }) => weight};
   //
   font-size: ${({ desktopFontSize }) => desktopFontSize};

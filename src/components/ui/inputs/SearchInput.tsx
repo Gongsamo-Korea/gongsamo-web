@@ -19,8 +19,8 @@ const Wrapper = styled.div`
   padding: 8px;
   min-width: 24rem;
 
-  background: var(--white);
-  border: 1px solid var(--gray9);
+  background: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.gray9};
 `;
 
 const Input = styled.input`
@@ -28,7 +28,7 @@ const Input = styled.input`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: var(--gray9);
+  color: ${({ theme }) => theme.colors.gray9};
 `;
 
 const IconWrapper = styled.div``;

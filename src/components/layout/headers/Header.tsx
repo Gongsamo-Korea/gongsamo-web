@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import SearchInput from '@/components/ui/inputs/SearchInput';
 import Typography15 from '@/components/ui/textStyles/Typography15';
+import { useTheme } from '@emotion/react';
 
 export const MENU_ITEMS = [
   {
@@ -22,6 +23,8 @@ export const MENU_ITEMS = [
 ];
 
 const Header = () => {
+  const theme = useTheme();
+
   return (
     <HeaderWrapper>
       <Link href="/">
@@ -34,7 +37,7 @@ const Header = () => {
           return (
             <Link href={item.url} key={item.id}>
               <MenuLink>
-                <Typography15 text={item.name} color={'--gray9'} />
+                <Typography15 text={item.name} color={theme.colors.gray9} />
               </MenuLink>
             </Link>
           );
@@ -50,10 +53,10 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1.6rem 14.4rem;
-  border-bottom: 1px solid var(--gray5);
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray5};
   position: sticky;
   top: 0;
-  background: var(--white);
+  background: ${({ theme }) => theme.colors.white};
   z-index: 100;
 `;
 
@@ -71,7 +74,7 @@ const HeaderContent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2.6rem;
-  color: var(--gray9);
+  color: ${({ theme }) => theme.colors.gray9};
 `;
 
 const MenuLink = styled.div`
