@@ -32,6 +32,8 @@ const style = css`
   }
   body {
     font-size: 1.6rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
   }
   dl,
   li,
