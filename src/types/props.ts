@@ -20,3 +20,9 @@ export interface ContentCardProps {
   openInNewTab?: boolean;
   thumbnail?: string;
 }
+
+export interface TitleBoxProps {
+  title: string;
+  description?: string;
+  backgroundColor?: string;
+}
