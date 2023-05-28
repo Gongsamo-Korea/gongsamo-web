@@ -81,6 +81,23 @@ const Wrapper = styled(Link)<{ backgroundColor: string }>`
 
   background: ${({ backgroundColor }) => backgroundColor};
   border: 1px solid ${({ theme }) => theme.colors.gray8};
+
+  transition: all 0.2s ease-in-out;
+
+  img {
+    filter: gray;
+    -webkit-filter: grayscale(1);
+    transition: all 0.5s ease-in-out;
+  }
+
+  &:hover {
+    img {
+      filter: none;
+      -webkit-filter: grayscale(0);
+      transition: all 0.5s ease-in-out;
+    }
+    transform: scale(1.01);
+  }
 `;
 
 const TitleWrapper = styled.div`
