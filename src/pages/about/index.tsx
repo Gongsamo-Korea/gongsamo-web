@@ -28,7 +28,7 @@ const About = () => {
         <IntroductionImageWrapper>
           <Image
             src="/images/gongsamo_logo_vertical.png"
-            alt={'thumbnail'}
+            alt={'gongsamo logo image'}
             width={0}
             height={0}
             sizes="100vw"
