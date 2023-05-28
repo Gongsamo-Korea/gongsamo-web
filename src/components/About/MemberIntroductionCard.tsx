@@ -116,7 +116,7 @@ const TeamIntroductionWrapper = styled.div`
   order: 1;
   flex-grow: 0;
 
-  padding: 2.4rem 2.4rem;
+  padding: 4.8rem 2.4rem;
 `;
 
 const TeamIntroduction = styled.div`
