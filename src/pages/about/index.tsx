@@ -13,12 +13,12 @@ const About = () => {
     <Wrapper>
       <TitleWrapper>
         <Typography34
-          text="공적인사적모임을 소개합니다!"
+          text="공적인사적모임을 소개해요"
           color={theme.colors.gray9}
           textAlign="center"
         />
         <Typography17
-          text="공적인사적모임은 뭐하는 곳일까요? 어떤 일을 할까요? 어떻게 만들어졌을까요?"
+          text="공적인사적모임이 궁금하셨다구요? 그렇다면 아주 잘 찾아오셨어요!"
           color={theme.colors.gray9}
           textAlign="center"
           marginTop="1.2rem"
@@ -26,20 +26,29 @@ const About = () => {
       </TitleWrapper>
       <IntroductionWrapper>
         <IntroductionImageWrapper>
-          <Image src="/images/contents_thumbnail.jpg" alt={'thumbnail'} width={240} height={240} />
+          <Image
+            src="/images/gongsamo_logo_vertical.png"
+            alt={'thumbnail'}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: '100%', height: 'auto' }}
+          />
         </IntroductionImageWrapper>
         <IntroductionTextWrapper>
           <Typography17
-            text="공적인사적모임은 국내최초 국제개발협력 활동가 커뮤니티로, 대장 오의석이 만들고 어쩌구 잘 해서 국내 최대의 힙한 커뮤니티가 되었고 어쩌구... 하와이 연수까지 가게되는데 어쩌구.... 공적인사적모임에 오신걸 환영합니다!"
+            text="공적인사적모임은 ‘사적인 느슨한 연대로 국제개발협력 분야의 공적인 문제를 해결한다’는 뜻을 가진 청년 모임이에요."
             color={theme.colors.gray9}
           />
           <Typography17
-            text="공적인사적모임은 국내최초 국제개발협력 활동가 커뮤니티로, 대장 오의석이 만들고 어쩌구 잘 해서 국내 최대의 힙한 커뮤니티가 되었고 어쩌구... 하와이 연수까지 가게되는데 어쩌구.... 공적인사적모임에 오신걸 환영합니다!"
+            text="점으로 흩어져 있던 국제개발협력 분야의 청년들과 뉴스레터 ‘김치앤칩스’를 통해 목소리를 주고 받으며 시작했어요. 4명의 활동가로 시작했지만 뜻이 맞는 이들이 꾸준히 합류해 어느새 44명의 청년들과 함께하고 있어요."
             color={theme.colors.gray9}
             marginTop="1.4rem"
           />
           <Typography17
-            text="공적인사적모임은 국내최초 국제개발협력 활동가 커뮤니티로, 대장 오의석이 만들고 어쩌구 잘 해서 국내 최대의 힙한 커뮤니티가 되었고 어쩌구... 하와이 연수까지 가게되는데 어쩌구.... 공적인사적모임에 오신걸 환영합니다!"
+            text="공적인사적모임은 여러분과 함께 작당하고 싶어요.
+            혼자서는 목소리를 내지 못했던 것, 해보지 못했던 것, 바꾸지 못했던 것을
+            저희와 함께 시도하고 도전해보면 좋겠어요."
             color={theme.colors.gray9}
             marginTop="1.4rem"
           />
@@ -47,7 +56,7 @@ const About = () => {
       </IntroductionWrapper>
       <MoreInfoWrapper>
         <Typography28
-          text="공적인사적모임 이야기가 더 궁금하다면"
+          text="혹시 공적인사적모임 이야기가 더 궁금하다면"
           color={theme.colors.gray9}
           weight={700}
         />
@@ -67,7 +76,7 @@ const About = () => {
       </MoreInfoWrapper>
       <MemberIntroductionWrapper>
         <Typography28
-          text="공적인사적모임의 팀원을 소개합니다"
+          text="공적인사적모임을 함께 만들고 있는 팀원들이에요"
           color={theme.colors.gray9}
           weight={700}
         />
@@ -104,11 +113,9 @@ const IntroductionImageWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray9};
   flex: none;
   flex-grow: 0;
-
-  img {
-    width: 100%;
-    height: 100%;
-  }
+  display: flex;
+  padding: 5rem;
+  align-items: center;
 `;
 
 const IntroductionTextWrapper = styled.div``;
