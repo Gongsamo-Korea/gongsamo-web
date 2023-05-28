@@ -1,11 +1,12 @@
+import { useState } from 'react';
+import theme from '@/styles/theme';
+import Image from 'next/image';
+import Link from 'next/link';
 import styled from '@emotion/styled';
 import { ContentCardProps } from '@/types/props';
-import Typography15 from '../textStyles/Typography15';
-import Typography13 from '../textStyles/Typography13';
-import Typography11 from '../textStyles/Typography11';
-import { useState } from 'react';
-import Image from 'next/image';
-import theme from '@/styles/theme';
+import Typography15 from '@/components/ui/textStyles/Typography15';
+import Typography13 from '@/components/ui/textStyles/Typography13';
+import Typography11 from '@/components/ui/textStyles/Typography11';
 
 const ContentCard = ({
   backgroundColor,
@@ -16,6 +17,9 @@ const ContentCard = ({
   date,
   author,
   contents,
+  link,
+  openInNewTab,
+  thumbnail,
 }: ContentCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -24,6 +28,8 @@ const ContentCard = ({
       backgroundColor={backgroundColor ?? theme.colors.blue1}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      href={link ?? ''}
+      target={openInNewTab ? '_blank' : '_self'}
     >
       <TitleWrapper>
         {subtitle && (
@@ -31,43 +37,37 @@ const ContentCard = ({
         )}
         <Typography15 text={title} color={color ?? theme.colors.gray9} weight={700} />
         {date && <Typography11 text={date} color={color ?? theme.colors.gray9} weight={400} />}
+        {author && <Typography11 text={author} color={color ?? theme.colors.gray9} weight={400} />}
       </TitleWrapper>
-      {isHovered ? (
+      {isHovered && contents ? (
         <InfoWrapper>
-          {author && (
-            <Typography11 text={author} color={color ?? theme.colors.gray9} weight={400} />
-          )}
-          {contents && (
-            <Typography11 text={contents} color={color ?? theme.colors.gray9} weight={400} />
-          )}
+          <Typography13 text={contents} color={color ?? theme.colors.gray9} weight={400} />
         </InfoWrapper>
       ) : (
-        <>
-          <ThumbnailWrapper>
-            <Image
-              src="/images/contents_thumbnail.jpg"
-              alt={'thumbnail'}
-              width={0}
-              height={0}
-              sizes="100vw"
-              style={{ width: '100%', height: 'auto' }}
-            />
-            <TagWrapper>
-              {tags &&
-                tags.map((tag, index) => (
-                  <Tag key={index} index={index}>
-                    <Typography11 text={tag} color={theme.colors.gray9} weight={400} />
-                  </Tag>
-                ))}
-            </TagWrapper>
-          </ThumbnailWrapper>
-        </>
+        <ThumbnailWrapper>
+          <Image
+            src={thumbnail ?? ''}
+            alt={'thumbnail'}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: '100%', height: 'auto' }}
+          />
+          <TagWrapper>
+            {tags &&
+              tags.map((tag, index) => (
+                <Tag key={index} index={index}>
+                  <Typography11 text={tag} color={theme.colors.gray9} weight={400} />
+                </Tag>
+              ))}
+          </TagWrapper>
+        </ThumbnailWrapper>
       )}
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div<{ backgroundColor: string }>`
+const Wrapper = styled(Link)<{ backgroundColor: string }>`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -100,14 +100,10 @@ const InfoWrapper = styled.div`
 `;
 
 const ThumbnailWrapper = styled.div`
+  display: flex;
+  align-items: center;
   overflow-y: hidden;
-  width: 100%;
-  height: 14rem;
   position: relative;
-
-  img {
-    min-width: 100%;
-  }
 `;
 
 const TagWrapper = styled.div`
@@ -124,9 +120,6 @@ const Tag = styled.div<{ index: number }>`
   justify-content: center;
   align-items: center;
   padding: 0.4rem 1.2rem;
-
-  width: 5rem;
-  height: 2rem;
 
   background: ${({ index, theme }) =>
     [theme.colors.yellow1, theme.colors.blue1, theme.colors.green1][index]};

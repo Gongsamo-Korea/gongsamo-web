@@ -17,4 +17,6 @@ export interface ContentCardProps {
   author?: string;
   contents?: string;
   link?: string;
+  openInNewTab?: boolean;
+  thumbnail?: string;
 }

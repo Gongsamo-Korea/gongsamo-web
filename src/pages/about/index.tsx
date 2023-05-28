@@ -1,11 +1,12 @@
+import styled from '@emotion/styled';
+import theme from '@/styles/theme';
+import Image from 'next/image';
 import ContentCard from '@/components/ui/cards/ContentCard';
 import Typography17 from '@/components/ui/textStyles/Typography17';
 import Typography28 from '@/components/ui/textStyles/Typography28';
 import Typography34 from '@/components/ui/textStyles/Typography34';
+import MemberIntroductionCard from '@/components/About/MemberIntroductionCard';
 import { MORE_INFO } from '@/contents/about';
-import theme from '@/styles/theme';
-import styled from '@emotion/styled';
-import Image from 'next/image';
 
 const About = () => {
   return (
@@ -25,13 +26,7 @@ const About = () => {
       </TitleWrapper>
       <IntroductionWrapper>
         <IntroductionImageWrapper>
-          <Image
-            src="/images/contents_thumbnail.jpg"
-            alt={'thumbnail'}
-            priority={true}
-            width={240}
-            height={240}
-          />
+          <Image src="/images/contents_thumbnail.jpg" alt={'thumbnail'} width={240} height={240} />
         </IntroductionImageWrapper>
         <IntroductionTextWrapper>
           <Typography17
@@ -61,14 +56,23 @@ const About = () => {
             <ContentCard
               key={index}
               title={info.title}
-              subtitle={info.subtitle}
               date={info.date}
-              contents={info.contents}
               tags={info.tags}
+              link={info.link}
+              openInNewTab={info.openInNewTab}
+              thumbnail={info.thumbnail}
             />
           ))}
         </ContentCardWrapper>
       </MoreInfoWrapper>
+      <MemberIntroductionWrapper>
+        <Typography28
+          text="공적인사적모임의 팀원을 소개합니다"
+          color={theme.colors.gray9}
+          weight={700}
+        />
+        <MemberIntroductionCard />
+      </MemberIntroductionWrapper>
     </Wrapper>
   );
 };
@@ -113,13 +117,21 @@ const MoreInfoWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 4rem;
 `;
 
 const ContentCardWrapper = styled.div`
-  display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(37rem, 1fr));
   gap: 2rem;
+`;
+
+const MemberIntroductionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
 `;
 
 export default About;
