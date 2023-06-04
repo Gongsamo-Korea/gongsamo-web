@@ -1,4 +1,4 @@
-import { useTheme } from '@emotion/react';
+import theme from '@/styles/theme';
 import styled from '@emotion/styled';
 
 interface DividerProps {
@@ -8,8 +8,6 @@ interface DividerProps {
 }
 
 const Divider = ({ color, marginTop, marginBottom }: DividerProps) => {
-  const theme = useTheme();
-
   return (
     <DividerElement
       css={{

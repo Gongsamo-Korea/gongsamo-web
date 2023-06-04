@@ -29,6 +29,7 @@ const Input = styled.input`
   justify-content: space-between;
   align-items: center;
   color: ${({ theme }) => theme.colors.gray9};
+  font-size: 1.4rem;
 `;
 
 const IconWrapper = styled.div``;

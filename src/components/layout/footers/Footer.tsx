@@ -6,10 +6,9 @@ import Divider from '@/components/ui/dividers/Divider';
 import KakaoIcon from '@/components/ui/icons/KakaoIcon';
 import InstagramIcon from '../../ui/icons/InstagramIcon';
 import env from '@/config';
-import { useTheme } from '@emotion/react';
+import theme from '@/styles/theme';
 
 const Footer = () => {
-  const theme = useTheme();
   return (
     <Wrapper>
       <LogoWrapper>
@@ -62,22 +61,13 @@ const Footer = () => {
 };
 
 const Wrapper = styled.footer`
-  position: absolute;
-  bottom: 0;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 6rem 14.4rem;
-
   width: 100%;
-
   background: ${({ theme }) => theme.colors.gray2};
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 3;
-  flex-grow: 0;
 `;
 
 const LogoWrapper = styled.h1`

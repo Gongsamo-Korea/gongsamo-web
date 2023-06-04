@@ -2,13 +2,13 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import SearchInput from '@/components/ui/inputs/SearchInput';
 import Typography15 from '@/components/ui/textStyles/Typography15';
-import { useTheme } from '@emotion/react';
+import theme from '@/styles/theme';
 
 export const MENU_ITEMS = [
   {
     id: 1,
     name: '웰컴투공사모',
-    url: '/intro',
+    url: '/about',
   },
   {
     id: 2,
@@ -23,8 +23,6 @@ export const MENU_ITEMS = [
 ];
 
 const Header = () => {
-  const theme = useTheme();
-
   return (
     <HeaderWrapper>
       <Link href="/">
