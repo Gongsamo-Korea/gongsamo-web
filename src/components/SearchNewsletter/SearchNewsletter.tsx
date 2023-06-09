@@ -1,6 +1,8 @@
 import { FormEvent, KeyboardEvent, useState } from 'react';
 import { fetchNewsletters } from '@/apis/newsletter';
 import { useNewslettersStore } from '@/stores/newsletters';
+import SearchIcon from '@/components/ui/icons/SearchIcon';
+import styled from '@emotion/styled';
 
 const SearchNewsletter = () => {
   const [query, setQuery] = useState('');
@@ -25,17 +27,51 @@ const SearchNewsletter = () => {
 
   return (
     <>
-      <input
-        type="search"
-        placeholder="보고 싶은 콘텐츠를 검색하세요."
-        required
-        value={query}
-        onInput={handleInput}
-        onKeyUp={handleSubmit}
-      />
+      <Wrapper>
+        <Icon>
+          <SearchIcon />
+        </Icon>
+        <InputText
+          type="search"
+          placeholder="보고 싶은 콘텐츠를 검색하세요."
+          required
+          value={query}
+          onInput={handleInput}
+          onKeyUp={handleSubmit}
+        />
+      </Wrapper>
       {searchQuery && <p>{searchQuery}</p>}
     </>
   );
 };
+
+const Wrapper = styled('div')`
+  display: inline-block;
+  position: relative;
+`
+
+const Icon = styled('i')`
+  position: absolute;
+  top: 50%;
+  left: 0.25rem;
+  
+  display: inline-block;
+  margin-top: -1rem;
+`
+
+const InputText = styled('input')`
+  margin: 0;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+
+  box-sizing: border-box;
+  background-color: #fff;
+  
+  border: 0.0625rem solid #212529;
+  border-radius: 0.4rem;
+
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  apperance: none;
+`
+
 
 export default SearchNewsletter;
