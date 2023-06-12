@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import SearchNewsletter from '@/components/SearchNewsletter/SearchNewsletter';
+import Categories from '@/components/Category/Categories';
 import { fetchNewsletters } from '@/apis/newsletter';
 import { useNewslettersStore } from '@/stores/newsletters';
 
@@ -24,6 +25,7 @@ const Newsletter = () => {
       </main>
       <section>
         <SearchNewsletter />
+        <Categories />
         <ol>
           {newsletters.map((newsletter) => (
             <li key={newsletter.id}>
