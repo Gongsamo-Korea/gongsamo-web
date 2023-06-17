@@ -3,6 +3,7 @@ import LandingButton from '@/components/ui/buttons/LandingButton';
 import Typography52 from '@/components/ui/textStyles/Typography52';
 import theme from '@/styles/theme';
 import styled from '@emotion/styled';
+import env from '@/config';
 
 export default function Home() {
   return (
@@ -46,7 +47,13 @@ export default function Home() {
           />
 
           <RightButtonWrapper marginTop={'72px'}>
-            <LandingButton text={'놓친 뉴스레터 다시보기'} color={theme.colors.red2} />
+            <LandingButton
+              text={'놓친 뉴스레터 다시보기'}
+              color={theme.colors.red2}
+              onClick={() => {
+                window.open(env.links.subcribe_newsletter);
+              }}
+            />
             <LandingButton text={'구독하기'} color={theme.colors.blue1} />
           </RightButtonWrapper>
         </RightTextWrapper>
@@ -59,7 +66,13 @@ export default function Home() {
           <Typography52 type={'span'} text={`공적인 `} color={theme.colors.blue3} />
           <Typography52 type={'span'} text={`문제를 해결해요`} color={theme.colors.gray9} />
           <ButtonWrapper marginTop={'72px'}>
-            <LandingButton text={'작당 둘러보기'} color={theme.colors.red2} />
+            <LandingButton
+              text={'작당 둘러보기'}
+              color={theme.colors.red2}
+              onClick={() => {
+                window.open(env.links.notion_page);
+              }}
+            />
           </ButtonWrapper>
         </TextWrapper>
         <SectionImageWapper>
@@ -79,14 +92,29 @@ export default function Home() {
             textAlign="right"
           />
           <RightButtonWrapper marginTop={'72px'}>
-            <LandingButton text={'공적인사적모임 활동\n둘러보기'} color={theme.colors.red2} />
+            <LandingButton
+              text={'공적인사적모임 활동\n둘러보기'}
+              color={theme.colors.red2}
+              onClick={() => {
+                window.open(env.links.notion_page);
+              }}
+            />
             <LandingButton
               text={'국제개발협력 활동가\n오픈카톡방 참여하기'}
               color={theme.colors.red2}
+              onClick={() => {
+                window.open(env.links.kakao);
+              }}
             />
           </RightButtonWrapper>
           <RightButtonWrapper marginTop={'4px'}>
-            <LandingButton text={'국개협 ON-AIR 제보하기'} color={theme.colors.blue1} />
+            <LandingButton
+              text={'국개협 ON-AIR 제보하기'}
+              color={theme.colors.blue1}
+              onClick={() => {
+                window.open(env.links.on_air);
+              }}
+            />
             <LandingButton text={'국개협 무물 제보하기'} color={theme.colors.blue1} />
           </RightButtonWrapper>
         </RightTextWrapper>

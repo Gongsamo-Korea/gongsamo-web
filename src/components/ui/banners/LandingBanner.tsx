@@ -7,6 +7,7 @@ import SymbolRedIcon from '../icons/SymbolRedIcon';
 import Typography52 from '../textStyles/Typography52';
 import DefaultInput from '../inputs/DefaultInput';
 import LandingButton from '../buttons/LandingButton';
+import env from '@/config';
 
 const LandingBanner = () => {
   return (
@@ -28,7 +29,13 @@ const LandingBanner = () => {
           <DefaultInput placeholder={'이름(닉네임)'} />
         </InputWrapper>
         <ButtonWrapper>
-          <LandingButton text={'놓친 뉴스레터 다시보기'} color={theme.colors.red2} />
+          <LandingButton
+            text={'놓친 뉴스레터 다시보기'}
+            color={theme.colors.red2}
+            onClick={() => {
+              window.open(env.links.subcribe_newsletter);
+            }}
+          />
           <LandingButton text={'구독하기'} color={theme.colors.blue1} />
         </ButtonWrapper>
       </BannerInfoWrapper>
