@@ -13,6 +13,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
   variants?: any;
   initial?: string;
   animate?: string;
+  color: string;
 }
 
 export interface TextStyleProps extends React.HTMLAttributes<HTMLParagraphElement> {
