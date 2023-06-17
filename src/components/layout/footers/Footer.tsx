@@ -37,8 +37,6 @@ const Footer = () => {
           })}
         </MenuList>
       </MenuContainer>
-
-      <Divider marginTop="4rem" marginBottom="2rem" />
       <BottomWrapper>
         <Typography15
           text={`\u00A92023 Gongsamo. All rights reserved.`}
@@ -61,13 +59,12 @@ const Footer = () => {
 };
 
 const Wrapper = styled.footer`
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 6rem 14.4rem;
+  padding: 5.2rem 8rem;
   width: 100%;
-  background: ${({ theme }) => theme.colors.gray2};
+  border-top: 1px solid ${({ theme }) => theme.colors.gray5};
 `;
 
 const LogoWrapper = styled.h1`
@@ -108,6 +105,7 @@ const BottomWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 16px;
 `;
 
 const SocialMediaWrapper = styled.div`
