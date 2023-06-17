@@ -138,7 +138,7 @@ const YellowCircleElemnt = styled.div`
   position: absolute;
   width: 904px;
   height: 769px;
-  left: 886px;
+  right: 0;
   top: 2334px;
 
   /* yellow 100 */
