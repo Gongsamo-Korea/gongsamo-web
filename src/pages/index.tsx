@@ -126,7 +126,7 @@ export default function Home() {
 const HomeWrapper = styled.main``;
 
 const LandingSection = styled.section`
-  padding: 225px 80px;
+  padding: 22.5rem 8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
