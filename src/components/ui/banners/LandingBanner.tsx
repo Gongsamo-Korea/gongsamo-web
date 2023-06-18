@@ -49,8 +49,8 @@ const LandingBanner = () => {
 const Wrapper = styled.div`
   padding: 8rem;
   display: flex;
-  justify-content: center;
-  align-items: space-between;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   gap: 40px;
 `;
@@ -59,7 +59,7 @@ const BannerInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex-shrink: none;
+  flex-shrink: 0;
   flex: 1;
   width: 100%;
   max-width: 660px;
@@ -84,7 +84,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const BannerImageWrapper = styled.div`
-  flex-shrink: none;
+  flex-shrink: 0;
   width: 55%;
   max-width: 894px;
 `;
