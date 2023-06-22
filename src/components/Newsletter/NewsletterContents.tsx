@@ -11,12 +11,6 @@ import Typography13 from '../ui/textStyles/Typography13';
 import Typography11 from '../ui/textStyles/Typography11';
 
 const NewsletterContents = ({ article }: any) => {
-  // const { newsletters, setNewsletters } = useNewslettersStore();
-
-  // useEffect(() => {
-  //   setNewsletters(article);
-  // }, [article]);
-  // console.log(newsletters);
   return (
     <Wrapper>
       <ArticleInfoWrapper>
@@ -50,10 +44,7 @@ const NewsletterContents = ({ article }: any) => {
         />
         <ArticleTagsWrapper>
           {article.tags.map((tag: any) => (
-            <TagItem key={tag.id}>
-              {tag.name}
-              {/* <Typography11 text={tag.name} key={tag.id} /> */}
-            </TagItem>
+            <TagItem key={tag.id}>{tag.name}</TagItem>
           ))}
         </ArticleTagsWrapper>
       </ArticleImageWrapper>
