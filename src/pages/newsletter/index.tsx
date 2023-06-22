@@ -25,7 +25,7 @@ const Newsletter = ({ articles, page, totalPages }: any) => {
       <ContentsSection>
         <Wrapper>
           {articles.map((article: any) => (
-            <Link href={`/newsletter/${article.id}`}>
+            <Link key={article.id} href={`/newsletter/${article.id}`}>
               {<NewsletterContents article={article} />}
             </Link>
           ))}

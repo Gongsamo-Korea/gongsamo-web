@@ -11,7 +11,7 @@ export const dotts = '...';
 
 const NewsletterPagination = ({ totalPages, page }: any) => {
   const pages = usePagination(totalPages, page);
-
+  console.log;
   return (
     <Wrapper>
       {Number(page) !== 1 && (
@@ -22,12 +22,10 @@ const NewsletterPagination = ({ totalPages, page }: any) => {
       <div className="flex items-center justify-center my-8">
         {pages.map((pageNumber, i) =>
           pageNumber === dotts ? (
-            <span key={i} className="px-4 py-2 rounded-full text-sm font-semibold text-black">
-              {pageNumber}
-            </span>
+            <span key={i}>{pageNumber}</span>
           ) : (
             <Link key={i} href={`newsletter?page=${pageNumber}`}>
-              <LinkText selected={pageNumber === Number(page)}>{pageNumber}</LinkText>
+              <LinkText selected={Number(pageNumber) === Number(page)}>{pageNumber}</LinkText>
             </Link>
           ),
         )}
