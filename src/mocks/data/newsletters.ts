@@ -1,9 +1,25 @@
-export const newsletters = Array.from({ length: 100 }, (_, index) => ({
+export const sampleNewsletter = Array.from({ length: 100 }, (_, index) => ({
   id: index + 1,
-  title: `Newsletter ${index + 1}`,
-  shortContent: `Newsletter ${index + 1} short content`,
-  longContent: `Newsletter ${index + 1} long content`,
+  issue_number: index + 1,
+  title: `Title ${index + 1}`,
+  table_of_content: `Newsletter ${index + 1} short content`,
+  content: `Newsletter ${index + 1} long content`,
   createdAt: '2023-01-01',
+  view_count: '',
+  issue_date: '2021-09-03T00:00:00',
   author: `Newsletter ${index + 1} Author`,
-  tags: Array.from({ length: 3 }, (_, _index) => `tag ${(index % 8) + _index + 1}`),
+  tags: [
+    {
+      id: 5,
+      name: 'ODA',
+    },
+    {
+      id: 6,
+      name: '국개협사업',
+    },
+    {
+      id: 7,
+      name: 'KOICA프로젝트',
+    },
+  ],
 }));
