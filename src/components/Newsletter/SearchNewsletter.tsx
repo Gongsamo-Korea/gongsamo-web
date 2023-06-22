@@ -28,17 +28,19 @@ const SearchNewsletter = () => {
   return (
     <>
       <Wrapper>
-        <Icon>
-          <SearchIcon />
-        </Icon>
+        <InputWrapper>
         <InputText
           type="search"
-          placeholder="보고 싶은 콘텐츠를 검색하세요."
+          placeholder="키워드로 보고 싶은 콘텐츠를 검색하세요."
           required
           value={query}
           onInput={handleInput}
           onKeyUp={handleSubmit}
         />
+        <Icon>
+          <SearchIcon />
+        </Icon>
+        </InputWrapper>
       </Wrapper>
       {searchQuery && <p>{searchQuery}</p>}
     </>
@@ -46,14 +48,25 @@ const SearchNewsletter = () => {
 };
 
 const Wrapper = styled('div')`
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  padding: 16px;
+`
+
+const InputWrapper = styled('div')`
   display: inline-block;
   position: relative;
+  width: 100%;
+  /* height: 56px */
+
 `
 
 const Icon = styled('i')`
   position: absolute;
   top: 50%;
-  left: 0.25rem;
+  right: 1.5rem;
   
   display: inline-block;
   margin-top: -1rem;
@@ -70,7 +83,8 @@ const InputText = styled('input')`
   border-radius: 0.4rem;
 
   transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
-  apperance: none;
+  height: 60px;
+  width:100%;
 `
 
 

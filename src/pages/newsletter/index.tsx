@@ -4,8 +4,9 @@ import { useEffect } from 'react';
 
 import { useNewslettersStore } from '@/stores/newsletters';
 
-import SearchNewsletter from '@/components/SearchNewsletter/SearchNewsletter';
+import SearchNewsletter from '@/components/Newsletter/SearchNewsletter';
 import Categories from '@/components/Category/Categories';
+import NewsletterHeader from '@/components/Newsletter/NewsletterHeader';
 
 const Newsletter = ({ articles, page, totalPages }: any) => {
   const { newsletters, query, setNextPage } = useNewslettersStore();
@@ -22,17 +23,12 @@ const Newsletter = ({ articles, page, totalPages }: any) => {
 
   return (
     <>
-      <main>
-        <h2>지난 뉴스레터 모아보기</h2>
-        <h3>
-          김치앤칩스에 발행된 콘텐츠를 모아보세요!
-          <br />
-          검색도 가능하쥬
-        </h3>
-      </main>
-      <section>
+      <InfoSection>
+        <NewsletterHeader />
         <SearchNewsletter />
         <Categories />
+      </InfoSection>
+      <section>
         <ol>
           {newsletters.map((newsletter) => (
             <li key={newsletter.id}>
@@ -49,6 +45,11 @@ const Newsletter = ({ articles, page, totalPages }: any) => {
     </>
   );
 };
+
+const InfoSection = styled('section')`
+  max-width: 700px;
+  margin: 0 auto;
+`;
 
 export async function getServerSideProps(context: any) {
   const { keyword = '', page = 1, size = 9 } = context.query;

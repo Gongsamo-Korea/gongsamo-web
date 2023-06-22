@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SearchNewsletter from './SearchNewsletter';
 import * as newsletterAPI from '@/apis/newsletter';
-import server from '@/mocks/server';
+import { server } from '@/mocks/server';
 
 jest.mock('@/apis/newsletter', () => {
   const actualModule = jest.requireActual('@/apis/newsletter');
