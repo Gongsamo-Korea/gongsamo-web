@@ -8,6 +8,7 @@ import SearchNewsletter from '@/components/Newsletter/SearchNewsletter';
 import Categories from '@/components/Category/Categories';
 import NewsletterHeader from '@/components/Newsletter/NewsletterHeader';
 import NewsletterContents from '@/components/Newsletter/NewsletterContents';
+import NewsletterPagination from '@/components/Newsletter/NewsletterPagination';
 
 const Newsletter = ({ articles, page, totalPages }: any) => {
   useEffect(() => {
@@ -29,6 +30,7 @@ const Newsletter = ({ articles, page, totalPages }: any) => {
             </Link>
           ))}
         </Wrapper>
+        <NewsletterPagination totalPages={totalPages} page={page} />
       </ContentsSection>
     </>
   );
