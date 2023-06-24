@@ -1,8 +1,7 @@
-import styled from '@emotion/styled';
 import Link from 'next/link';
-import SearchInput from '@/components/ui/inputs/SearchInput';
-import Typography15 from '@/components/ui/textStyles/Typography15';
+import styled from '@emotion/styled';
 import theme from '@/styles/theme';
+import Typography17 from '@/components/ui/textStyles/Typography17';
 
 export const MENU_ITEMS = [
   {
@@ -35,12 +34,11 @@ const Header = () => {
           return (
             <Link href={item.url} key={item.id}>
               <MenuLink>
-                <Typography15 text={item.name} color={theme.colors.gray9} />
+                <Typography17 text={item.name} color={theme.colors.gray9} />
               </MenuLink>
             </Link>
           );
         })}
-        <SearchInput />
       </HeaderContent>
     </HeaderWrapper>
   );
@@ -50,12 +48,16 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.6rem 14.4rem;
+  padding: 1.6rem 8rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray5};
   position: sticky;
   top: 0;
-  background: ${({ theme }) => theme.colors.white};
   z-index: 100;
+
+  -webkit-backdrop-filter: blur(5px);
+  -moz-backdrop-filter: blur(5px);
+  -o-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 `;
 
 const LogoWrapper = styled.h1`

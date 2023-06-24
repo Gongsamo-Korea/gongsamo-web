@@ -21,7 +21,7 @@ export const colors = {
   yellow6: '#c99a2e',
 
   red1: '#fbe7de',
-  red2: '#facabe',
+  red2: '#fabfbf',
   red3: '#f1a49a',
   red4: '#e4807e',
   red5: '#d3545d',
