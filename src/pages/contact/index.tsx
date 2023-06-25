@@ -8,7 +8,7 @@ import InstagramIcon from '@/components/ui/icons/InstagramIcon';
 import KakaoIcon from '@/components/ui/icons/KakaoIcon';
 import NewsLetterIcon from '@/components/ui/icons/NewsLetterIcon';
 import CircleCheckIcon from '@/components/ui/icons/CircleCheckIcon';
-import TitleBox from '@/components/ui/titleBoxes/TitleBox';
+import Typography34 from '@/components/ui/textStyles/Typography34';
 import Typography20 from '@/components/ui/textStyles/Typography20';
 import Typography17 from '@/components/ui/textStyles/Typography17';
 import Typography13 from '@/components/ui/textStyles/Typography13';
@@ -42,7 +42,15 @@ const Contact = () => {
 
   return (
     <Wrapper>
-      <TitleBox title="문의하기" description="궁금한 사항이 있다면 아래 중 하나로 문의주세요" />
+      <TitleWrapper>
+        <Typography34 text="문의하기" color={theme.colors.gray9} textAlign="center" />
+        <Typography17
+          text="궁금한 사항이 있다면 아래 중 하나로 문의주세요"
+          color={theme.colors.gray9}
+          textAlign="center"
+          marginTop="1.2rem"
+        />
+      </TitleWrapper>
       <ContactWrapper>
         <ProfileImageWrapper>
           <Image
@@ -80,11 +88,11 @@ const Contact = () => {
           )}
           <OnAirGuideWrapper>
             <Typography17
-              text="김치앤칩스 ON-AIR에 게시를 원하신다면 아래 링크를 이용해주세요."
+              text="김칩 ON-AIR에 게시를 원하신다면 아래 링크를 이용해주세요."
               color={theme.colors.gray6}
             />
             <Link href={env.links.on_air} target="_blank">
-              <LinkText color={theme.colors.blue4} text="김치앤칩스 ON-AIR 제보하기" />
+              <LinkText color={theme.colors.blue4} text="김칩 ON-AIR 제보하기" />
             </Link>
           </OnAirGuideWrapper>
         </ContactList>
@@ -102,9 +110,11 @@ const Wrapper = styled.div`
   gap: 14rem;
 `;
 
+const TitleWrapper = styled.div``;
+
 const ContactWrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 14rem;
 `;
@@ -123,7 +133,7 @@ const ProfileImageWrapper = styled.div`
 const ContactList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.2rem;
 `;
 
 const ContactItem = styled.li`
@@ -137,12 +147,8 @@ const ContactItem = styled.li`
   cursor: pointer;
   position: relative;
 
-  &:hover {
-    background: ${({ theme }) => theme.colors.gray3};
-  }
-
-  &:active {
-    background: ${({ theme }) => theme.colors.gray2};
+  &:hover * {
+    font-weight: 700;
   }
 `;
 

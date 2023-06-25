@@ -39,10 +39,10 @@ export default function Home() {
             text={`국제개발협력 NO1.뉴스레터\n`}
             color={theme.colors.gray9}
           />
-          <Typography52 type={'span'} text={`김치앤칩스`} color={theme.colors.red3} />
+          <Typography52 type={'span'} text={`김칩`} color={theme.colors.red3} />
           <Typography52
             type={'span'}
-            text={`를 만들어\n지구 속 세계,\n세계 속 우리이야기를 전해요`}
+            text={`을 만들어\n지구 속 세계,\n세계 속 우리이야기를 전해요`}
             color={theme.colors.gray9}
           />
 

@@ -11,7 +11,7 @@ export const MENU_ITEMS = [
   },
   {
     id: 2,
-    name: '김치앤칩스',
+    name: '김칩',
     url: '/newsletter',
   },
   {
