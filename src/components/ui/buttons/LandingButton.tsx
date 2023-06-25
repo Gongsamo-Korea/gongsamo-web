@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import theme from '@/styles/theme';
-import Typography17 from '../textStyles/Typography17';
+import Typography17 from '@/components/ui/textStyles/Typography17';
 
 interface LandingButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   text: string;

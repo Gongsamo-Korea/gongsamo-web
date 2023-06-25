@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import SearchIcon from '../icons/SearchIcon';
+import SearchIcon from '@/components/ui/icons/SearchIcon';
 
 const SearchInput = () => {
   return (

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Typography15 from '@/components/ui/textStyles/Typography15';
 import { MENU_ITEMS } from '@/components/layout/headers/Header';
 import KakaoIcon from '@/components/ui/icons/KakaoIcon';
-import InstagramIcon from '../../ui/icons/InstagramIcon';
+import InstagramIcon from '@/components/ui/icons/InstagramIcon';
 import env from '@/config';
 import theme from '@/styles/theme';
 
