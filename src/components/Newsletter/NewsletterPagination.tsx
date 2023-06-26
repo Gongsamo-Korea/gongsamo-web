@@ -1,7 +1,4 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
 import Link from 'next/link';
-import React from 'react';
 import usePagination from '@/hooks/usePagination';
 import styled from '@emotion/styled';
 import ChevronLeft from '@/components/ui/icons/ChevronLeft';
@@ -44,12 +41,12 @@ type LinkTextProps = {
 };
 
 const LinkText = styled.span<LinkTextProps>`
-  border: ${(props) => (props.selected ? '1px solid black' : '1px solid white')};
+  border: ${(props: any) => (props.selected ? '1px solid black' : '1px solid white')};
   border-radius: 50%;
   margin: 10px;
   padding: 5px 10px;
-  background-color: ${(props) => (props.selected ? 'black' : 'white')};
-  color: ${(props) => (props.selected ? 'white' : 'black')};
+  background-color: ${(props: any) => (props.selected ? 'black' : 'white')};
+  color: ${(props: any) => (props.selected ? 'white' : 'black')};
 `;
 
 const Wrapper = styled('nav')`
