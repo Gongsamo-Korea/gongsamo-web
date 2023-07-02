@@ -1,46 +1,80 @@
 import Link from 'next/link';
-import SearchNewsletter from '@/components/SearchNewsletter/SearchNewsletter';
-import Categories from '@/components/Category/Categories';
-import { fetchNewsletters } from '@/apis/newsletter';
+import styled from '@emotion/styled';
+import { useEffect } from 'react';
+
 import { useNewslettersStore } from '@/stores/newsletters';
 
-const Newsletter = () => {
-  const { newsletters, query, page, totalPages, setNextPage } = useNewslettersStore();
-  const hasNextPage = page < totalPages;
+import SearchNewsletter from '@/components/Newsletter/SearchNewsletter';
+import Categories from '@/components/Category/Categories';
+import NewsletterHeader from '@/components/Newsletter/NewsletterHeader';
+import NewsletterContents from '@/components/Newsletter/NewsletterContents';
+import NewsletterPagination from '@/components/Newsletter/NewsletterPagination';
 
-  const handleFetchNext = async () => {
-    const nextNewsletters = await fetchNewsletters({ query, page: page + 1 });
-    setNextPage(nextNewsletters.results);
-  };
+const Newsletter = ({ articles, page, totalPages }: any) => {
+  useEffect(() => {
+    useNewslettersStore.getState().setNewsletters(articles, page, totalPages);
+  }, [articles]);
 
   return (
     <>
-      <main>
-        <h2>지난 뉴스레터 모아보기</h2>
-        <h3>
-          김칩에 발행된 콘텐츠를 모아보세요!
-          <br />
-          검색도 가능하쥬
-        </h3>
-      </main>
-      <section>
+      <InfoSection>
+        <NewsletterHeader />
         <SearchNewsletter />
         <Categories />
-        <ol>
-          {newsletters.map((newsletter) => (
-            <li key={newsletter.id}>
-              <Link href={`/newsletter/${newsletter.id}`}>
-                <h3>{newsletter.title}</h3>
-                <p>{newsletter.shortContent}</p>
-                <p>{newsletter.createdAt}</p>
-              </Link>
-            </li>
+      </InfoSection>
+      <ContentsSection>
+        <Wrapper>
+          {articles.map((article: any) => (
+            <Link key={article.id} href={`/newsletter/${article.id}`}>
+              {<NewsletterContents article={article} />}
+            </Link>
           ))}
-        </ol>
-        {hasNextPage && <button onClick={handleFetchNext}>더보기</button>}
-      </section>
+        </Wrapper>
+        <NewsletterPagination totalPages={totalPages} page={page} />
+      </ContentsSection>
     </>
   );
 };
+
+const Wrapper = styled('div')`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 100px;
+`;
+
+const InfoSection = styled('section')`
+  max-width: 700px;
+  margin: 0 auto;
+`;
+
+const ContentsSection = styled('section')`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+export async function getServerSideProps(context: any) {
+  const { keyword = '', page = 1, size = 9 } = context.query;
+
+  const res = await fetch(
+    `http://localhost:3000/api/articles?keyword=${keyword}&page=${page}&size=${size}`,
+    {
+      headers: {
+        Accept: 'application/json',
+      },
+    },
+  );
+  const { results, totalPages } = await res.json();
+  useNewslettersStore.getState().setNewsletters(results, page, totalPages);
+  return {
+    props: {
+      articles: useNewslettersStore.getState().newsletters,
+      totalPages: useNewslettersStore.getState().totalPages,
+      page: useNewslettersStore.getState().page,
+    },
+  };
+}
 
 export default Newsletter;
