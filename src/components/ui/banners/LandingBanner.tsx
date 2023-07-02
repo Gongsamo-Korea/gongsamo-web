@@ -7,6 +7,7 @@ import SymbolRedIcon from '@/components/ui/icons/SymbolRedIcon';
 import Typography52 from '@/components/ui/textStyles/Typography52';
 import Typography17 from '@/components/ui/textStyles/Typography17';
 import env from '@/config';
+import Typography48 from '../textStyles/Typography48';
 
 const StibeeScript = () => {
   return (
@@ -18,7 +19,7 @@ const StibeeScript = () => {
           <SymbolYellowIcon />
           <SymbolRedIcon />
         </SymbolIconWrapper>
-        <Typography52
+        <Typography48
           text={`재미있는 국제개발협력\n생태계, 공적인사적모임과\n함께 작당해요!`}
           color={theme.colors.gray9}
           marginTop="2.4rem"
@@ -159,6 +160,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 140rem;
   gap: 40px;
 
   #stb_subscribe {
@@ -190,17 +192,6 @@ const Wrapper = styled.div`
 
     .stb_form_policy {
       margin-top: 0.6rem;
-    }
-
-    .stb_form_set_input {
-      /* display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      color: ${({ theme }) => theme.colors.gray9};
-      font-size: 1.4rem;
-      border: none !important;
-      padding: 0 !important; */
     }
 
     .stb_form_submit_button {

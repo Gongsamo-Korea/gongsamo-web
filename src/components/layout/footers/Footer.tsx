@@ -10,60 +10,69 @@ import theme from '@/styles/theme';
 const Footer = () => {
   return (
     <Wrapper>
-      <LogoWrapper>
-        <LogoImg src="/images/gongsamo_logo.png" alt="logo"></LogoImg>
-      </LogoWrapper>
-      <ContentWrapper>
-        <address>
+      <ItemWrapper>
+        <LogoWrapper>
+          <LogoImg src="/images/gongsamo_logo.png" alt="logo"></LogoImg>
+        </LogoWrapper>
+        <ContentWrapper>
+          <address>
+            <Typography15
+              text={'서울시 종로구 삼일대로 428 500호 공익경영센터'}
+              color={theme.colors.gray6}
+            />
+            <Typography15 text={'555-555-5555'} color={theme.colors.gray6} />
+            <Typography15 text={'0044moim@gmail.com'} color={theme.colors.gray6} />
+          </address>
+        </ContentWrapper>
+        <MenuContainer>
+          <MenuList>
+            {MENU_ITEMS.map((item) => {
+              return (
+                <Link href={item.url} key={item.id}>
+                  <MenuLink>
+                    <Typography15 text={item.name} color={theme.colors.gray6} />
+                  </MenuLink>
+                </Link>
+              );
+            })}
+          </MenuList>
+        </MenuContainer>
+        <BottomWrapper>
           <Typography15
-            text={'서울시 종로구 삼일대로 428 500호 공익경영센터'}
+            text={`\u00A92023 Gongsamo. All rights reserved.`}
             color={theme.colors.gray6}
           />
-          <Typography15 text={'555-555-5555'} color={theme.colors.gray6} />
-          <Typography15 text={'0044moim@gmail.com'} color={theme.colors.gray6} />
-        </address>
-      </ContentWrapper>
-      <MenuContainer>
-        <MenuList>
-          {MENU_ITEMS.map((item) => {
-            return (
-              <Link href={item.url} key={item.id}>
-                <MenuLink>
-                  <Typography15 text={item.name} color={theme.colors.gray6} />
-                </MenuLink>
-              </Link>
-            );
-          })}
-        </MenuList>
-      </MenuContainer>
-      <BottomWrapper>
-        <Typography15
-          text={`\u00A92023 Gongsamo. All rights reserved.`}
-          color={theme.colors.gray6}
-        />
-        <SocialMediaWrapper>
-          <Link href={env.links.subcribe_newsletter} target="_blank">
-            <Typography15 text={'뉴스레터 구독하기'} color={theme.colors.gray6} />
-          </Link>
-          <Link href={env.links.kakao} target="_blank">
-            <KakaoIcon color={theme.colors.gray6} />
-          </Link>
-          <Link href={env.links.instagram} target="_blank">
-            <InstagramIcon color={theme.colors.gray6} />
-          </Link>
-        </SocialMediaWrapper>
-      </BottomWrapper>
+          <SocialMediaWrapper>
+            <Link href={env.links.subcribe_newsletter} target="_blank">
+              <Typography15 text={'뉴스레터 구독하기'} color={theme.colors.gray6} />
+            </Link>
+            <Link href={env.links.kakao} target="_blank">
+              <KakaoIcon color={theme.colors.gray6} />
+            </Link>
+            <Link href={env.links.instagram} target="_blank">
+              <InstagramIcon color={theme.colors.gray6} />
+            </Link>
+          </SocialMediaWrapper>
+        </BottomWrapper>
+      </ItemWrapper>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.footer`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  padding: 5.2rem 8rem;
   width: 100%;
   border-top: 1px solid ${({ theme }) => theme.colors.gray5};
+`;
+
+const ItemWrapper = styled.div`
+  padding: 5.2rem 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 140rem;
 `;
 
 const LogoWrapper = styled.h1`
