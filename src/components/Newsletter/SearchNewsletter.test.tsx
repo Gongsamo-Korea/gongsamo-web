@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SearchNewsletter from './SearchNewsletter';
 import * as newsletterAPI from '@/apis/newsletter';
-import server from '@/mocks/server';
+import { server } from '@/mocks/server';
 
 jest.mock('@/apis/newsletter', () => {
   const actualModule = jest.requireActual('@/apis/newsletter');
@@ -35,12 +35,11 @@ describe('SearchNewsletter', () => {
   it('콘텐츠를 검색할 수 있다.', async () => {
     const mockedFetchNewsletters = jest.spyOn(newsletterAPI, 'fetchNewsletters');
 
-    render(<SearchNewsletter />);
+    const { getByPlaceholderText } = render(<SearchNewsletter />);
 
     const user = userEvent.setup();
-    const input = screen.getByPlaceholderText('보고 싶은 콘텐츠를 검색하세요.');
 
-    await user.type(input, '테스트');
+    await user.type(getByPlaceholderText('보고 싶은 콘텐츠를 검색하세요.'), '테스트');
     await user.keyboard('{Enter}');
 
     expect(mockedFetchNewsletters).toBeCalledWith({ query: '테스트' });
@@ -49,12 +48,10 @@ describe('SearchNewsletter', () => {
   it('검색어를 입력하지 않으면 검색할 수 없다.', async () => {
     const mockedFetchNewsletters = jest.spyOn(newsletterAPI, 'fetchNewsletters');
 
-    render(<SearchNewsletter />);
+    const { getByPlaceholderText } = render(<SearchNewsletter />);
 
     const user = userEvent.setup();
-    const input = screen.getByPlaceholderText('보고 싶은 콘텐츠를 검색하세요.');
-
-    await user.type(input, ' ');
+    await user.type(getByPlaceholderText('보고 싶은 콘텐츠를 검색하세요.'), ' ');
     await user.keyboard('{Enter}');
 
     expect(mockedFetchNewsletters).not.toBeCalled();
