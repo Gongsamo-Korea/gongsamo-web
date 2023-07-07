@@ -9,7 +9,7 @@ const SymbolGreenIcon = ({ width = 40, height = 40 }: IconProps) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_734_3875)">
+      <g clipPath="url(#clip0_734_3875)">
         <path
           d="M37.2667 9.52653L0 21.8872L2.73323 30.4743L40 18.1136L37.2667 9.52653Z"
           fill="#00D57D"
