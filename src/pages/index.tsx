@@ -4,11 +4,19 @@ import Typography48 from '@/components/ui/textStyles/Typography48';
 import theme from '@/styles/theme';
 import styled from '@emotion/styled';
 import env from '@/config';
+import { GetServerSideProps } from 'next';
+import { BannerProps } from '@/models/banner';
+import { useBannerStore } from '@/stores/banners';
+import { useEffect } from 'react';
 
-export default function Home() {
+export default function Home({ banners }: any) {
+  useEffect(() => {
+    useBannerStore.getState().setBanners(banners);
+  }, [banners]);
+
   return (
     <HomeWrapper>
-      <LandingBanner />
+      <LandingBanner banners={banners} />
       <LandingSection>
         <TextWrapper>
           <Typography48
@@ -196,3 +204,17 @@ const BlueCircleElemnt = styled.div`
   opacity: 0.3;
   filter: blur(143px);
 `;
+
+export async function getServerSideProps() {
+  const res = await fetch(`https://api.gongsamo.kr/banners`, {
+    headers: {
+      Accept: 'application/json',
+    },
+  });
+
+  // const { results } = await res.json();
+  // useBannerStore.getState().setBanners(results);
+  return {
+    props: { banners: null },
+  };
+}

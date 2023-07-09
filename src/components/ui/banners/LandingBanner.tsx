@@ -4,10 +4,21 @@ import SymbolGreenIcon from '@/components/ui/icons/SymbolGreenIcon';
 import SymbolOrangeIcon from '@/components/ui/icons/SymbolOrangeIcon';
 import SymbolYellowIcon from '@/components/ui/icons/SymbolYellowIcon';
 import SymbolRedIcon from '@/components/ui/icons/SymbolRedIcon';
-import Typography52 from '@/components/ui/textStyles/Typography52';
 import Typography17 from '@/components/ui/textStyles/Typography17';
+import Typography48 from '@/components/ui/textStyles/Typography48';
 import env from '@/config';
-import Typography48 from '../textStyles/Typography48';
+import Slider from 'react-slick';
+import { BannerProps } from '@/models/banner';
+
+const settings = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 4,
+  autoplay: true,
+  autoplaySpeed: 1000,
+  pauseOnHover: true,
+};
 
 const StibeeScript = () => {
   return (
@@ -34,7 +45,7 @@ const StibeeScript = () => {
               action="https://stibee.com/api/v1.0/lists/HW8_Sv3t4TdL_N2XDOPULUk12OGV/public/subscribers"
               method="POST"
               target="_blank"
-              accept-charset="utf-8"
+              acceptCharset="utf-8"
               className="stb_form"
               name="stb_subscribe_form"
               id="stb_subscribe_form"
@@ -137,7 +148,7 @@ const StibeeScript = () => {
             type="text/javascript"
             src="https://s3.ap-northeast-2.amazonaws.com/resource.stibee.com/subscribe/stb_subscribe_form.js"
           ></script>
-        </InputWrapper>{' '}
+        </InputWrapper>
       </BannerInfoWrapper>
       <BannerImageWrapper>
         <BannerImg src="/images/banner.webp" alt="landing_banner" />
@@ -146,11 +157,49 @@ const StibeeScript = () => {
   );
 };
 
-const LandingBanner = () => {
+const DefaultBannerComponent = ({
+  banner_text,
+  thumbnail_url,
+  hyper_link_url,
+  exposure_order,
+}: BannerProps) => {
   return (
-    <Wrapper>
-      <StibeeScript />
-    </Wrapper>
+    <>
+      <BannerInfoWrapper onClick={() => window.open(hyper_link_url, '_blank')}>
+        <SymbolIconWrapper>
+          <SymbolGreenIcon />
+          <SymbolOrangeIcon />
+          <SymbolYellowIcon />
+          <SymbolRedIcon />
+        </SymbolIconWrapper>
+        <Typography48 text={banner_text} color={theme.colors.gray9} marginTop="2.4rem" />
+        <InputWrapper></InputWrapper>
+      </BannerInfoWrapper>
+      <BannerImageWrapper>
+        <BannerImg src={thumbnail_url} alt="landing_banner" />
+      </BannerImageWrapper>
+    </>
+  );
+};
+
+const LandingBanner = ({ banners }: any) => {
+  return (
+    <Slider {...settings}>
+      {banners?.map((banner: BannerProps, index: number) => (
+        <Wrapper key={index}>
+          <DefaultBannerComponent
+            key={banner.exposure_order}
+            banner_text={banner.banner_text}
+            thumbnail_url={banner.thumbnail_url}
+            hyper_link_url={banner.hyper_link_url}
+            exposure_order={banner.exposure_order}
+          />
+        </Wrapper>
+      ))}
+      <Wrapper>
+        <StibeeScript />
+      </Wrapper>
+    </Slider>
   );
 };
 
