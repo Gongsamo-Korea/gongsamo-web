@@ -1,26 +1,28 @@
+import React from 'react';
 import styled from '@emotion/styled';
-import SearchIcon from '@/components/ui/icons/SearchIcon';
 
-const SearchInput = () => {
+interface DefaultInputProps extends React.HTMLAttributes<HTMLInputElement> {
+  placeholder: string;
+  type?: string;
+}
+
+const DefaultInput = ({ placeholder, type = 'text', ...HTMLInputElement }: DefaultInputProps) => {
   return (
     <Wrapper>
-      <Input type="text" placeholder="검색어를 입력하세요." />
-      <IconWrapper>
-        <SearchIcon />
-      </IconWrapper>
+      <Input type={type} placeholder={placeholder} {...HTMLInputElement} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 8px;
-  min-width: 24rem;
+  padding: 20px;
+  width: 100%;
 
   background: ${({ theme }) => theme.colors.white};
   border: 1px solid ${({ theme }) => theme.colors.gray9};
+  border-radius: 10px;
 `;
 
 const Input = styled.input`
@@ -34,4 +36,4 @@ const Input = styled.input`
 
 const IconWrapper = styled.div``;
 
-export default SearchInput;
+export default DefaultInput;

@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 import { sampleNewsletter } from './data/newsletters';
+import { sampleBanner } from './data/banners';
 
 export const handlers = [
   rest.get('http://localhost:3000/api/articles', (req, res, ctx) => {
@@ -30,8 +31,6 @@ export const handlers = [
     );
   }),
   rest.get('http://api.gongsamo.kr/banners', (req, res, ctx) => {
-    console.log('handler', res);
-    const test = sampleNewsletter[0];
-    return res(ctx.status(200), ctx.json({ test }));
+    return res(ctx.status(200), ctx.json(sampleBanner));
   }),
 ];

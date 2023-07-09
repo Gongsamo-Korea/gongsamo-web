@@ -16,7 +16,7 @@ export const CONTACT = [
   },
   {
     id: 'newsletter',
-    title: '뉴스레터 김치앤칩스 구독하기',
+    title: '뉴스레터 김칩 구독하기',
     link: 'https://page.stibee.com/subscriptions/76249',
   },
 ];

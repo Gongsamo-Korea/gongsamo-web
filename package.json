@@ -1,6 +1,7 @@
 {
   "name": "gongsamo-web",
   "version": "0.1.0",
+  "packageManager": "pnpm@8.5.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -15,6 +16,8 @@
     "qs": "^6.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "typescript": "5.0.4"
   },
   "devDependencies": {
@@ -30,6 +33,7 @@
     "@types/qs": "^6.9.7",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
+    "@types/react-slick": "^0.23.10",
     "@types/testing-library__jest-dom": "^5.14.5",
     "axios": "^1.4.0",
     "eslint": "8.38.0",
