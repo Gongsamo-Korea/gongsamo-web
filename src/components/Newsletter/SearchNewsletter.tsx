@@ -1,12 +1,11 @@
 import { FormEvent, KeyboardEvent, useState } from 'react';
-import { fetchNewsletters } from '@/apis/newsletter';
-import { useNewslettersStore } from '@/stores/newsletters';
 import SearchIcon from '@/components/ui/icons/SearchIcon';
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 
 const SearchNewsletter = () => {
+  const router = useRouter();
   const [query, setQuery] = useState('');
-  const { query: searchQuery, setPageableNewsletters } = useNewslettersStore();
 
   const handleInput = (event: FormEvent) => {
     setQuery((event.target as HTMLInputElement).value);
@@ -19,10 +18,13 @@ const SearchNewsletter = () => {
       window.alert('검색어를 입력해주세요.');
       return;
     }
-
-    const newsletters = await fetchNewsletters({ query });
-    setPageableNewsletters(query, newsletters);
-    setQuery('');
+    router.replace({
+      pathname: '/newsletter',
+      query: {
+        keyword: query,
+        page: 1,
+      },
+    });
   };
 
   return (
@@ -37,12 +39,12 @@ const SearchNewsletter = () => {
             onInput={handleInput}
             onKeyUp={handleSubmit}
           />
+
           <Icon>
             <SearchIcon />
           </Icon>
         </InputWrapper>
       </Wrapper>
-      {searchQuery && <p>{searchQuery}</p>}
     </>
   );
 };

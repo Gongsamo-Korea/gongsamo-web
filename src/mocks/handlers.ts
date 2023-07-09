@@ -1,22 +1,37 @@
 import { rest } from 'msw';
 import { sampleNewsletter } from './data/newsletters';
+
 export const handlers = [
   rest.get('http://localhost:3000/api/articles', (req, res, ctx) => {
     const keyword = req.url.searchParams.get('keyword') || '';
     const nowPage = parseInt(req.url.searchParams.get('page') || '1', 10);
     const size = parseInt(req.url.searchParams.get('size') || '8', 10);
 
-    console.log(keyword, nowPage, size);
+    const filteredItem = (keyword: any, nowPage: any, size: any) => {
+      const result = sampleNewsletter;
+      if (keyword !== '') {
+        return result.filter(
+          (newsletter) => newsletter.content.toLowerCase().indexOf(keyword.toLowerCase()) > -1,
+        );
+      }
+      return result;
+    };
+
     return res(
       ctx.status(200),
       ctx.json({
         keyword,
         nowPage,
         size,
-        totalEntries: sampleNewsletter.length,
-        totalPages: Math.ceil(sampleNewsletter.length / size),
-        results: sampleNewsletter.slice((nowPage - 1) * size, nowPage * size),
+        totalEntries: filteredItem(keyword, nowPage, size).length,
+        totalPages: Math.ceil(filteredItem(keyword, nowPage, size).length / size),
+        results: filteredItem(keyword, nowPage, size).slice((nowPage - 1) * size, nowPage * size),
       }),
     );
+  }),
+  rest.get('http://api.gongsamo.kr/banners', (req, res, ctx) => {
+    console.log('handler', res);
+    const test = sampleNewsletter[0];
+    return res(ctx.status(200), ctx.json({ test }));
   }),
 ];

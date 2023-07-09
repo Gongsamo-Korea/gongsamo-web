@@ -10,9 +10,9 @@ import NewsletterHeader from '@/components/Newsletter/NewsletterHeader';
 import NewsletterContents from '@/components/Newsletter/NewsletterContents';
 import NewsletterPagination from '@/components/Newsletter/NewsletterPagination';
 
-const Newsletter = ({ articles, page, totalPages }: any) => {
+const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   useEffect(() => {
-    useNewslettersStore.getState().setNewsletters(articles, page, totalPages);
+    useNewslettersStore.getState().setNewsletters(articles, page, totalPages, keyword);
   }, [articles]);
 
   return (
@@ -30,7 +30,7 @@ const Newsletter = ({ articles, page, totalPages }: any) => {
             </Link>
           ))}
         </Wrapper>
-        <NewsletterPagination totalPages={totalPages} page={page} />
+        <NewsletterPagination totalPages={totalPages} page={page} keyword={keyword} />
       </ContentsSection>
     </>
   );
@@ -66,13 +66,16 @@ export async function getServerSideProps(context: any) {
       },
     },
   );
+
   const { results, totalPages } = await res.json();
-  useNewslettersStore.getState().setNewsletters(results, page, totalPages);
+  useNewslettersStore.getState().setNewsletters(results, page, totalPages, keyword);
+
   return {
     props: {
       articles: useNewslettersStore.getState().newsletters,
       totalPages: useNewslettersStore.getState().totalPages,
       page: useNewslettersStore.getState().page,
+      keyword,
     },
   };
 }
