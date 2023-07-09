@@ -9,6 +9,7 @@ import Categories from '@/components/Category/Categories';
 import NewsletterHeader from '@/components/Newsletter/NewsletterHeader';
 import NewsletterContents from '@/components/Newsletter/NewsletterContents';
 import NewsletterPagination from '@/components/Newsletter/NewsletterPagination';
+import ContentCard from '@/components/ui/cards/ContentCard';
 
 const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   useEffect(() => {
@@ -26,10 +27,41 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
         <Wrapper>
           {articles.map((article: any) => (
             <Link key={article.id} href={`/newsletter/${article.id}`}>
-              {<NewsletterContents article={article} />}
+              {
+                <ContentCard
+                  key={article.id}
+                  title={article.title}
+                  subtitle={article.issue_number}
+                  date={new Date(article.issue_date).toLocaleDateString('ko-KR')}
+                  thumbnail="/images/intro_04.png"
+                  tags={article.tags}
+                  contents={article.table_of_content}
+                />
+              }
             </Link>
           ))}
         </Wrapper>
+        {/* <Image
+          src="/images/article-logo.png"
+          alt={'article logo image'}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: '100%', height: '100%' }}
+        /> */}
+        {/* <ContentCardWrapper>
+          {MORE_INFO.map((info, index) => (
+            <ContentCard
+              key={index}
+              title={info.title}
+              date={info.date}
+              tags={info.tags}
+              link={info.link}
+              openInNewTab={info.openInNewTab}
+              thumbnail={info.thumbnail}
+            />
+          ))}
+        </ContentCardWrapper> */}
         <NewsletterPagination totalPages={totalPages} page={page} keyword={keyword} />
       </ContentsSection>
     </>
@@ -40,7 +72,6 @@ const Wrapper = styled('div')`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px 15px;
-  max-width: 1000px;
   margin: 0 auto;
   margin-top: 100px;
 `;

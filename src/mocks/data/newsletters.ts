@@ -2,7 +2,10 @@ export const sampleNewsletter = Array.from({ length: 100 }, (_, index) => ({
   id: index + 1,
   issue_number: index + 1,
   title: `Title ${index + 1}`,
-  table_of_content: `Newsletter ${index + 1} short content`,
+  table_of_content: [
+    `Newsletter ${index + 1} short content`,
+    '[국개협 무물] Q1. 해외파견 처우와 업무 만족도',
+  ],
   content: `Newsletter ${index + 1} long content`,
   createdAt: '2023-01-01',
   view_count: '',
