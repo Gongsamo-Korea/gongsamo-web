@@ -230,17 +230,17 @@ const CustomArrow = styled.div`
 const BannerWarpper = styled.div`
   width: 100%;
   margin: 0 auto;
-  padding: 0 8rem;
+  padding: 8rem;
 `;
 
 const Wrapper = styled.div`
-  padding: 0 2rem;
+  padding: 2rem 2rem 6rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 140rem;
-  gap: 40px;
+  gap: 6rem;
   cursor: pointer;
 `;
 
@@ -300,7 +300,7 @@ const BannerInfoWrapper = styled.div`
   flex: 1;
   width: 100%;
   max-width: 660px;
-  min-height: 44rem;
+  min-height: 40rem;
 `;
 
 const SymbolIconWrapper = styled.div`
@@ -323,13 +323,13 @@ const ButtonWrapper = styled.div`
 
 const BannerImageWrapper = styled.div`
   flex-shrink: 0;
-  width: 55%;
+  width: 50%;
   max-width: 894px;
 `;
 
 const BannerImg = styled.img`
   width: 100%;
-  aspect-ratio: 894 / 600;
+  aspect-ratio: 6/4;
   object-fit: cover;
   border: 1px solid ${({ theme }) => theme.colors.gray9};
 `;
