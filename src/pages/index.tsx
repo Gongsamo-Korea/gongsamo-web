@@ -206,15 +206,15 @@ const BlueCircleElemnt = styled.div`
 `;
 
 export async function getServerSideProps() {
-  const res = await fetch(`https://api.gongsamo.kr/banners`, {
+  const res = await fetch(`http://api.gongsamo.kr/banners`, {
     headers: {
       Accept: 'application/json',
     },
   });
 
-  // const { results } = await res.json();
-  // useBannerStore.getState().setBanners(results);
+  const result = await res.json();
+  useBannerStore.getState().setBanners(result);
   return {
-    props: { banners: null },
+    props: { banners: result },
   };
 }

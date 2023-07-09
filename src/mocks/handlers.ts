@@ -21,9 +21,7 @@ export const handlers = [
       }),
     );
   }),
-  rest.get('https://api.gongsamo.kr/banners', (req, res, ctx) => {
-    console.log('handler', res);
-    console.log(ctx.json({ sampleBanner }));
-    return res(ctx.status(200), ctx.json({ sampleBanner }));
+  rest.get('http://api.gongsamo.kr/banners', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(sampleBanner));
   }),
 ];
