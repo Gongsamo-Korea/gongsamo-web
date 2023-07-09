@@ -5,24 +5,39 @@ import SymbolOrangeIcon from '@/components/ui/icons/SymbolOrangeIcon';
 import SymbolYellowIcon from '@/components/ui/icons/SymbolYellowIcon';
 import SymbolRedIcon from '@/components/ui/icons/SymbolRedIcon';
 import Typography17 from '@/components/ui/textStyles/Typography17';
-import Typography48 from '@/components/ui/textStyles/Typography48';
+import Typography34 from '@/components/ui/textStyles/Typography34';
 import env from '@/config';
 import Slider from 'react-slick';
 import { BannerProps } from '@/models/banner';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+interface ArrowProps {
+  className?: string;
+  style?: any;
+  onClick?: () => void;
+}
+
+function Arrow({ className, style, onClick }: ArrowProps) {
+  return <CustomArrow className={className} style={{ ...style }} onClick={onClick} />;
+}
 
 const settings = {
   dots: true,
   infinite: true,
+  speed: 500,
   slidesToShow: 1,
-  slidesToScroll: 4,
+  slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 1000,
+  autoplaySpeed: 3000,
   pauseOnHover: true,
+  nextArrow: <Arrow />,
+  prevArrow: <Arrow />,
 };
 
 const StibeeScript = () => {
   return (
-    <>
+    <StibeeWrapper>
       <BannerInfoWrapper>
         <SymbolIconWrapper>
           <SymbolGreenIcon />
@@ -30,7 +45,7 @@ const StibeeScript = () => {
           <SymbolYellowIcon />
           <SymbolRedIcon />
         </SymbolIconWrapper>
-        <Typography48
+        <Typography34
           text={`재미있는 국제개발협력\n생태계, 공적인사적모임과\n함께 작당해요!`}
           color={theme.colors.gray9}
           marginTop="2.4rem"
@@ -153,7 +168,7 @@ const StibeeScript = () => {
       <BannerImageWrapper>
         <BannerImg src="/images/banner.webp" alt="landing_banner" />
       </BannerImageWrapper>
-    </>
+    </StibeeWrapper>
   );
 };
 
@@ -164,54 +179,73 @@ const DefaultBannerComponent = ({
   exposure_order,
 }: BannerProps) => {
   return (
-    <>
-      <BannerInfoWrapper onClick={() => window.open(hyper_link_url, '_blank')}>
+    <Wrapper onClick={() => window.open(hyper_link_url, '_blank')}>
+      <BannerInfoWrapper>
         <SymbolIconWrapper>
           <SymbolGreenIcon />
           <SymbolOrangeIcon />
           <SymbolYellowIcon />
           <SymbolRedIcon />
         </SymbolIconWrapper>
-        <Typography48 text={banner_text} color={theme.colors.gray9} marginTop="2.4rem" />
-        <InputWrapper></InputWrapper>
+        <Typography34 text={banner_text} color={theme.colors.gray9} marginTop="2.4rem" />
       </BannerInfoWrapper>
       <BannerImageWrapper>
         <BannerImg src={thumbnail_url} alt="landing_banner" />
       </BannerImageWrapper>
-    </>
+    </Wrapper>
   );
 };
 
 const LandingBanner = ({ banners }: any) => {
   return (
-    <Slider {...settings}>
-      {banners?.map((banner: BannerProps, index: number) => (
-        <Wrapper key={index}>
-          <DefaultBannerComponent
-            key={banner.exposure_order}
-            banner_text={banner.banner_text}
-            thumbnail_url={banner.thumbnail_url}
-            hyper_link_url={banner.hyper_link_url}
-            exposure_order={banner.exposure_order}
-          />
-        </Wrapper>
-      ))}
-      <Wrapper>
+    <BannerWarpper>
+      <Slider {...settings}>
+        {banners?.map((banner: BannerProps, index: number) => {
+          return (
+            <DefaultBannerComponent
+              key={banner.exposure_order}
+              banner_text={banner.banner_text}
+              thumbnail_url={banner.thumbnail_url}
+              hyper_link_url={banner.hyper_link_url}
+              exposure_order={banner.exposure_order}
+            />
+          );
+        })}
         <StibeeScript />
-      </Wrapper>
-    </Slider>
+      </Slider>
+    </BannerWarpper>
   );
 };
 
+const CustomArrow = styled.div`
+  width: 4rem;
+  height: 4rem;
+  &:before {
+    color: ${({ theme }) => theme.colors.gray9};
+    font-size: 4rem;
+    opacity: 0.1;
+  }
+`;
+
+const BannerWarpper = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 8rem;
+`;
+
 const Wrapper = styled.div`
-  padding: 8rem;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 140rem;
   gap: 40px;
+  cursor: pointer;
+`;
 
+const StibeeWrapper = styled(Wrapper)`
+  cursor: default;
   #stb_subscribe {
     display: flex;
     flex-direction: column;
@@ -261,11 +295,12 @@ const Wrapper = styled.div`
 const BannerInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   flex-shrink: 0;
   flex: 1;
   width: 100%;
   max-width: 660px;
+  min-height: 44rem;
 `;
 
 const SymbolIconWrapper = styled.div`
@@ -294,7 +329,9 @@ const BannerImageWrapper = styled.div`
 
 const BannerImg = styled.img`
   width: 100%;
-  aspect-ratio: auto;
+  aspect-ratio: 894 / 600;
+  object-fit: cover;
+  border: 1px solid ${({ theme }) => theme.colors.gray9};
 `;
 
 export default LandingBanner;
