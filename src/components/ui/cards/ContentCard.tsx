@@ -17,8 +17,6 @@ const ContentCard = ({
   date,
   author,
   contents,
-  link,
-  openInNewTab,
   thumbnail,
 }: ContentCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -28,20 +26,23 @@ const ContentCard = ({
       backgroundColor={backgroundColor ?? theme.colors.blue1}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      href={link ?? ''}
-      target={openInNewTab ? '_blank' : '_self'}
     >
       <TitleWrapper>
         {subtitle && (
-          <Typography13 text={subtitle} color={color ?? theme.colors.gray9} weight={400} />
+          <Typography13 text={`${subtitle}호`} color={color ?? theme.colors.gray9} weight={400} />
         )}
         <Typography15 text={title} color={color ?? theme.colors.gray9} weight={700} />
         {date && <Typography11 text={date} color={color ?? theme.colors.gray9} weight={400} />}
         {author && <Typography11 text={author} color={color ?? theme.colors.gray9} weight={400} />}
       </TitleWrapper>
+
       {isHovered && contents ? (
         <InfoWrapper>
-          <Typography13 text={contents} color={color ?? theme.colors.gray9} weight={400} />
+          {contents.map((content: any) => (
+            <ContentWrapper>
+              <Typography13 text={content} color={color ?? theme.colors.gray9} weight={400} />
+            </ContentWrapper>
+          ))}
         </InfoWrapper>
       ) : (
         <ThumbnailWrapper>
@@ -55,9 +56,9 @@ const ContentCard = ({
           />
           <TagWrapper>
             {tags &&
-              tags.map((tag, index) => (
-                <Tag key={index} index={index}>
-                  <Typography11 text={tag} color={theme.colors.gray9} weight={400} />
+              tags.map((tag: any, index: any) => (
+                <Tag key={tag.id} index={index}>
+                  <Typography11 text={tag.name} color={theme.colors.gray9} weight={400} />
                 </Tag>
               ))}
           </TagWrapper>
@@ -67,7 +68,7 @@ const ContentCard = ({
   );
 };
 
-const Wrapper = styled(Link)<{ backgroundColor: string }>`
+const Wrapper = styled('div')<{ backgroundColor: string }>`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -105,8 +106,7 @@ const TitleWrapper = styled.div`
   padding: 1.6rem;
 `;
 
-const InfoWrapper = styled.div`
-  display: flex;
+const InfoWrapper = styled.ul`
   gap: 0.4rem;
   height: 100%;
   padding: 0 1.6rem;
@@ -114,6 +114,10 @@ const InfoWrapper = styled.div`
   overflow-y: hidden;
   text-overflow: ellipsis;
   white-space: normal;
+`;
+
+const ContentWrapper = styled.li`
+  margin-bottom: 1.6rem;
 `;
 
 const ThumbnailWrapper = styled.div`

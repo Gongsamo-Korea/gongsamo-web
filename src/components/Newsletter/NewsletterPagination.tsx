@@ -6,13 +6,13 @@ import ChevronRight from '@/components/ui/icons/ChevronRight';
 
 export const dotts = '...';
 
-const NewsletterPagination = ({ totalPages, page }: any) => {
+const NewsletterPagination = ({ totalPages, page, keyword }: any) => {
   const pages = usePagination(totalPages, page);
-  console.log;
+
   return (
     <Wrapper>
       {Number(page) !== 1 && (
-        <Link href={`newsletter?page=${Number(page) - 1}`}>
+        <Link href={`newsletter?keyword=${keyword}&page=${Number(page) - 1}`}>
           <ChevronLeft />
         </Link>
       )}
@@ -21,7 +21,7 @@ const NewsletterPagination = ({ totalPages, page }: any) => {
           pageNumber === dotts ? (
             <span key={i}>{pageNumber}</span>
           ) : (
-            <Link key={i} href={`newsletter?page=${pageNumber}`}>
+            <Link key={i} href={`newsletter?keyword=${keyword}&page=${pageNumber}`}>
               <LinkText selected={Number(pageNumber) === Number(page)}>{pageNumber}</LinkText>
             </Link>
           ),

@@ -7,6 +7,7 @@ import Typography28 from '@/components/ui/textStyles/Typography28';
 import Typography34 from '@/components/ui/textStyles/Typography34';
 import MemberIntroductionCard from '@/components/About/MemberIntroductionCard';
 import { MORE_INFO } from '@/contents/about';
+import Link from 'next/link';
 
 const About = () => {
   return (
@@ -62,15 +63,17 @@ const About = () => {
         />
         <ContentCardWrapper>
           {MORE_INFO.map((info, index) => (
-            <ContentCard
-              key={index}
-              title={info.title}
-              date={info.date}
-              tags={info.tags}
-              link={info.link}
-              openInNewTab={info.openInNewTab}
-              thumbnail={info.thumbnail}
-            />
+            <Link key={index} href={info.link} target={info.openInNewTab ? '_blank' : '_self'}>
+              <ContentCard
+                key={index}
+                title={info.title}
+                date={info.date}
+                tags={info.tags}
+                link={info.link}
+                openInNewTab={info.openInNewTab}
+                thumbnail={info.thumbnail}
+              />
+            </Link>
           ))}
         </ContentCardWrapper>
       </MoreInfoWrapper>
