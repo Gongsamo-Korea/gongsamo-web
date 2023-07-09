@@ -32,7 +32,7 @@ const SearchNewsletter = () => {
       <Wrapper>
         <InputWrapper>
           <InputText
-            type="search"
+            type="text"
             placeholder="키워드로 보고 싶은 콘텐츠를 검색하세요."
             required
             value={query}

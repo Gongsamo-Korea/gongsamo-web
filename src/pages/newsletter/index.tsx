@@ -7,15 +7,15 @@ import { useNewslettersStore } from '@/stores/newsletters';
 import SearchNewsletter from '@/components/Newsletter/SearchNewsletter';
 import Categories from '@/components/Category/Categories';
 import NewsletterHeader from '@/components/Newsletter/NewsletterHeader';
-import NewsletterContents from '@/components/Newsletter/NewsletterContents';
 import NewsletterPagination from '@/components/Newsletter/NewsletterPagination';
 import ContentCard from '@/components/ui/cards/ContentCard';
+import Typography24 from '@/components/ui/textStyles/Typography24';
 
 const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   useEffect(() => {
     useNewslettersStore.getState().setNewsletters(articles, page, totalPages, keyword);
   }, [articles]);
-
+  console.log(articles);
   return (
     <>
       <InfoSection>
@@ -24,44 +24,30 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
         <Categories />
       </InfoSection>
       <ContentsSection>
-        <Wrapper>
-          {articles.map((article: any) => (
-            <Link key={article.id} href={`/newsletter/${article.id}`}>
-              {
-                <ContentCard
-                  key={article.id}
-                  title={article.title}
-                  subtitle={article.issue_number}
-                  date={new Date(article.issue_date).toLocaleDateString('ko-KR')}
-                  thumbnail="/images/intro_04.png"
-                  tags={article.tags}
-                  contents={article.table_of_content}
-                />
-              }
-            </Link>
-          ))}
-        </Wrapper>
-        {/* <Image
-          src="/images/article-logo.png"
-          alt={'article logo image'}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: '100%', height: '100%' }}
-        /> */}
-        {/* <ContentCardWrapper>
-          {MORE_INFO.map((info, index) => (
-            <ContentCard
-              key={index}
-              title={info.title}
-              date={info.date}
-              tags={info.tags}
-              link={info.link}
-              openInNewTab={info.openInNewTab}
-              thumbnail={info.thumbnail}
-            />
-          ))}
-        </ContentCardWrapper> */}
+        {articles.length ? (
+          <Wrapper>
+            {articles.map((article: any) => (
+              <Link key={article.id} href={`/newsletter/${article.id}`}>
+                {
+                  <ContentCard
+                    key={article.id}
+                    title={article.title}
+                    subtitle={article.issue_number}
+                    date={new Date(article.issue_date).toLocaleDateString('ko-KR')}
+                    thumbnail="/images/intro_04.png"
+                    tags={article.tags}
+                    contents={article.table_of_content}
+                  />
+                }
+              </Link>
+            ))}
+          </Wrapper>
+        ) : (
+          <NotContentsWrapper>
+            <Typography24 text="검색된 컨텐츠가 없어요 😅" />
+          </NotContentsWrapper>
+        )}
+
         <NewsletterPagination totalPages={totalPages} page={page} keyword={keyword} />
       </ContentsSection>
     </>
@@ -73,6 +59,13 @@ const Wrapper = styled('div')`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px 15px;
   margin: 0 auto;
+  margin-top: 100px;
+`;
+
+const NotContentsWrapper = styled('div')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 100px;
 `;
 
