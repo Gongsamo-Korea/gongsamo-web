@@ -1,8 +1,8 @@
-import { TitleBoxProps } from '@/types/props';
-import styled from '@emotion/styled';
-import Typography34 from '../textStyles/Typography34';
-import Typography20 from '../textStyles/Typography20';
 import theme from '@/styles/theme';
+import styled from '@emotion/styled';
+import { TitleBoxProps } from '@/types/props';
+import Typography34 from '@/components/ui/textStyles/Typography34';
+import Typography20 from '@/components/ui/textStyles/Typography20';
 
 const TitleBox = ({ backgroundColor, title, description }: TitleBoxProps) => {
   return (

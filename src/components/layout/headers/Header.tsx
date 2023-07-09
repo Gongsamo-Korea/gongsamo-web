@@ -11,7 +11,7 @@ export const MENU_ITEMS = [
   },
   {
     id: 2,
-    name: '김치앤칩스',
+    name: '김칩',
     url: '/newsletter',
   },
   {
@@ -24,31 +24,33 @@ export const MENU_ITEMS = [
 const Header = () => {
   return (
     <HeaderWrapper>
-      <Link href="/">
-        <LogoWrapper>
-          <LogoImg src="/images/gongsamo_logo.png" alt="logo"></LogoImg>
-        </LogoWrapper>
-      </Link>
-      <HeaderContent>
-        {MENU_ITEMS.map((item) => {
-          return (
-            <Link href={item.url} key={item.id}>
-              <MenuLink>
-                <Typography17 text={item.name} color={theme.colors.gray9} />
-              </MenuLink>
-            </Link>
-          );
-        })}
-      </HeaderContent>
+      <ItemWrapper>
+        <Link href="/">
+          <LogoWrapper>
+            <LogoImg src="/images/gongsamo_logo.png" alt="logo"></LogoImg>
+          </LogoWrapper>
+        </Link>
+        <HeaderContent>
+          {MENU_ITEMS.map((item) => {
+            return (
+              <Link href={item.url} key={item.id}>
+                <MenuLink>
+                  <Typography17 text={item.name} color={theme.colors.gray9} />
+                </MenuLink>
+              </Link>
+            );
+          })}
+        </HeaderContent>
+      </ItemWrapper>
     </HeaderWrapper>
   );
 };
 
 const HeaderWrapper = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 1.6rem 8rem;
+  width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray5};
   position: sticky;
   top: 0;
@@ -58,6 +60,15 @@ const HeaderWrapper = styled.header`
   -moz-backdrop-filter: blur(5px);
   -o-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+`;
+
+const ItemWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 140rem;
+  padding: 1.6rem 8rem;
 `;
 
 const LogoWrapper = styled.h1`

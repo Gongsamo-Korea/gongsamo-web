@@ -9,7 +9,7 @@ const SymbolRedIcon = ({ width = 40, height = 40 }: IconProps) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_734_3885)">
+      <g clipPath="url(#clip0_734_3885)">
         <path
           d="M11.582 1.76621L31.582 36.4072L28.4167 38.2347L8.41668 3.59373L11.582 1.76621Z"
           fill="#FF5555"

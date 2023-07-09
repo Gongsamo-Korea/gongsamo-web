@@ -1,15 +1,15 @@
-import styled from '@emotion/styled';
 import React from 'react';
+import styled from '@emotion/styled';
 
-interface DefaultInputProps {
+interface DefaultInputProps extends React.HTMLAttributes<HTMLInputElement> {
   placeholder: string;
   type?: string;
 }
 
-const DefaultInput = ({ placeholder, type = 'text' }: DefaultInputProps) => {
+const DefaultInput = ({ placeholder, type = 'text', ...HTMLInputElement }: DefaultInputProps) => {
   return (
     <Wrapper>
-      <Input type={type} placeholder={placeholder} />
+      <Input type={type} placeholder={placeholder} {...HTMLInputElement} />
     </Wrapper>
   );
 };
