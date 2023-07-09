@@ -10,6 +10,7 @@ import NewsletterHeader from '@/components/Newsletter/NewsletterHeader';
 import NewsletterPagination from '@/components/Newsletter/NewsletterPagination';
 import ContentCard from '@/components/ui/cards/ContentCard';
 import Typography24 from '@/components/ui/textStyles/Typography24';
+import theme from '@/styles/theme';
 
 const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   useEffect(() => {
@@ -44,7 +45,7 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
           </Wrapper>
         ) : (
           <NotContentsWrapper>
-            <Typography24 text="검색된 컨텐츠가 없어요 😅" />
+            <Typography24 text="검색된 컨텐츠가 없어요 😅" color={theme.colors.gray9} />
           </NotContentsWrapper>
         )}
 
