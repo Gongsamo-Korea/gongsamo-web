@@ -33,4 +33,14 @@ export const handlers = [
   rest.get('http://api.gongsamo.kr/banners', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(sampleBanner));
   }),
+
+  rest.get('http://localhost:3000/api/articles/:id', (req, res, ctx) => {
+    const id = req.params.id;
+    const newsletter = sampleNewsletter.find((newsletter: any) => newsletter.id === id);
+    if (newsletter) {
+      return res(ctx.status(200), ctx.json(newsletter));
+    } else {
+      return res(ctx.status(404));
+    }
+  }),
 ];
