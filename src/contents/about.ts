@@ -187,7 +187,7 @@ export const MEMBERS = [
         link: 'https://www.google.com',
       },
       {
-        name: '태크',
+        name: '태크🥸',
         introduction: '나의 문제를 우리의 문제로 인식하고 행동하기',
       },
     ],
