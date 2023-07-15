@@ -7,6 +7,7 @@ import Typography28 from '@/components/ui/textStyles/Typography28';
 import Typography34 from '@/components/ui/textStyles/Typography34';
 import MemberIntroductionCard from '@/components/About/MemberIntroductionCard';
 import { MORE_INFO } from '@/contents/about';
+import Link from 'next/link';
 
 const About = () => {
   return (
@@ -62,15 +63,24 @@ const About = () => {
         />
         <ContentCardWrapper>
           {MORE_INFO.map((info, index) => (
-            <ContentCard
-              key={index}
-              title={info.title}
-              date={info.date}
-              tags={info.tags}
-              link={info.link}
-              openInNewTab={info.openInNewTab}
-              thumbnail={info.thumbnail}
-            />
+            <Link key={index} href={info.link} target={info.openInNewTab ? '_blank' : '_self'}>
+              <ContentCard
+                key={index}
+                title={info.title}
+                date={info.date}
+                link={info.link}
+                openInNewTab={info.openInNewTab}
+                thumbnail={info.thumbnail}
+                backgroundColor={
+                  [
+                    theme.colors.blue1,
+                    theme.colors.green1,
+                    theme.colors.yellow1,
+                    theme.colors.red1,
+                  ][Math.floor(Math.random() * 4)]
+                }
+              />
+            </Link>
           ))}
         </ContentCardWrapper>
       </MoreInfoWrapper>
@@ -88,7 +98,7 @@ const About = () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 14rem 14.4rem;
+  padding: 14rem 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;

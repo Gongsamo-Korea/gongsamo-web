@@ -10,7 +10,7 @@ export interface IconProps {
 export interface ContentCardProps {
   backgroundColor?: string;
   color?: string;
-  tags?: string[];
+  tags?: any;
   title: string;
   subtitle?: string;
   date?: string;

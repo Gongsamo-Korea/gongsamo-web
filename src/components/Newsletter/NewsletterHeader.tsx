@@ -7,13 +7,13 @@ const NewsLetterHeader = () => {
   return (
     <Wrapper>
       <Typography28
-        text={'지난 뉴스레터 모아보기'}
+        text={'지난 뉴스레터를 모아봤어요'}
         color={theme.colors.gray9}
         textAlign="left"
         marginTop="0.5rem"
       />
       <Typography17
-        text={'매주 화요일과 목요일! 김칩에 발행된 콘텐츠를 모아보세요!'}
+        text={'매주 화요일과 목요일! 김칩에 발행된 콘텐츠를 모아보세요.'}
         color={theme.colors.gray9}
         textAlign="left"
         marginTop="0.5rem"
