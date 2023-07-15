@@ -16,7 +16,7 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   useEffect(() => {
     useNewslettersStore.getState().setNewsletters(articles, page, totalPages, keyword);
   }, [articles]);
-  console.log(articles);
+
   return (
     <>
       <InfoSection>
@@ -59,6 +59,8 @@ const Wrapper = styled('div')`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px 15px;
+  padding: 8rem;
+  width: 100%;
   margin: 0 auto;
   margin-top: 100px;
 `;
@@ -76,7 +78,7 @@ const InfoSection = styled('section')`
 `;
 
 const ContentsSection = styled('section')`
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 `;
 

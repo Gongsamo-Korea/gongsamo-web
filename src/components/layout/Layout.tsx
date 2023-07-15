@@ -54,6 +54,9 @@ const Wrapper = styled.div``;
 const ContentWrapper = styled.div`
   height: auto;
   min-height: calc(100vh - 30rem);
+  width: 100%;
+  max-width: 140rem;
+  margin: 0 auto;
 `;
 
 const BackgroundCircleElement = styled.div`

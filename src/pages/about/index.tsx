@@ -91,7 +91,7 @@ const About = () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 14rem 14.4rem;
+  padding: 14rem 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;

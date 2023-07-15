@@ -141,7 +141,6 @@ const LandingSection = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 140rem;
   width: 100%;
 `;
 

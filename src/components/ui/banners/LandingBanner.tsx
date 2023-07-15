@@ -191,7 +191,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 140rem;
   gap: 8rem;
 
   #stb_subscribe {
