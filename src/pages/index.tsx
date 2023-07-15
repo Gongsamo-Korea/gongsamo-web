@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 import env from '@/config';
 import { useBannerStore } from '@/stores/banners';
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Home({ banners }: any) {
   useEffect(() => {
@@ -53,13 +54,12 @@ export default function Home({ banners }: any) {
           />
 
           <RightButtonWrapper marginTop={'72px'}>
-            <LandingButton
-              text={'놓친 뉴스레터 다시보기'}
-              color={theme.colors.red2}
-              onClick={() => {
-                window.open(env.links.subscribe_newsletter);
-              }}
-            />
+            <Link href="/newsletter">
+              <LandingButton
+                text={'놓친 뉴스레터 다시보기'}
+                color={theme.colors.red2}
+              ></LandingButton>
+            </Link>
             <LandingButton text={'구독하기'} color={theme.colors.blue1} />
           </RightButtonWrapper>
         </RightTextWrapper>
@@ -76,7 +76,7 @@ export default function Home({ banners }: any) {
               text={'작당 둘러보기'}
               color={theme.colors.red2}
               onClick={() => {
-                window.open(env.links.notion_page);
+                window.open(env.links.instagram);
               }}
             />
           </ButtonWrapper>
@@ -121,7 +121,13 @@ export default function Home({ banners }: any) {
                 window.open(env.links.on_air);
               }}
             />
-            <LandingButton text={'국개협 무물 제보하기'} color={theme.colors.blue1} />
+            <LandingButton
+              text={'국개협 무물 제보하기'}
+              color={theme.colors.blue1}
+              onClick={() => {
+                window.open(env.links.ask_question);
+              }}
+            />
           </RightButtonWrapper>
         </RightTextWrapper>
       </LandingSection>

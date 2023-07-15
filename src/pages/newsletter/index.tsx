@@ -18,7 +18,7 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   }, [articles]);
 
   return (
-    <>
+    <PageWrapper>
       <InfoSection>
         <NewsletterHeader />
         <SearchNewsletter />
@@ -38,6 +38,14 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
                     thumbnail="/images/intro_04.png"
                     tags={article.tags}
                     contents={article.table_of_content}
+                    backgroundColor={
+                      [
+                        theme.colors.blue1,
+                        theme.colors.green1,
+                        theme.colors.yellow1,
+                        theme.colors.red1,
+                      ][Math.floor(Math.random() * 4)]
+                    }
                   />
                 }
               </Link>
@@ -51,33 +59,37 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
 
         <NewsletterPagination totalPages={totalPages} page={page} keyword={keyword} />
       </ContentsSection>
-    </>
+    </PageWrapper>
   );
 };
 
-const Wrapper = styled('div')`
+const PageWrapper = styled.div`
+  padding: 8rem 8rem 30rem 8rem;
+  width: 100%;
+`;
+
+const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px 15px;
-  padding: 8rem;
   width: 100%;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 15rem;
 `;
 
-const NotContentsWrapper = styled('div')`
+const NotContentsWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 100px;
 `;
 
-const InfoSection = styled('section')`
+const InfoSection = styled.section`
   max-width: 700px;
   margin: 0 auto;
 `;
 
-const ContentsSection = styled('section')`
+const ContentsSection = styled.section`
   width: 100%;
   margin: 0 auto;
 `;

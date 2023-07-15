@@ -72,6 +72,14 @@ const About = () => {
                 link={info.link}
                 openInNewTab={info.openInNewTab}
                 thumbnail={info.thumbnail}
+                backgroundColor={
+                  [
+                    theme.colors.blue1,
+                    theme.colors.green1,
+                    theme.colors.yellow1,
+                    theme.colors.red1,
+                  ][Math.floor(Math.random() * 4)]
+                }
               />
             </Link>
           ))}

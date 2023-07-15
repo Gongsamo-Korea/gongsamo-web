@@ -15,7 +15,7 @@ export interface ContentCardProps {
   subtitle?: string;
   date?: string;
   author?: string;
-  contents?: any;
+  contents?: string;
   link?: string;
   openInNewTab?: boolean;
   thumbnail?: string;
