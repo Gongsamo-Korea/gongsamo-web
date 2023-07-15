@@ -71,6 +71,8 @@ const Wrapper = styled('div')<{ backgroundColor: string }>`
   flex-direction: column;
   gap: 0.4rem;
   height: 28rem;
+  border-radius: 8px;
+  overflow: hidden;
 
   flex: none;
   flex-grow: 0;

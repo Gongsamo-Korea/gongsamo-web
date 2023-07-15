@@ -22,7 +22,7 @@ const Contact = () => {
     setIsEmailCopied(true);
     setTimeout(() => {
       setIsEmailCopied(false);
-    }, 1500);
+    }, 2000);
   };
 
   const renderContactIcon = (icon: string) => {
@@ -45,7 +45,7 @@ const Contact = () => {
       <TitleWrapper>
         <Typography34 text="문의하기" color={theme.colors.gray9} textAlign="center" />
         <Typography17
-          text="궁금한 사항이 있다면 아래 중 하나로 문의주세요"
+          text="공적인사적모임이 더 궁금하다면 아래의 채널로 연락해주세요."
           color={theme.colors.gray9}
           textAlign="center"
           marginTop="1.2rem"
@@ -155,12 +155,14 @@ const ContactItem = styled.li`
 const EmailCopiedText = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+
   gap: 0.4rem;
   width: 100%;
   position: absolute;
-  bottom: -1.9rem;
-  right: 1.6rem;
+  left: 24rem;
+  * {
+    font-weight: 400 !important;
+  }
 `;
 
 const OnAirGuideWrapper = styled.div`

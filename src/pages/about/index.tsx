@@ -68,7 +68,6 @@ const About = () => {
                 key={index}
                 title={info.title}
                 date={info.date}
-                tags={info.tags}
                 link={info.link}
                 openInNewTab={info.openInNewTab}
                 thumbnail={info.thumbnail}
