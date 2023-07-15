@@ -43,7 +43,7 @@ const Footer = () => {
             color={theme.colors.gray6}
           />
           <SocialMediaWrapper>
-            <Link href={env.links.subcribe_newsletter} target="_blank">
+            <Link href={env.links.subscribe_newsletter} target="_blank">
               <Typography15 text={'뉴스레터 구독하기'} color={theme.colors.gray6} />
             </Link>
             <Link href={env.links.kakao} target="_blank">
