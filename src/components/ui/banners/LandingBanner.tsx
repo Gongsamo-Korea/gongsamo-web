@@ -6,7 +6,6 @@ import SymbolYellowIcon from '@/components/ui/icons/SymbolYellowIcon';
 import SymbolRedIcon from '@/components/ui/icons/SymbolRedIcon';
 import Typography17 from '@/components/ui/textStyles/Typography17';
 import Typography34 from '@/components/ui/textStyles/Typography34';
-import env from '@/config';
 import Slider from 'react-slick';
 import { ArrowProps, BannerProps } from '@/models/banner';
 import 'slick-carousel/slick/slick.css';
@@ -29,6 +28,7 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 3000,
   pauseOnHover: true,
+  touchThreshold: 1000,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
 };
@@ -155,6 +155,9 @@ const LandingBanner = ({ banners }: any) => {
                 src={banner.thumbnail_url}
                 alt={banner.banner_text}
                 onClick={() => window.open(banner.hyper_link_url, '_blank')}
+                onError={(e) => {
+                  e.currentTarget.src = '/images/banner.webp';
+                }}
               />
             );
           })}
@@ -267,6 +270,7 @@ const ButtonWrapper = styled.div`
 
 const BannerImageWrapper = styled.div`
   max-width: 50%;
+  cursor: pointer;
 `;
 
 const BannerImg = styled.img`

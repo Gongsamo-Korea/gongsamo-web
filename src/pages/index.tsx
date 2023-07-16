@@ -60,7 +60,11 @@ export default function Home({ banners }: any) {
                 color={theme.colors.red2}
               ></LandingButton>
             </Link>
-            <LandingButton text={'구독하기'} color={theme.colors.blue1} />
+            <LandingButton
+              text={'구독하기'}
+              color={theme.colors.blue1}
+              onClick={() => window.open(env.links.subscribe_newsletter)}
+            />
           </RightButtonWrapper>
         </RightTextWrapper>
       </LandingSection>

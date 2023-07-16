@@ -24,5 +24,4 @@ export interface ContentCardProps {
 export interface TitleBoxProps {
   title: string;
   description?: string;
-  backgroundColor?: string;
 }

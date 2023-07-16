@@ -4,29 +4,24 @@ import { TitleBoxProps } from '@/types/props';
 import Typography34 from '@/components/ui/textStyles/Typography34';
 import Typography20 from '@/components/ui/textStyles/Typography20';
 
-const TitleBox = ({ backgroundColor, title, description }: TitleBoxProps) => {
+const TitleBox = ({ title, description }: TitleBoxProps) => {
   return (
-    <Wrapper backgroundColor={backgroundColor ?? theme.colors.linear4}>
-      <Typography34 text={title} color={theme.colors.gray9} weight={700} />
-      {description && <Typography20 text={description} color={theme.colors.gray9} weight={400} />}
+    <Wrapper>
+      <Typography34 text={title} color={theme.colors.gray9} weight={700} type={`h2`} />
+      {description && (
+        <Typography20 text={description} color={theme.colors.gray9} weight={400} type={`p`} />
+      )}
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div<{ backgroundColor: string }>`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 6rem 5rem;
-  gap: 1.4rem;
-
+  align-items: center;
+  gap: 1.2rem;
   width: 100%;
-
-  background: ${({ backgroundColor }) => backgroundColor};
-  border-radius: 1.6rem;
-
-  flex: none;
-  flex-grow: 0;
 `;
 
 export default TitleBox;

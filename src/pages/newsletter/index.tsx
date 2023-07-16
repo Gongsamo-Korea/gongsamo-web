@@ -11,6 +11,7 @@ import NewsletterPagination from '@/components/Newsletter/NewsletterPagination';
 import ContentCard from '@/components/ui/cards/ContentCard';
 import Typography24 from '@/components/ui/textStyles/Typography24';
 import theme from '@/styles/theme';
+import TitleBox from '@/components/ui/titleBoxes/TitleBox';
 
 const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   useEffect(() => {
@@ -20,15 +21,21 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   return (
     <PageWrapper>
       <InfoSection>
-        <NewsletterHeader />
-        <SearchNewsletter />
-        <Categories />
+        <TitleBox
+          title="지난 뉴스레터를 모아봤어요"
+          description="매주 화요일과 목요일! 김칩에 발행된 콘텐츠를 모아보세요."
+        />
+        <SearchSection>
+          <SearchNewsletter />
+          <Categories />
+        </SearchSection>
       </InfoSection>
+
       <ContentsSection>
         {articles.length ? (
-          <Wrapper>
+          <ContentCardWrapper>
             {articles.map((article: any) => (
-              <Link key={article.id} href={`/newsletter/${article.id}`}>
+              <Link key={article.id} href={`/newsletter/${article.id}`} target="_blank">
                 {
                   <ContentCard
                     key={article.id}
@@ -50,11 +57,11 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
                 }
               </Link>
             ))}
-          </Wrapper>
+          </ContentCardWrapper>
         ) : (
-          <NotContentsWrapper>
+          <NoContentsWrapper>
             <Typography24 text="검색된 컨텐츠가 없어요 😅" color={theme.colors.gray9} />
-          </NotContentsWrapper>
+          </NoContentsWrapper>
         )}
 
         <NewsletterPagination totalPages={totalPages} page={page} keyword={keyword} />
@@ -64,34 +71,43 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
 };
 
 const PageWrapper = styled.div`
-  padding: 8rem 8rem 30rem 8rem;
+  padding: 14rem 8rem 30rem 8rem;
   width: 100%;
-`;
-
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px 15px;
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 15rem;
-`;
-
-const NotContentsWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
 `;
 
 const InfoSection = styled.section`
-  max-width: 700px;
+  max-width: 70rem;
   margin: 0 auto;
+`;
+
+const SearchSection = styled.section`
+  width: 100%;
+  max-width: 90rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8rem;
 `;
 
 const ContentsSection = styled.section`
   width: 100%;
   margin: 0 auto;
+`;
+
+const ContentCardWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px 15px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 10rem;
+`;
+
+const NoContentsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
 `;
 
 export async function getServerSideProps(context: any) {
