@@ -33,7 +33,7 @@ const SearchNewsletter = () => {
         <InputWrapper>
           <InputText
             type="text"
-            placeholder="키워드로 보고 싶은 콘텐츠를 검색하세요."
+            placeholder="키워드로 보고 싶은 콘텐츠를 검색해요."
             required
             value={query}
             onInput={handleInput}
@@ -82,7 +82,10 @@ const InputText = styled('input')`
   border: 0.0625rem solid #212529;
   border-radius: 0.4rem;
 
-  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
   height: 60px;
   width: 100%;
 `;
