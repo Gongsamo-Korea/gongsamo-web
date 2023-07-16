@@ -111,18 +111,18 @@ const NoContentsWrapper = styled.div`
 `;
 
 export async function getServerSideProps(context: any) {
-  const { keyword = '', page = 1, size = 9 } = context.query;
+  const { keyword = '', page = 1 } = context.query;
 
-  const res = await fetch(
-    `http://localhost:3000/api/articles?keyword=${keyword}&page=${page}&size=${size}`,
-    {
-      headers: {
-        Accept: 'application/json',
-      },
+  const res = await fetch(`https://api.gongsamo.kr/articles?keyword=${keyword}&page=${page}`, {
+    headers: {
+      Accept: 'application/json',
     },
-  );
+  });
 
-  const { results, totalPages } = await res.json();
+  const results = await res.json();
+  // console.log(results.length);
+
+  const totalPages = Math.ceil(results.length / 9);
   useNewslettersStore.getState().setNewsletters(results, page, totalPages, keyword);
 
   return {

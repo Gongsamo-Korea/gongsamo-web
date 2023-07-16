@@ -14,10 +14,6 @@ const SearchNewsletter = () => {
   const handleSubmit = async (event: KeyboardEvent) => {
     if (event.key !== 'Enter') return;
 
-    if (!query.trim()) {
-      window.alert('검색어를 입력해주세요.');
-      return;
-    }
     router.replace({
       pathname: '/newsletter',
       query: {
