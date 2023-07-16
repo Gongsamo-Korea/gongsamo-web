@@ -6,12 +6,12 @@ import Typography17 from '@/components/ui/textStyles/Typography17';
 export const MENU_ITEMS = [
   {
     id: 1,
-    name: '웰컴투공사모',
+    name: '공사모 소개',
     url: '/about',
   },
   {
     id: 2,
-    name: '김칩',
+    name: '김칩 다시보기',
     url: '/newsletter',
   },
   {

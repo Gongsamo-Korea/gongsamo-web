@@ -15,7 +15,7 @@ export interface ContentCardProps {
   subtitle?: string;
   date?: string;
   author?: string;
-  contents?: any;
+  contents?: string;
   link?: string;
   openInNewTab?: boolean;
   thumbnail?: string;
@@ -24,5 +24,4 @@ export interface ContentCardProps {
 export interface TitleBoxProps {
   title: string;
   description?: string;
-  backgroundColor?: string;
 }

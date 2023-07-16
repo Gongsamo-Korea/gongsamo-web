@@ -9,7 +9,7 @@ import Typography13 from '@/components/ui/textStyles/Typography13';
 import Typography11 from '@/components/ui/textStyles/Typography11';
 
 const ContentCard = ({
-  backgroundColor,
+  backgroundColor = theme.colors.blue1,
   color,
   tags,
   title,
@@ -23,7 +23,7 @@ const ContentCard = ({
 
   return (
     <Wrapper
-      backgroundColor={backgroundColor ?? theme.colors.blue1}
+      backgroundColor={backgroundColor}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -38,11 +38,9 @@ const ContentCard = ({
 
       {isHovered && contents ? (
         <InfoWrapper>
-          {contents.map((content: any) => (
-            <ContentWrapper>
-              <Typography13 text={content} color={color ?? theme.colors.gray9} weight={400} />
-            </ContentWrapper>
-          ))}
+          <ContentWrapper>
+            <Typography13 text={contents} color={color ?? theme.colors.gray9} weight={400} />
+          </ContentWrapper>
         </InfoWrapper>
       ) : (
         <ThumbnailWrapper>
@@ -72,10 +70,9 @@ const Wrapper = styled('div')<{ backgroundColor: string }>`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-
-  padding: 0px;
-  width: 37rem;
-  height: 24rem;
+  height: 28rem;
+  border-radius: 8px;
+  overflow: hidden;
 
   flex: none;
   flex-grow: 0;

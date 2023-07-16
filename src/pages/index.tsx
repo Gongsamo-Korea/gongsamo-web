@@ -4,10 +4,9 @@ import Typography48 from '@/components/ui/textStyles/Typography48';
 import theme from '@/styles/theme';
 import styled from '@emotion/styled';
 import env from '@/config';
-import { GetServerSideProps } from 'next';
-import { BannerProps } from '@/models/banner';
 import { useBannerStore } from '@/stores/banners';
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Home({ banners }: any) {
   useEffect(() => {
@@ -33,14 +32,14 @@ export default function Home({ banners }: any) {
           <Typography48 type={'span'} text={`공유`} color={theme.colors.blue3} />
           <Typography48 type={'span'} text={`해요`} color={theme.colors.gray9} />
         </TextWrapper>
-        <SectionImageWapper>
+        <SectionImageWrapper>
           <SectionImage src={'/images/landing_section_img1.webp'} alt="section1" />
-        </SectionImageWapper>
+        </SectionImageWrapper>
       </LandingSection>
       <LandingSection>
-        <SectionImageWapper>
+        <SectionImageWrapper>
           <SectionImage src={'/images/landing_section_img2.webp'} alt="section1" />
-        </SectionImageWapper>
+        </SectionImageWrapper>
         <RightTextWrapper>
           <Typography48
             type={'span'}
@@ -55,18 +54,21 @@ export default function Home({ banners }: any) {
           />
 
           <RightButtonWrapper marginTop={'72px'}>
+            <Link href="/newsletter">
+              <LandingButton
+                text={'놓친 뉴스레터 다시보기'}
+                color={theme.colors.red2}
+              ></LandingButton>
+            </Link>
             <LandingButton
-              text={'놓친 뉴스레터 다시보기'}
-              color={theme.colors.red2}
-              onClick={() => {
-                window.open(env.links.subcribe_newsletter);
-              }}
+              text={'구독하기'}
+              color={theme.colors.blue1}
+              onClick={() => window.open(env.links.subscribe_newsletter)}
             />
-            <LandingButton text={'구독하기'} color={theme.colors.blue1} />
           </RightButtonWrapper>
         </RightTextWrapper>
       </LandingSection>
-      <YellowCircleElemnt />
+      <YellowCircleElement />
       <LandingSection>
         <TextWrapper>
           <Typography48 type={'span'} text={`사적인 `} color={theme.colors.red3} />
@@ -78,20 +80,20 @@ export default function Home({ banners }: any) {
               text={'작당 둘러보기'}
               color={theme.colors.red2}
               onClick={() => {
-                window.open(env.links.notion_page);
+                window.open(env.links.instagram);
               }}
             />
           </ButtonWrapper>
         </TextWrapper>
-        <SectionImageWapper>
+        <SectionImageWrapper>
           <SectionImage src={'/images/landing_section_img3.webp'} alt="section3" />
-        </SectionImageWapper>
+        </SectionImageWrapper>
       </LandingSection>
-      <BlueCircleElemnt />
+      <BlueCircleElement />
       <LandingSection>
-        <SectionImageWapper>
+        <SectionImageWrapper>
           <SectionImage src={'/images/landing_section_img4.webp'} alt="section4" />
-        </SectionImageWapper>
+        </SectionImageWrapper>
         <RightTextWrapper>
           <Typography48
             type={'span'}
@@ -101,14 +103,14 @@ export default function Home({ banners }: any) {
           />
           <RightButtonWrapper marginTop={'72px'}>
             <LandingButton
-              text={'공적인사적모임 활동\n둘러보기'}
+              text={'활동 둘러보기'}
               color={theme.colors.red2}
               onClick={() => {
                 window.open(env.links.notion_page);
               }}
             />
             <LandingButton
-              text={'국제개발협력 활동가\n오픈카톡방 참여하기'}
+              text={'오픈카톡방 참여하기'}
               color={theme.colors.red2}
               onClick={() => {
                 window.open(env.links.kakao);
@@ -123,7 +125,13 @@ export default function Home({ banners }: any) {
                 window.open(env.links.on_air);
               }}
             />
-            <LandingButton text={'국개협 무물 제보하기'} color={theme.colors.blue1} />
+            <LandingButton
+              text={'국개협 무물 제보하기'}
+              color={theme.colors.blue1}
+              onClick={() => {
+                window.open(env.links.ask_question);
+              }}
+            />
           </RightButtonWrapper>
         </RightTextWrapper>
       </LandingSection>
@@ -143,7 +151,6 @@ const LandingSection = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 140rem;
   width: 100%;
 `;
 
@@ -156,7 +163,7 @@ const RightTextWrapper = styled.div`
   text-align: right;
 `;
 
-const SectionImageWapper = styled.div`
+const SectionImageWrapper = styled.div`
   width: 50%;
   max-width: 700px;
 `;
@@ -177,28 +184,24 @@ const RightButtonWrapper = styled(ButtonWrapper)`
   justify-content: flex-end;
 `;
 
-const YellowCircleElemnt = styled.div`
+const YellowCircleElement = styled.div`
   position: absolute;
   width: 904px;
   height: 769px;
   right: 0;
   top: 2334px;
 
-  /* yellow 100 */
-
   background: #fff9da;
   opacity: 0.2;
   filter: blur(143px);
 `;
 
-const BlueCircleElemnt = styled.div`
+const BlueCircleElement = styled.div`
   position: absolute;
   width: 972px;
   height: 511px;
   left: -164px;
   top: 3410px;
-
-  /* Aqua 200 */
 
   background: #c6f2f2;
   opacity: 0.3;
