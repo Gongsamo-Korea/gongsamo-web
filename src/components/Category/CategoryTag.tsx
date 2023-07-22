@@ -11,7 +11,7 @@ const CategoryTag = ({
   onClick: (category: any) => void;
 }) => {
   return (
-    <Wrapper background={category.color} onClick={() => onClick(category.label)}>
+    <Wrapper background={category.color} onClick={() => onClick(category.value)}>
       <Typography15 text={category.label} color={theme.colors.gray9} weight={400} />
     </Wrapper>
   );

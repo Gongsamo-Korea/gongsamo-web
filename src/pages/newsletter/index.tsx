@@ -120,10 +120,10 @@ export async function getServerSideProps(context: any) {
   });
 
   const results = await res.json();
-  // console.log(results.length);
 
-  const totalPages = Math.ceil(results.length / 9);
-  useNewslettersStore.getState().setNewsletters(results, page, totalPages, keyword);
+  useNewslettersStore
+    .getState()
+    .setNewsletters(results.results, page, Number(results.total_pages) - 1, keyword);
 
   return {
     props: {
