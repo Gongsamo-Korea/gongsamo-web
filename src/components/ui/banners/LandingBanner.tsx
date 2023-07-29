@@ -10,6 +10,8 @@ import Slider from 'react-slick';
 import { ArrowProps, BannerProps } from '@/models/banner';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { contentVariants } from '@/styles/interactions';
+import { motion } from 'framer-motion';
 
 const NextArrow = ({ className, style, onClick }: ArrowProps) => {
   return <NextCustomArrow className={className} style={{ ...style }} onClick={onClick} />;
@@ -40,7 +42,12 @@ const LandingBanner = ({ banners }: any) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper
+      variants={contentVariants}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+    >
       <BannerInfoWrapper>
         <SymbolIconWrapper>
           <SymbolGreenIcon />
@@ -191,7 +198,7 @@ const PrevCustomArrow = styled(CustomArrow)`
   left: 0;
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   padding: 8rem 8rem 6rem 8rem;
   display: flex;
   justify-content: space-between;

@@ -12,6 +12,8 @@ import ContentCard from '@/components/ui/cards/ContentCard';
 import Typography24 from '@/components/ui/textStyles/Typography24';
 import theme from '@/styles/theme';
 import TitleBox from '@/components/ui/titleBoxes/TitleBox';
+import { motion } from 'framer-motion';
+import { contentVariants } from '@/styles/interactions';
 
 const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   useEffect(() => {
@@ -19,7 +21,12 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   }, [articles]);
 
   return (
-    <PageWrapper>
+    <PageWrapper
+      variants={contentVariants}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+    >
       <InfoSection>
         <TitleBox
           title="지난 뉴스레터를 모아봤어요"
@@ -70,7 +77,7 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   );
 };
 
-const PageWrapper = styled.div`
+const PageWrapper = styled(motion.div)`
   padding: 14rem 8rem 30rem 8rem;
   width: 100%;
 `;
