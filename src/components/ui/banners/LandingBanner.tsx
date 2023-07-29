@@ -34,6 +34,11 @@ const settings = {
 };
 
 const LandingBanner = ({ banners }: any) => {
+  const addDefaultSrc = (ev: React.SyntheticEvent) => {
+    let target = ev.target as HTMLImageElement;
+    target.src = '/images/banner.webp';
+  };
+
   return (
     <Wrapper>
       <BannerInfoWrapper>
@@ -155,9 +160,7 @@ const LandingBanner = ({ banners }: any) => {
                 src={banner.thumbnail_url}
                 alt={banner.banner_text}
                 onClick={() => window.open(banner.hyper_link_url, '_blank')}
-                onError={(e) => {
-                  e.currentTarget.src = '/images/banner.webp';
-                }}
+                onError={addDefaultSrc}
               />
             );
           })}
