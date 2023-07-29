@@ -6,6 +6,8 @@ import '@/styles/fonts.css';
 import { ThemeProvider } from '@emotion/react';
 import { GlobalStyle } from '@/styles';
 import theme from '@/styles/theme';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   // if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {

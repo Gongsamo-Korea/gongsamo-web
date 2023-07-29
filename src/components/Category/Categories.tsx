@@ -1,21 +1,25 @@
 import styled from '@emotion/styled';
 import CategoryTag from '@/components/Category/CategoryTag';
-import ChevronButton from '@/components/Category/ChevronButton';
 import { CATEGORIES } from '@/contents/category';
 import { useRouter } from 'next/router';
+import Slider from 'react-slick';
 
 const Categories = () => {
   const router = useRouter();
 
-  const left = () => {
-    console.log('left');
-  };
-
-  const right = () => {
-    console.log('right');
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 6,
   };
 
   const onClickCategory = (category: any) => {
+    if (category === '전체') {
+      return router.replace({
+        pathname: '/newsletter',
+      });
+    }
     router.replace({
       pathname: '/newsletter',
       query: {
@@ -27,11 +31,11 @@ const Categories = () => {
 
   return (
     <Wrapper>
-      <ChevronButton direction="left" onClick={left} />
-      {CATEGORIES.map((category, index) => (
-        <CategoryTag key={index} category={category} onClick={onClickCategory} />
-      ))}
-      <ChevronButton direction="right" onClick={right} />
+      <StyledSlider {...settings}>
+        {CATEGORIES.map((category) => (
+          <CategoryTag key={category.id} category={category} onClick={onClickCategory} />
+        ))}
+      </StyledSlider>
     </Wrapper>
   );
 };
@@ -41,6 +45,23 @@ const Wrapper = styled('div')`
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
+`;
+
+const StyledSlider = styled(Slider)`
+  .slick-list {
+    width: 600px;
+  }
+  .slick-active {
+    display: flex;
+    justify-content: center;
+  }
+  .slick-prev:before {
+    color: black;
+  }
+
+  .slick-next:before {
+    color: black;
+  }
 `;
 
 export default Categories;
