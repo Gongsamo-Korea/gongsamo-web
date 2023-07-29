@@ -22,7 +22,9 @@ const NewsletterPagination = ({ totalPages, page, keyword }: any) => {
             <span key={i}>{pageNumber}</span>
           ) : (
             <Link key={i} href={`newsletter?keyword=${keyword}&page=${pageNumber}`}>
-              <LinkText selected={Number(pageNumber) === Number(page)}>{pageNumber}</LinkText>
+              <LinkText selected={Number(pageNumber) === Number(page)}>
+                {Number(pageNumber)}
+              </LinkText>
             </Link>
           ),
         )}

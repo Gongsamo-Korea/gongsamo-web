@@ -8,6 +8,7 @@ type PageableNewsletters = InstanceType<typeof PageableResponseImpl<Newsletter>>
 type NewslettersState = Omit<PageableNewsletters, 'results'> & {
   keyword: string;
   newsletters: Newsletter[];
+  // setNewsletters: (newsletters: any, page: any, keyword: any) => void;
   setNewsletters: (newsletters: any, page: any, totalPages: any, keyword: any) => void;
   setPageableNewsletters: (query: string, pageableNewsletters: PageableNewsletters) => void;
   setNextPage: (newsletters: Newsletter[]) => void;
@@ -22,6 +23,9 @@ export const useNewslettersStore = create<NewslettersState>()(
       totalEntries: 0,
       totalPages: 1,
       newsletters: [],
+      // setNewsletters: (newsletters, page, keyword) =>
+      //   set((state) => ({ ...state, newsletters, page, keyword })),
+
       setNewsletters: (newsletters, page, totalPages, keyword) =>
         set((state) => ({ ...state, newsletters, page, totalPages, keyword })),
       setPageableNewsletters: (query, pageableNewsletters) =>

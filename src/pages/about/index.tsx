@@ -8,23 +8,15 @@ import Typography34 from '@/components/ui/textStyles/Typography34';
 import MemberIntroductionCard from '@/components/About/MemberIntroductionCard';
 import { MORE_INFO } from '@/contents/about';
 import Link from 'next/link';
+import TitleBox from '@/components/ui/titleBoxes/TitleBox';
 
 const About = () => {
   return (
     <Wrapper>
-      <TitleWrapper>
-        <Typography34
-          text="공적인사적모임을 소개해요"
-          color={theme.colors.gray9}
-          textAlign="center"
-        />
-        <Typography17
-          text="공적인사적모임이 궁금하셨다구요? 그렇다면 아주 잘 찾아오셨어요!"
-          color={theme.colors.gray9}
-          textAlign="center"
-          marginTop="1.2rem"
-        />
-      </TitleWrapper>
+      <TitleBox
+        title="공적인사적모임을 소개해요"
+        description="공적인사적모임이 궁금하셨다구요? 그렇다면 아주 잘 찾아오셨어요!"
+      />
       <IntroductionWrapper>
         <IntroductionImageWrapper>
           <Image

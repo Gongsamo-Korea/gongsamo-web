@@ -179,12 +179,10 @@ export const MEMBERS = [
       {
         name: '보니따🍄',
         introduction: '잘하든 못하든 변하든 안변하든 일단 해보려고 합니다.',
-        link: 'https://www.google.com',
       },
       {
         name: '커밋🐸',
         introduction: '결국에는 밝은 쪽으로 고개를 돌려 과감하게 나아가고자 합니다.',
-        link: 'https://www.google.com',
       },
       {
         name: '태크🥸',

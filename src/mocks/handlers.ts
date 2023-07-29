@@ -3,7 +3,7 @@ import { sampleNewsletter } from './data/newsletters';
 import { sampleBanner } from './data/banners';
 
 export const handlers = [
-  rest.get('http://localhost:3000/api/articles', (req, res, ctx) => {
+  rest.get('http://api.gongsamo.kr/articles', (req, res, ctx) => {
     const keyword = req.url.searchParams.get('keyword') || '';
     const nowPage = parseInt(req.url.searchParams.get('page') || '1', 10);
     const size = parseInt(req.url.searchParams.get('size') || '8', 10);
