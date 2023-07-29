@@ -40,23 +40,25 @@ const MemberIntroductionCard = () => {
           </TeamIntroduction>
         )}
         <MembersWrapper>
-          {MEMBERS[selectedTeam].members.map((member, index) => (
-            <MemberItem key={index}>
-              <MemberTitleWrapper>
-                <Typography17 text={member.name} color={theme.colors.gray9} weight={700} />
-                {member.link && (
-                  <Link href={member.link} target="_blank">
-                    <Typography13
-                      text="Learn more"
-                      color={theme.colors.gray6}
-                      style={{ fontStyle: 'italic', textDecoration: 'underline' }}
-                    />
-                  </Link>
-                )}
-              </MemberTitleWrapper>
-              <Typography15 text={member.introduction} color={theme.colors.gray9} />
-            </MemberItem>
-          ))}
+          {MEMBERS[selectedTeam].members
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((member, index) => (
+              <MemberItem key={index}>
+                <MemberTitleWrapper>
+                  <Typography17 text={member.name} color={theme.colors.gray9} weight={700} />
+                  {member.link && (
+                    <Link href={member.link} target="_blank">
+                      <Typography13
+                        text="Learn more"
+                        color={theme.colors.gray6}
+                        style={{ fontStyle: 'italic', textDecoration: 'underline' }}
+                      />
+                    </Link>
+                  )}
+                </MemberTitleWrapper>
+                <Typography15 text={member.introduction} color={theme.colors.gray9} />
+              </MemberItem>
+            ))}
         </MembersWrapper>
       </TeamIntroductionWrapper>
     </Wrapper>
