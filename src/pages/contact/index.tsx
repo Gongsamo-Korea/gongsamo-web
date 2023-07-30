@@ -14,6 +14,8 @@ import Typography17 from '@/components/ui/textStyles/Typography17';
 import Typography13 from '@/components/ui/textStyles/Typography13';
 import { CONTACT } from '@/contents/contact';
 import env from '@/config';
+import { motion } from 'framer-motion';
+import { contentVariants, titleVariants } from '@/styles/interactions';
 
 const Contact = () => {
   const [isEmailCopied, setIsEmailCopied] = useState(false);
@@ -42,7 +44,12 @@ const Contact = () => {
 
   return (
     <Wrapper>
-      <TitleWrapper>
+      <TitleWrapper
+        variants={titleVariants}
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true }}
+      >
         <Typography34 text="문의하기" color={theme.colors.gray9} textAlign="center" />
         <Typography17
           text="공적인사적모임이 더 궁금하다면 아래의 채널로 연락해주세요."
@@ -51,7 +58,12 @@ const Contact = () => {
           marginTop="1.2rem"
         />
       </TitleWrapper>
-      <ContactWrapper>
+      <ContactWrapper
+        variants={contentVariants}
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true }}
+      >
         <ProfileImageWrapper>
           <Image
             src="/images/gongsamo_logo_vertical.png"
@@ -110,9 +122,9 @@ const Wrapper = styled.div`
   gap: 14rem;
 `;
 
-const TitleWrapper = styled.div``;
+const TitleWrapper = styled(motion.div)``;
 
-const ContactWrapper = styled.div`
+const ContactWrapper = styled(motion.div)`
   display: flex;
   align-items: flex-start;
   justify-content: center;

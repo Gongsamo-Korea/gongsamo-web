@@ -6,20 +6,26 @@ import { useNewslettersStore } from '@/stores/newsletters';
 
 import SearchNewsletter from '@/components/Newsletter/SearchNewsletter';
 import Categories from '@/components/Category/Categories';
-import NewsletterHeader from '@/components/Newsletter/NewsletterHeader';
 import NewsletterPagination from '@/components/Newsletter/NewsletterPagination';
 import ContentCard from '@/components/ui/cards/ContentCard';
 import Typography24 from '@/components/ui/textStyles/Typography24';
 import theme from '@/styles/theme';
 import TitleBox from '@/components/ui/titleBoxes/TitleBox';
+import { motion } from 'framer-motion';
+import { contentVariants } from '@/styles/interactions';
 
-const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
+const Newsletter = ({ articles, page, totalPages, keyword, categories }: any) => {
   useEffect(() => {
     useNewslettersStore.getState().setNewsletters(articles, page, totalPages, keyword);
   }, [articles]);
 
   return (
-    <PageWrapper>
+    <PageWrapper
+      variants={contentVariants}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+    >
       <InfoSection>
         <TitleBox
           title="지난 뉴스레터를 모아봤어요"
@@ -27,7 +33,7 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
         />
         <SearchSection>
           <SearchNewsletter />
-          <Categories />
+          <Categories categories={categories} />
         </SearchSection>
       </InfoSection>
 
@@ -70,7 +76,7 @@ const Newsletter = ({ articles, page, totalPages, keyword }: any) => {
   );
 };
 
-const PageWrapper = styled.div`
+const PageWrapper = styled(motion.div)`
   padding: 14rem 8rem 30rem 8rem;
   width: 100%;
 `;
@@ -120,10 +126,13 @@ export async function getServerSideProps(context: any) {
   });
 
   const results = await res.json();
-  // console.log(results.length);
 
-  const totalPages = Math.ceil(results.length / 9);
-  useNewslettersStore.getState().setNewsletters(results, page, totalPages, keyword);
+  useNewslettersStore
+    .getState()
+    .setNewsletters(results.results, page, Number(results.total_pages) - 1, keyword);
+
+  const getCategories = await fetch('https://api.gongsamo.kr/categories');
+  const categories = await getCategories.json();
 
   return {
     props: {
@@ -131,6 +140,7 @@ export async function getServerSideProps(context: any) {
       totalPages: useNewslettersStore.getState().totalPages,
       page: useNewslettersStore.getState().page,
       keyword,
+      categories,
     },
   };
 }

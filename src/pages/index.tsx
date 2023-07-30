@@ -7,6 +7,8 @@ import env from '@/config';
 import { useBannerStore } from '@/stores/banners';
 import { useEffect } from 'react';
 import Link from 'next/link';
+import { contentVariants, titleVariants } from '@/styles/interactions';
+import { motion } from 'framer-motion';
 
 export default function Home({ banners }: any) {
   useEffect(() => {
@@ -17,7 +19,12 @@ export default function Home({ banners }: any) {
     <HomeWrapper>
       <LandingBanner banners={banners} />
       <LandingSection>
-        <TextWrapper>
+        <TextWrapper
+          variants={titleVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           <Typography48
             type={'span'}
             text={`공적인 사적모임에서는\n국제개발협력 청년들을\n`}
@@ -32,15 +39,30 @@ export default function Home({ banners }: any) {
           <Typography48 type={'span'} text={`공유`} color={theme.colors.blue3} />
           <Typography48 type={'span'} text={`해요`} color={theme.colors.gray9} />
         </TextWrapper>
-        <SectionImageWrapper>
+        <SectionImageWrapper
+          variants={contentVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           <SectionImage src={'/images/landing_section_img1.webp'} alt="section1" />
         </SectionImageWrapper>
       </LandingSection>
       <LandingSection>
-        <SectionImageWrapper>
+        <SectionImageWrapper
+          variants={contentVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           <SectionImage src={'/images/landing_section_img2.webp'} alt="section1" />
         </SectionImageWrapper>
-        <RightTextWrapper>
+        <RightTextWrapper
+          variants={titleVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           <Typography48
             type={'span'}
             text={`국제개발협력 NO1.뉴스레터\n`}
@@ -58,11 +80,13 @@ export default function Home({ banners }: any) {
               <LandingButton
                 text={'놓친 뉴스레터 다시보기'}
                 color={theme.colors.red2}
+                hoverColor={theme.colors.red3}
               ></LandingButton>
             </Link>
             <LandingButton
               text={'구독하기'}
               color={theme.colors.blue1}
+              hoverColor={theme.colors.blue2}
               onClick={() => window.open(env.links.subscribe_newsletter)}
             />
           </RightButtonWrapper>
@@ -70,7 +94,12 @@ export default function Home({ banners }: any) {
       </LandingSection>
       <YellowCircleElement />
       <LandingSection>
-        <TextWrapper>
+        <TextWrapper
+          variants={titleVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           <Typography48 type={'span'} text={`사적인 `} color={theme.colors.red3} />
           <Typography48 type={'span'} text={`느슨한 연대로\n`} color={theme.colors.gray9} />
           <Typography48 type={'span'} text={`공적인 `} color={theme.colors.blue3} />
@@ -79,22 +108,38 @@ export default function Home({ banners }: any) {
             <LandingButton
               text={'작당 둘러보기'}
               color={theme.colors.red2}
+              hoverColor={theme.colors.red3}
               onClick={() => {
                 window.open(env.links.instagram);
               }}
             />
           </ButtonWrapper>
         </TextWrapper>
-        <SectionImageWrapper>
+        <SectionImageWrapper
+          variants={contentVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           <SectionImage src={'/images/landing_section_img3.webp'} alt="section3" />
         </SectionImageWrapper>
       </LandingSection>
       <BlueCircleElement />
       <LandingSection>
-        <SectionImageWrapper>
+        <SectionImageWrapper
+          variants={contentVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           <SectionImage src={'/images/landing_section_img4.webp'} alt="section4" />
         </SectionImageWrapper>
-        <RightTextWrapper>
+        <RightTextWrapper
+          variants={titleVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           <Typography48
             type={'span'}
             text={`공적인사적모임과 함께\n작당 어때요?`}
@@ -105,6 +150,7 @@ export default function Home({ banners }: any) {
             <LandingButton
               text={'활동 둘러보기'}
               color={theme.colors.red2}
+              hoverColor={theme.colors.red3}
               onClick={() => {
                 window.open(env.links.notion_page);
               }}
@@ -112,6 +158,7 @@ export default function Home({ banners }: any) {
             <LandingButton
               text={'오픈카톡방 참여하기'}
               color={theme.colors.red2}
+              hoverColor={theme.colors.red3}
               onClick={() => {
                 window.open(env.links.kakao);
               }}
@@ -121,6 +168,7 @@ export default function Home({ banners }: any) {
             <LandingButton
               text={'국개협 ON-AIR 제보하기'}
               color={theme.colors.blue1}
+              hoverColor={theme.colors.blue2}
               onClick={() => {
                 window.open(env.links.on_air);
               }}
@@ -128,6 +176,7 @@ export default function Home({ banners }: any) {
             <LandingButton
               text={'국개협 무물 제보하기'}
               color={theme.colors.blue1}
+              hoverColor={theme.colors.blue2}
               onClick={() => {
                 window.open(env.links.ask_question);
               }}
@@ -154,16 +203,16 @@ const LandingSection = styled.section`
   width: 100%;
 `;
 
-const TextWrapper = styled.div`
+const TextWrapper = styled(motion.div)`
   display: inline-block;
   width: 50%;
 `;
 
-const RightTextWrapper = styled.div`
+const RightTextWrapper = styled(motion.div)`
   text-align: right;
 `;
 
-const SectionImageWrapper = styled.div`
+const SectionImageWrapper = styled(motion.div)`
   width: 50%;
   max-width: 700px;
 `;

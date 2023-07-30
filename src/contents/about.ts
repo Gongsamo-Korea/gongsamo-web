@@ -47,7 +47,7 @@ export const MEMBERS = [
   {
     team: '김칩',
     introduction:
-      '뉴스레터 김치앤칩스팀은 지구 속 세계 이야기, 세계 속 우리 이야기를 전하는\n국제개발협력 뉴스레터 <김칩>을 만들고 발행하는 김칩팀입니다.',
+      '김칩팀은 지구 속 세계 이야기, 세계 속 우리 이야기를 전하는 국제개발협력 뉴스레터 <김칩>을 만들고 발행합니다.',
     members: [
       {
         name: '러에포🌿',
@@ -150,63 +150,9 @@ export const MEMBERS = [
     ],
   },
   {
-    team: 'IT',
-    introduction:
-      '기술을 통해 기존에 없던 방식으로 국제개발협력 업계에서 가치를 만들어나가는 IT팀 입니다.',
-    members: [
-      {
-        name: '테츠오🏔️',
-        introduction:
-          '웹 프론트엔드 개발자로 일하고 있습니다. 사람들에게 영감을 주는 기술을 구현하고, 가치를 실현할 수 있는 기회를 만듭니다.',
-        link: 'https://somangoi.notion.site/Hello-world-I-m-Somi-3ad2c06957ce4919b41621ee9f70fd9c?pvs=25',
-      },
-      {
-        name: '플래시🦥',
-        introduction:
-          '케냐에서 젖소들을 키우다가 한국에서는 개발자로 일하고 있습니다. 언젠가 아프리카로 돌아가 그곳의 사람들과 함께 사회적 기업을 세워 재미있는 변화들을 만들고 싶어요. 아프리카와 문화 다양성, IT기술과 스타트업, 글쓰기와 철학에 관심이 많습니다.',
-        link: 'https://wiki.mhson.world/',
-      },
-      {
-        name: '구름모자😼',
-        introduction: '우정,의리,사랑,낭만을 추구합니다.',
-        link: 'https://cloudhat-passion.notion.site/895d9f16f1744cc7872c786482274c89',
-      },
-      {
-        name: '네오🐤',
-        introduction:
-          '하고 싶은 일을 하면서 살고 싶어요. 그 일이 사회적으로 가치있는 일이면 더욱 좋겠네요.',
-      },
-      {
-        name: '보니따🍄',
-        introduction: '잘하든 못하든 변하든 안변하든 일단 해보려고 합니다.',
-      },
-      {
-        name: '커밋🐸',
-        introduction: '결국에는 밝은 쪽으로 고개를 돌려 과감하게 나아가고자 합니다.',
-      },
-      {
-        name: '태크🥸',
-        introduction: '나의 문제를 우리의 문제로 인식하고 행동하기',
-      },
-    ],
-  },
-  {
-    team: '홍보',
-    introduction:
-      '어떻게 하면 공사모를 잘 보여줄 수 있을지 고민하고 존재감을 한층 더 성장시키는 홍보팀입니다.',
-    members: [
-      {
-        name: '타시🍀',
-        introduction:
-          '공존과 연대를 위해 읽고 씁니다. 이따금 사소한 것들을 골몰하고, 하고 싶은 게 많아 지칠 시간이 없어요!',
-        link: 'https://root-coreopsis-e18.notion.site/My-friends-call-me-Taschie-b6ca711274c84813968bb935a8556e2e',
-      },
-    ],
-  },
-  {
     team: '행동',
     introduction:
-      '느슨한 연대를 바탕으로 국제개발협력 분야의 긍정적 변화를 만드는\n다양한 캠페인, 그룹활동 등 실질적인 행동을 하는 행동팀입니다.',
+      '점선면을 연결하는 다양한 작당으로 자주적으로 행동하는 국제개발협력 생태계를 만듭니다.',
     members: [
       {
         name: '핑키🌺',
@@ -280,6 +226,59 @@ export const MEMBERS = [
       {
         name: '샛별🐤',
         introduction: '주변의 작은 변화가 일어날 수 있는 활동을 하고 싶어요.',
+      },
+    ],
+  },
+  {
+    team: 'IT',
+    introduction:
+      '기술을 통해 기존에 없던 방식으로 국제개발협력 업계에서 가치를 만들어나가는 IT팀 입니다.',
+    members: [
+      {
+        name: '테츠오🏔️',
+        introduction:
+          '웹 프론트엔드 개발자로 일하고 있습니다. 사람들에게 영감을 주는 기술을 구현하고, 가치를 실현할 수 있는 기회를 만듭니다.',
+        link: 'https://somangoi.notion.site/Hello-world-I-m-Somi-3ad2c06957ce4919b41621ee9f70fd9c?pvs=25',
+      },
+      {
+        name: '플래시🦥',
+        introduction:
+          '케냐에서 젖소들을 키우다가 한국에서는 개발자로 일하고 있습니다. 언젠가 아프리카로 돌아가 그곳의 사람들과 함께 사회적 기업을 세워 재미있는 변화들을 만들고 싶어요. 아프리카와 문화 다양성, IT기술과 스타트업, 글쓰기와 철학에 관심이 많습니다.',
+        link: 'https://wiki.mhson.world/',
+      },
+      {
+        name: '구름모자😼',
+        introduction: '우정,의리,사랑,낭만을 추구합니다.',
+        link: 'https://cloudhat-passion.notion.site/895d9f16f1744cc7872c786482274c89',
+      },
+      {
+        name: '네오🐤',
+        introduction:
+          '하고 싶은 일을 하면서 살고 싶어요. 그 일이 사회적으로 가치있는 일이면 더욱 좋겠네요.',
+      },
+      {
+        name: '보니따🍄',
+        introduction: '잘하든 못하든 변하든 안변하든 일단 해보려고 합니다.',
+      },
+      {
+        name: '커밋🐸',
+        introduction: '결국에는 밝은 쪽으로 고개를 돌려 과감하게 나아가고자 합니다.',
+      },
+      {
+        name: '태크🥸',
+        introduction: '나의 문제를 우리의 문제로 인식하고 행동하기',
+      },
+    ],
+  },
+  {
+    team: '홍보',
+    introduction: '공사모의 첫인상을 담당하며 공사모의 존재감을 한층 더 성장시킵니다.',
+    members: [
+      {
+        name: '타시🍀',
+        introduction:
+          '공존과 연대를 위해 읽고 씁니다. 이따금 사소한 것들을 골몰하고, 하고 싶은 게 많아 지칠 시간이 없어요!',
+        link: 'https://root-coreopsis-e18.notion.site/My-friends-call-me-Taschie-b6ca711274c84813968bb935a8556e2e',
       },
     ],
   },
