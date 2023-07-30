@@ -7,12 +7,19 @@ import Typography17 from '@/components/ui/textStyles/Typography17';
 import Typography15 from '@/components/ui/textStyles/Typography15';
 import Typography13 from '@/components/ui/textStyles/Typography13';
 import { MEMBERS } from '@/contents/about';
+import { motion } from 'framer-motion';
+import { contentVariants } from '@/styles/interactions';
 
 const MemberIntroductionCard = () => {
   const [selectedTeam, setSelectedTeam] = useState<number>(0);
 
   return (
-    <Wrapper>
+    <Wrapper
+      variants={contentVariants}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+    >
       <IndexButtonWrapper>
         {MEMBERS.map((team, index) => (
           <IndexButton
@@ -23,7 +30,7 @@ const MemberIntroductionCard = () => {
           >
             <Typography17
               text={`${team.team}팀`}
-              color={theme.colors.gray9}
+              color={selectedTeam === index ? theme.colors.gray9 : theme.colors.gray7}
               weight={selectedTeam === index ? 700 : 400}
             />
           </IndexButton>
@@ -40,30 +47,32 @@ const MemberIntroductionCard = () => {
           </TeamIntroduction>
         )}
         <MembersWrapper>
-          {MEMBERS[selectedTeam].members.map((member, index) => (
-            <MemberItem key={index}>
-              <MemberTitleWrapper>
-                <Typography17 text={member.name} color={theme.colors.gray9} weight={700} />
-                {member.link && (
-                  <Link href={member.link} target="_blank">
-                    <Typography13
-                      text="Learn more"
-                      color={theme.colors.gray6}
-                      style={{ fontStyle: 'italic', textDecoration: 'underline' }}
-                    />
-                  </Link>
-                )}
-              </MemberTitleWrapper>
-              <Typography15 text={member.introduction} color={theme.colors.gray9} />
-            </MemberItem>
-          ))}
+          {MEMBERS[selectedTeam].members
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((member, index) => (
+              <MemberItem key={index}>
+                <MemberTitleWrapper>
+                  <Typography17 text={member.name} color={theme.colors.gray9} weight={700} />
+                  {member.link && (
+                    <Link href={member.link} target="_blank">
+                      <Typography13
+                        text="Learn more"
+                        color={theme.colors.gray6}
+                        style={{ fontStyle: 'italic', textDecoration: 'underline' }}
+                      />
+                    </Link>
+                  )}
+                </MemberTitleWrapper>
+                <Typography15 text={member.introduction} color={theme.colors.gray9} />
+              </MemberItem>
+            ))}
         </MembersWrapper>
       </TeamIntroductionWrapper>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   width: 100%;
 `;
 
@@ -94,9 +103,11 @@ const IndexButton = styled.button<{ index: number; isCurrentIndex: boolean }>`
   &:hover {
     background: ${({ index, theme }) =>
       [theme.colors.green2, theme.colors.yellow2, theme.colors.blue2, theme.colors.red2][index]};
+    transition: all 0.3s ease-in-out;
 
     p {
       font-weight: 700;
+      color: ${({ theme }) => theme.colors.gray9};
     }
   }
 

@@ -9,6 +9,8 @@ import MemberIntroductionCard from '@/components/About/MemberIntroductionCard';
 import { MORE_INFO } from '@/contents/about';
 import Link from 'next/link';
 import TitleBox from '@/components/ui/titleBoxes/TitleBox';
+import { contentVariants, titleVariants } from '@/styles/interactions';
+import { motion } from 'framer-motion';
 
 const About = () => {
   return (
@@ -18,7 +20,12 @@ const About = () => {
         description="공적인사적모임이 궁금하셨다구요? 그렇다면 아주 잘 찾아오셨어요!"
       />
       <IntroductionWrapper>
-        <IntroductionImageWrapper>
+        <IntroductionImageWrapper
+          variants={contentVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           <Image
             src="/images/gongsamo_logo_vertical.png"
             alt={'gongsamo logo image'}
@@ -28,7 +35,12 @@ const About = () => {
             style={{ width: '100%', height: 'auto' }}
           />
         </IntroductionImageWrapper>
-        <IntroductionTextWrapper>
+        <IntroductionTextWrapper
+          variants={contentVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           <Typography17
             text="공적인사적모임은 ‘사적인 느슨한 연대로 국제개발협력 분야의 공적인 문제를 해결한다’는 뜻을 가진 청년 모임이에요."
             color={theme.colors.gray9}
@@ -48,12 +60,24 @@ const About = () => {
         </IntroductionTextWrapper>
       </IntroductionWrapper>
       <MoreInfoWrapper>
-        <Typography28
-          text="혹시 공적인사적모임 이야기가 더 궁금하다면"
-          color={theme.colors.gray9}
-          weight={700}
-        />
-        <ContentCardWrapper>
+        <CustomTitle
+          variants={titleVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
+          <Typography28
+            text="혹시 공적인사적모임 이야기가 더 궁금하다면"
+            color={theme.colors.gray9}
+            weight={700}
+          />
+        </CustomTitle>
+        <ContentCardWrapper
+          variants={contentVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
           {MORE_INFO.map((info, index) => (
             <Link key={index} href={info.link} target={info.openInNewTab ? '_blank' : '_self'}>
               <ContentCard
@@ -77,11 +101,18 @@ const About = () => {
         </ContentCardWrapper>
       </MoreInfoWrapper>
       <MemberIntroductionWrapper>
-        <Typography28
-          text="공적인사적모임을 함께 만들고 있는 팀원들이에요"
-          color={theme.colors.gray9}
-          weight={700}
-        />
+        <CustomTitle
+          variants={titleVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true }}
+        >
+          <Typography28
+            text="공적인사적모임을 함께 만들고 있는 팀원들이에요"
+            color={theme.colors.gray9}
+            weight={700}
+          />
+        </CustomTitle>
         <MemberIntroductionCard />
       </MemberIntroductionWrapper>
     </Wrapper>
@@ -107,7 +138,7 @@ const IntroductionWrapper = styled.div`
   max-width: 90rem;
 `;
 
-const IntroductionImageWrapper = styled.div`
+const IntroductionImageWrapper = styled(motion.div)`
   width: 24rem;
   height: 24rem;
   border-radius: 50%;
@@ -120,7 +151,7 @@ const IntroductionImageWrapper = styled.div`
   align-items: center;
 `;
 
-const IntroductionTextWrapper = styled.div``;
+const IntroductionTextWrapper = styled(motion.div)``;
 
 const MoreInfoWrapper = styled.div`
   width: 100%;
@@ -129,7 +160,9 @@ const MoreInfoWrapper = styled.div`
   gap: 4rem;
 `;
 
-const ContentCardWrapper = styled.div`
+const CustomTitle = styled(motion.div)``;
+
+const ContentCardWrapper = styled(motion.div)`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(37rem, 1fr));
