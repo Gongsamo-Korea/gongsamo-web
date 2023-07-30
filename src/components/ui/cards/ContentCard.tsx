@@ -29,7 +29,11 @@ const ContentCard = ({
     >
       <TitleWrapper>
         {subtitle && (
-          <Typography13 text={`${subtitle}호`} color={color ?? theme.colors.gray9} weight={400} />
+          <Typography13
+            text={`${subtitle.includes('호') ? subtitle : subtitle + '호'}`}
+            color={color ?? theme.colors.gray9}
+            weight={400}
+          />
         )}
         <Typography15 text={title} color={color ?? theme.colors.gray9} weight={700} />
         {date && <Typography11 text={date} color={color ?? theme.colors.gray9} weight={400} />}

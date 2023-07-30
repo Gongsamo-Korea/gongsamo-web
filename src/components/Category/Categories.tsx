@@ -4,7 +4,7 @@ import { CATEGORIES } from '@/contents/category';
 import { useRouter } from 'next/router';
 import Slider from 'react-slick';
 
-const Categories = () => {
+const Categories = ({ categories }: any) => {
   const router = useRouter();
 
   const settings = {
@@ -14,8 +14,8 @@ const Categories = () => {
     slidesToScroll: 6,
   };
 
-  const onClickCategory = (category: any) => {
-    if (category === '전체') {
+  const onClickCategory = (category: number) => {
+    if (category === 0) {
       return router.replace({
         pathname: '/newsletter',
       });
@@ -23,7 +23,8 @@ const Categories = () => {
     router.replace({
       pathname: '/newsletter',
       query: {
-        keyword: category,
+        keyword: '',
+        category: category,
         page: 1,
       },
     });
@@ -32,7 +33,8 @@ const Categories = () => {
   return (
     <Wrapper>
       <StyledSlider {...settings}>
-        {CATEGORIES.map((category) => (
+        <CategoryTag category={{ id: 0, name: '전체' }} onClick={onClickCategory} />
+        {categories.map((category: any) => (
           <CategoryTag key={category.id} category={category} onClick={onClickCategory} />
         ))}
       </StyledSlider>

@@ -27,7 +27,7 @@ export const useNewslettersStore = create<NewslettersState>()(
       //   set((state) => ({ ...state, newsletters, page, keyword })),
 
       setNewsletters: (newsletters, page, totalPages, keyword) =>
-        set((state) => ({ ...state, newsletters, page, totalPages, keyword })),
+        set(() => ({ newsletters, page, totalPages, keyword })),
       setPageableNewsletters: (query, pageableNewsletters) =>
         set((state) => ({
           ...state,
