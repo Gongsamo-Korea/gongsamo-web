@@ -37,7 +37,7 @@ export const MORE_INFO = [
     title: '[2022 비영리스타트업 피칭데이] 공적인사적모임⭐살아있는 청년 국제 개발 협력 네트워크',
     date: ' 2022. 8. 22.',
     tags: [{ id: 5, name: 'YouTube' }],
-    link: 'https://blog.stibee.com/nyuseureteo-baggeseodo-ieojineun-gudogjawayi-gwangye-hyeongseong-gimciaencibseu/',
+    link: 'https://youtu.be/X1FFEI7UnXs',
     thumbnail: '/images/intro_05.png',
     openInNewTab: true,
   },
