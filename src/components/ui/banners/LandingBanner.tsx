@@ -164,6 +164,7 @@ const LandingBanner = ({ banners }: any) => {
           {banners?.map((banner: BannerProps, index: number) => {
             return (
               <BannerImg
+                key={`banner-${index}`}
                 src={banner.thumbnail_url}
                 alt={banner.banner_text}
                 onClick={() => window.open(banner.hyper_link_url, '_blank')}

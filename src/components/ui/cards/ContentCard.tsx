@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import theme from '@/styles/theme';
 import Image from 'next/image';
-import Link from 'next/link';
 import styled from '@emotion/styled';
 import { ContentCardProps } from '@/types/props';
 import Typography15 from '@/components/ui/textStyles/Typography15';
@@ -59,7 +58,7 @@ const ContentCard = ({
           <TagWrapper>
             {tags &&
               tags.map((tag: any, index: any) => (
-                <Tag key={tag.id} index={index}>
+                <Tag key={`${index}-tag-${tag.id}`} index={index}>
                   <Typography11 text={tag.name} color={theme.colors.gray9} weight={400} />
                 </Tag>
               ))}

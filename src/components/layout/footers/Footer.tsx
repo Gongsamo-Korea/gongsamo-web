@@ -27,7 +27,7 @@ const Footer = () => {
           <MenuList>
             {MENU_ITEMS.map((item) => {
               return (
-                <Link href={item.url} key={item.id}>
+                <Link href={item.url} key={`footer-${item.id}`}>
                   <MenuLink>
                     <Typography15 text={item.name} color={theme.colors.gray6} />
                   </MenuLink>
