@@ -41,7 +41,11 @@ const Newsletter = ({ articles, page, totalPages, keyword, categories }: any) =>
         {articles.length ? (
           <ContentCardWrapper>
             {articles.map((article: any) => (
-              <Link key={article.id} href={`/newsletter/${article.id}`} target="_blank">
+              <Link
+                key={`article-${article.id}`}
+                href={`/newsletter/${article.id}`}
+                target="_blank"
+              >
                 {
                   <ContentCard
                     key={article.id}

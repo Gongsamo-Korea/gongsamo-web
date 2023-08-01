@@ -24,7 +24,7 @@ const CategoryTag = ({
   );
 };
 
-const Wrapper = styled('button')<{ background: string }>`
+const Wrapper = styled.button<{ background: string }>`
   display: inline-flex;
   align-items: center;
 
@@ -32,7 +32,7 @@ const Wrapper = styled('button')<{ background: string }>`
   padding: 0.2rem 1rem;
 
   border-radius: 1.5rem;
-  border: 0.0625rem solid ${({ theme }) => theme.colors.gray8};
+  border: 0.1rem solid ${({ theme }) => theme.colors.gray8};
 
   background: ${({ background }) => background};
 `;
