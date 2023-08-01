@@ -19,9 +19,9 @@ const NewsletterPagination = ({ totalPages, page, keyword }: any) => {
       <div className="flex items-center justify-center my-8">
         {pages.map((pageNumber, i) =>
           pageNumber === dotts ? (
-            <span key={i}>{pageNumber}</span>
+            <span key={`page-${i}`}>{pageNumber}</span>
           ) : (
-            <Link key={i} href={`newsletter?keyword=${keyword}&page=${pageNumber}`}>
+            <Link key={`page-${i}`} href={`newsletter?keyword=${keyword}&page=${pageNumber}`}>
               <LinkText selected={Number(pageNumber) === Number(page)}>
                 {Number(pageNumber)}
               </LinkText>

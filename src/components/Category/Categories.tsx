@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import CategoryTag from '@/components/Category/CategoryTag';
-import { CATEGORIES } from '@/contents/category';
 import { useRouter } from 'next/router';
 import Slider from 'react-slick';
 
@@ -35,7 +34,7 @@ const Categories = ({ categories }: any) => {
       <StyledSlider {...settings}>
         <CategoryTag category={{ id: 0, name: '전체' }} onClick={onClickCategory} />
         {categories.map((category: any) => (
-          <CategoryTag key={category.id} category={category} onClick={onClickCategory} />
+          <CategoryTag key={category.name} category={category} onClick={onClickCategory} />
         ))}
       </StyledSlider>
     </Wrapper>

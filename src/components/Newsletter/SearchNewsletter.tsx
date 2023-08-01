@@ -1,19 +1,43 @@
-import { FormEvent, KeyboardEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import SearchIcon from '@/components/ui/icons/SearchIcon';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
+import CloseIcon from '../ui/icons/CloseIcon';
+import theme from '@/styles/theme';
+import { useNewslettersStore } from '@/stores/newsletters';
 
 const SearchNewsletter = () => {
   const router = useRouter();
   const [query, setQuery] = useState('');
 
+  const { keyword, setKeyword } = useNewslettersStore();
+
+  useEffect(() => {
+    setQuery(keyword);
+  }, [keyword]);
+
+  const handleClickCloseButton = () => {
+    setKeyword('');
+    router.replace({
+      pathname: '/newsletter',
+      query: {
+        keyword: '',
+        page: 1,
+      },
+    });
+  };
+
   const handleInput = (event: FormEvent) => {
+    const inputValue = (event.target as HTMLInputElement).value;
+    if (inputValue === '') {
+      setKeyword('');
+    }
+
     setQuery((event.target as HTMLInputElement).value);
   };
 
-  const handleSubmit = async (event: KeyboardEvent) => {
-    if (event.key !== 'Enter') return;
-
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
     router.replace({
       pathname: '/newsletter',
       query: {
@@ -26,20 +50,23 @@ const SearchNewsletter = () => {
   return (
     <>
       <Wrapper>
-        <InputWrapper>
+        <FormContainer onSubmit={handleSubmit}>
           <InputText
             type="text"
             placeholder="키워드로 보고 싶은 콘텐츠를 검색해요."
             required
             value={query}
             onInput={handleInput}
-            onKeyUp={handleSubmit}
           />
 
-          <Icon>
-            <SearchIcon />
+          <Icon onClick={(e) => (keyword !== '' ? handleClickCloseButton() : handleSubmit(e))}>
+            {keyword ? (
+              <CloseIcon color={theme.colors.gray8} />
+            ) : (
+              <SearchIcon width={20} height={20} color={theme.colors.gray8} />
+            )}
           </Icon>
-        </InputWrapper>
+        </FormContainer>
       </Wrapper>
     </>
   );
@@ -53,19 +80,20 @@ const Wrapper = styled('div')`
   padding: 16px;
 `;
 
-const InputWrapper = styled('div')`
+const FormContainer = styled('form')`
   display: inline-block;
   position: relative;
   width: 100%;
 `;
 
-const Icon = styled('i')`
+const Icon = styled('div')`
   position: absolute;
   top: 50%;
   right: 1.5rem;
 
   display: inline-block;
   margin-top: -1rem;
+  cursor: pointer;
 `;
 
 const InputText = styled('input')`

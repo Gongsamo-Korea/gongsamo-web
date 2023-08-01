@@ -33,7 +33,7 @@ const Header = () => {
         <HeaderContent>
           {MENU_ITEMS.map((item) => {
             return (
-              <Link href={item.url} key={item.id}>
+              <Link href={item.url} key={`header-${item.id}`}>
                 <MenuLink>
                   <Typography17 text={item.name} color={theme.colors.gray9} />
                 </MenuLink>
