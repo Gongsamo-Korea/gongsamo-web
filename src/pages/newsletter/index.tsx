@@ -14,7 +14,7 @@ import TitleBox from '@/components/ui/titleBoxes/TitleBox';
 import { motion } from 'framer-motion';
 import { contentVariants } from '@/styles/interactions';
 
-const Newsletter = ({ articles, page, totalPages, keyword, categories }: any) => {
+const Newsletter = ({ category, articles, page, totalPages, keyword, categories }: any) => {
   useEffect(() => {
     useNewslettersStore.getState().setNewsletters(articles, page, totalPages, keyword);
   }, [articles]);
@@ -74,7 +74,12 @@ const Newsletter = ({ articles, page, totalPages, keyword, categories }: any) =>
           </NoContentsWrapper>
         )}
 
-        <NewsletterPagination totalPages={totalPages} page={page} keyword={keyword} />
+        <NewsletterPagination
+          category={category}
+          totalPages={totalPages}
+          page={page}
+          keyword={keyword}
+        />
       </ContentsSection>
     </PageWrapper>
   );
@@ -121,19 +126,22 @@ const NoContentsWrapper = styled.div`
 `;
 
 export async function getServerSideProps(context: any) {
-  const { keyword = '', page = 1 } = context.query;
+  const { keyword = '', page = 1, category = '' } = context.query;
 
-  const res = await fetch(`https://api.gongsamo.kr/articles?keyword=${keyword}&page=${page}`, {
-    headers: {
-      Accept: 'application/json',
+  const res = await fetch(
+    `https://api.gongsamo.kr/articles?category=${category}&keyword=${keyword}&page=${page}`,
+    {
+      headers: {
+        Accept: 'application/json',
+      },
     },
-  });
+  );
 
   const results = await res.json();
 
   useNewslettersStore
     .getState()
-    .setNewsletters(results.results, page, Number(results.total_pages) - 1, keyword);
+    .setNewsletters(results.results, page, Number(results.total_pages), keyword);
 
   const getCategories = await fetch('https://api.gongsamo.kr/categories');
   const categories = await getCategories.json();
@@ -143,6 +151,7 @@ export async function getServerSideProps(context: any) {
       articles: useNewslettersStore.getState().newsletters,
       totalPages: useNewslettersStore.getState().totalPages,
       page: useNewslettersStore.getState().page,
+      category,
       keyword,
       categories,
     },
