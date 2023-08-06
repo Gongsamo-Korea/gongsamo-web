@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useNewslettersStore } from '@/stores/newsletters';
 
@@ -13,10 +13,18 @@ import theme from '@/styles/theme';
 import TitleBox from '@/components/ui/titleBoxes/TitleBox';
 import { motion } from 'framer-motion';
 import { contentVariants } from '@/styles/interactions';
+import LoadingComponent from '@/components/ui/animations/LoadingComponent';
 
 const Newsletter = ({ category, articles, page, totalPages, keyword, categories }: any) => {
+  const [showLoading, setShowLoading] = useState(false);
+
   useEffect(() => {
+    setShowLoading(true);
     useNewslettersStore.getState().setNewsletters(articles, page, totalPages, keyword);
+
+    setTimeout(() => {
+      setShowLoading(false);
+    }, 1000);
   }, [articles]);
 
   return (
@@ -36,51 +44,56 @@ const Newsletter = ({ category, articles, page, totalPages, keyword, categories 
           <Categories categories={categories} />
         </SearchSection>
       </InfoSection>
+      {showLoading ? (
+        <LoadingComponentWrapper>
+          <LoadingComponent width={80} height={80} />
+        </LoadingComponentWrapper>
+      ) : (
+        <ContentsSection>
+          {articles.length ? (
+            <ContentCardWrapper>
+              {articles.map((article: any) => (
+                <Link
+                  key={`article-${article.id}`}
+                  href={`/newsletter/${article.id}`}
+                  target="_blank"
+                >
+                  {
+                    <ContentCard
+                      key={article.id}
+                      title={article.title}
+                      subtitle={article.issue_number}
+                      date={new Date(article.issue_date).toLocaleDateString('ko-KR')}
+                      thumbnail="/images/intro_04.png"
+                      tags={article.tags}
+                      contents={article.table_of_content}
+                      backgroundColor={
+                        [
+                          theme.colors.blue1,
+                          theme.colors.green1,
+                          theme.colors.yellow1,
+                          theme.colors.red1,
+                        ][Math.floor(Math.random() * 4)]
+                      }
+                    />
+                  }
+                </Link>
+              ))}
+            </ContentCardWrapper>
+          ) : (
+            <NoContentsWrapper>
+              <Typography24 text="검색된 컨텐츠가 없어요 😅" color={theme.colors.gray9} />
+            </NoContentsWrapper>
+          )}
 
-      <ContentsSection>
-        {articles.length ? (
-          <ContentCardWrapper>
-            {articles.map((article: any) => (
-              <Link
-                key={`article-${article.id}`}
-                href={`/newsletter/${article.id}`}
-                target="_blank"
-              >
-                {
-                  <ContentCard
-                    key={article.id}
-                    title={article.title}
-                    subtitle={article.issue_number}
-                    date={new Date(article.issue_date).toLocaleDateString('ko-KR')}
-                    thumbnail="/images/intro_04.png"
-                    tags={article.tags}
-                    contents={article.table_of_content}
-                    backgroundColor={
-                      [
-                        theme.colors.blue1,
-                        theme.colors.green1,
-                        theme.colors.yellow1,
-                        theme.colors.red1,
-                      ][Math.floor(Math.random() * 4)]
-                    }
-                  />
-                }
-              </Link>
-            ))}
-          </ContentCardWrapper>
-        ) : (
-          <NoContentsWrapper>
-            <Typography24 text="검색된 컨텐츠가 없어요 😅" color={theme.colors.gray9} />
-          </NoContentsWrapper>
-        )}
-
-        <NewsletterPagination
-          category={category}
-          totalPages={totalPages}
-          page={page}
-          keyword={keyword}
-        />
-      </ContentsSection>
+          <NewsletterPagination
+            category={category}
+            totalPages={totalPages}
+            page={page}
+            keyword={keyword}
+          />
+        </ContentsSection>
+      )}
     </PageWrapper>
   );
 };
@@ -107,6 +120,14 @@ const SearchSection = styled.section`
 const ContentsSection = styled.section`
   width: 100%;
   margin: 0 auto;
+`;
+
+const LoadingComponentWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem;
 `;
 
 const ContentCardWrapper = styled.div`
