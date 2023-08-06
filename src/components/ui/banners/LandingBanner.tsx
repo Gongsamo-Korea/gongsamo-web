@@ -40,6 +40,12 @@ const LandingBanner = ({ banners }: any) => {
     let target = ev.target as HTMLImageElement;
     target.src = '/images/banner.webp';
   };
+  const isInternalLink = (url: string) => {
+    const currentHostname = window.location.hostname;
+    const urlHostname = new URL(url).hostname;
+
+    return currentHostname === urlHostname;
+  };
 
   return (
     <Wrapper
@@ -148,7 +154,7 @@ const LandingBanner = ({ banners }: any) => {
                   id="stb_form_submit_button"
                   style={{ backgroundColor: theme.colors.blue1 }}
                 >
-                  <Typography17 text={'구독하기'} color={theme.colors.gray9} weight={700} />
+                  <Typography17 text={'김칩 구독하기'} color={theme.colors.gray9} weight={700} />
                 </button>
               </fieldset>
             </form>
@@ -160,19 +166,28 @@ const LandingBanner = ({ banners }: any) => {
         </InputWrapper>
       </BannerInfoWrapper>
       <BannerImageWrapper>
-        <Slider {...settings}>
-          {banners?.map((banner: BannerProps, index: number) => {
-            return (
-              <BannerImg
-                key={`banner-${index}`}
-                src={banner.thumbnail_url}
-                alt={banner.banner_text}
-                onClick={() => window.open(banner.hyper_link_url, '_blank')}
-                onError={addDefaultSrc}
-              />
-            );
-          })}
-        </Slider>
+        {banners ? (
+          <Slider {...settings}>
+            {banners?.map((banner: BannerProps, index: number) => {
+              return (
+                <BannerImg
+                  key={`banner-${index}`}
+                  src={banner.thumbnail_url}
+                  alt={banner.banner_text}
+                  onClick={() =>
+                    window.open(
+                      banner.hyper_link_url,
+                      isInternalLink(banner.hyper_link_url) ? '_self' : '_blank',
+                    )
+                  }
+                  onError={addDefaultSrc}
+                />
+              );
+            })}
+          </Slider>
+        ) : (
+          <BannerImg src={'/images/banner.webp'} alt={'공적인사적모임'} />
+        )}
       </BannerImageWrapper>
     </Wrapper>
   );
