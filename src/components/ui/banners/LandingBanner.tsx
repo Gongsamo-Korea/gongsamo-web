@@ -166,24 +166,28 @@ const LandingBanner = ({ banners }: any) => {
         </InputWrapper>
       </BannerInfoWrapper>
       <BannerImageWrapper>
-        <Slider {...settings}>
-          {banners?.map((banner: BannerProps, index: number) => {
-            return (
-              <BannerImg
-                key={`banner-${index}`}
-                src={banner.thumbnail_url}
-                alt={banner.banner_text}
-                onClick={() =>
-                  window.open(
-                    banner.hyper_link_url,
-                    isInternalLink(banner.hyper_link_url) ? '_self' : '_blank',
-                  )
-                }
-                onError={addDefaultSrc}
-              />
-            );
-          })}
-        </Slider>
+        {banners ? (
+          <Slider {...settings}>
+            {banners?.map((banner: BannerProps, index: number) => {
+              return (
+                <BannerImg
+                  key={`banner-${index}`}
+                  src={banner.thumbnail_url}
+                  alt={banner.banner_text}
+                  onClick={() =>
+                    window.open(
+                      banner.hyper_link_url,
+                      isInternalLink(banner.hyper_link_url) ? '_self' : '_blank',
+                    )
+                  }
+                  onError={addDefaultSrc}
+                />
+              );
+            })}
+          </Slider>
+        ) : (
+          <BannerImg src={'/images/banner.webp'} alt={'공적인사적모임'} />
+        )}
       </BannerImageWrapper>
     </Wrapper>
   );
