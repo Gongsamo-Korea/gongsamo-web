@@ -2,6 +2,9 @@ import Link from 'next/link';
 import styled from '@emotion/styled';
 import theme from '@/styles/theme';
 import Typography17 from '@/components/ui/textStyles/Typography17';
+import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { Squash as Hamburger } from 'hamburger-react';
 
 export const MENU_ITEMS = [
   {
@@ -22,15 +25,26 @@ export const MENU_ITEMS = [
 ];
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
+
   return (
     <HeaderWrapper>
       <ItemWrapper>
         <Link href="/">
           <LogoWrapper>
-            <LogoImg src="/images/gongsamo_logo.png" alt="logo"></LogoImg>
+            {isMobile ? (
+              <LogoImg src="/images/gongsamo_simple_logo.webp" alt="logo"></LogoImg>
+            ) : (
+              <LogoImg src="/images/gongsamo_logo.png" alt="logo"></LogoImg>
+            )}
           </LogoWrapper>
         </Link>
-        <HeaderContent>
+
+        <MenuButton>
+          <Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} size={20} />
+        </MenuButton>
+        <HeaderContent isOpen={isMenuOpen}>
           {MENU_ITEMS.map((item) => {
             return (
               <Link href={item.url} key={`header-${item.id}`}>
@@ -69,6 +83,9 @@ const ItemWrapper = styled.div`
   width: 100%;
   max-width: 140rem;
   padding: 1.6rem 8rem;
+  @media screen and (max-width: 1024px) {
+    padding: 0.8rem 1.6rem;
+  }
 `;
 
 const LogoWrapper = styled.h1`
@@ -77,15 +94,40 @@ const LogoWrapper = styled.h1`
 
 const LogoImg = styled.img`
   width: 13.5rem;
-  height: 2.5rem;
+  height: auto;
+
+  @media screen and (max-width: 1024px) {
+    width: 3rem;
+  }
 `;
 
-const HeaderContent = styled.div`
+const MenuButton = styled.div`
+  cursor: pointer;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+`;
+
+const HeaderContent = styled.div<{ isOpen: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2.6rem;
   color: ${({ theme }) => theme.colors.gray9};
+
+  @media (max-width: 1024px) {
+    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    flex-direction: column;
+    position: absolute;
+    top: 6rem;
+    right: 0;
+    background: white;
+    border: 1px solid ${({ theme }) => theme.colors.gray5};
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const MenuLink = styled.div`

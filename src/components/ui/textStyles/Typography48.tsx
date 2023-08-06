@@ -23,11 +23,11 @@ const Typography48: React.FC<TextProps> = ({
       weight={weight ?? 700}
       textSize={{
         desktop: '4.8rem',
-        mobile: '4.8rem',
+        mobile: '2.4rem',
       }}
       lineHeight={{
         desktop: '5.6rem',
-        mobile: '5.6rem',
+        mobile: '3.1rem',
       }}
       letterSpacing={{
         desktop: '0rem',

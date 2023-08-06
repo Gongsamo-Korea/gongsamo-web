@@ -9,10 +9,12 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { contentVariants, titleVariants } from '@/styles/interactions';
 import { motion } from 'framer-motion';
-import Head from 'next/head';
 import Script from 'next/script';
+import { useMediaQuery } from 'react-responsive';
 
 export default function Home({ banners }: any) {
+  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
+
   useEffect(() => {
     useBannerStore.getState().setBanners(banners);
   }, [banners]);
@@ -85,7 +87,7 @@ export default function Home({ banners }: any) {
             color={theme.colors.gray9}
           />
 
-          <RightButtonWrapper marginTop={'72px'}>
+          <RightButtonWrapper marginTop={isMobile ? '20px' : '72px'}>
             <Link href="/newsletter">
               <LandingButton
                 text={'놓친 뉴스레터 다시보기'}
@@ -114,7 +116,7 @@ export default function Home({ banners }: any) {
           <Typography48 type={'span'} text={`느슨한 연대로\n`} color={theme.colors.gray9} />
           <Typography48 type={'span'} text={`공적인 `} color={theme.colors.blue3} />
           <Typography48 type={'span'} text={`문제를 해결해요`} color={theme.colors.gray9} />
-          <ButtonWrapper marginTop={'72px'}>
+          <ButtonWrapper marginTop={isMobile ? '20px' : '72px'}>
             <LandingButton
               text={'작당 둘러보기'}
               color={theme.colors.red2}
@@ -156,7 +158,7 @@ export default function Home({ banners }: any) {
             color={theme.colors.gray9}
             textAlign="right"
           />
-          <RightButtonWrapper marginTop={'72px'}>
+          <RightButtonWrapper marginTop={isMobile ? '20px' : '72px'}>
             <LandingButton
               text={'활동 둘러보기'}
               color={theme.colors.red2}
@@ -211,20 +213,47 @@ const LandingSection = styled.section`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
+  @media screen and (max-width: 1024px) {
+    padding: 5rem 1.6rem;
+    gap: 4rem;
+
+    &:nth-of-type(2n + 1) {
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    &:nth-of-type(2n) {
+      flex-wrap: wrap-reverse;
+      justify-content: flex-start;
+    }
+  }
 `;
 
 const TextWrapper = styled(motion.div)`
   display: inline-block;
   width: 50%;
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 const RightTextWrapper = styled(motion.div)`
   text-align: right;
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 const SectionImageWrapper = styled(motion.div)`
   width: 50%;
   max-width: 700px;
+
+  @media screen and (max-width: 1024px) {
+    width: 80%;
+  }
 `;
 
 const SectionImage = styled.img`
@@ -253,6 +282,12 @@ const YellowCircleElement = styled.div`
   background: #fff9da;
   opacity: 0.2;
   filter: blur(143px);
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
 `;
 
 const BlueCircleElement = styled.div`
@@ -265,6 +300,13 @@ const BlueCircleElement = styled.div`
   background: #c6f2f2;
   opacity: 0.3;
   filter: blur(143px);
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    height: 100%;
+    top: 20%;
+    z-index: -1;
+  }
 `;
 
 export async function getServerSideProps() {
