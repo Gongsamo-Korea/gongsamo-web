@@ -41,10 +41,7 @@ const LandingBanner = ({ banners }: any) => {
     target.src = '/images/banner.webp';
   };
   const isInternalLink = (url: string) => {
-    const currentHostname = window.location.hostname;
-    const urlHostname = new URL(url).hostname;
-
-    return currentHostname === urlHostname;
+    return url.includes('gongsamo.kr/');
   };
 
   return (
