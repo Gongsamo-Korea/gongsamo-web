@@ -8,7 +8,6 @@ export const dotts = '...';
 
 const NewsletterPagination = ({ category, totalPages, page, keyword }: any) => {
   const pages = usePagination(totalPages, page);
-  console.log('totalPages:', totalPages);
 
   return (
     <Wrapper>
