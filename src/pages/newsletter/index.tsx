@@ -29,7 +29,7 @@ const Newsletter = ({ category, articles, page, totalPages, keyword, categories 
       <InfoSection>
         <TitleBox
           title="지난 뉴스레터를 모아봤어요"
-          description="매주 화요일과 목요일! 김칩에 발행된 콘텐츠를 모아보세요."
+          description="매주 화요일! 김칩에 발행된 콘텐츠를 모아보세요."
         />
         <SearchSection>
           <SearchNewsletter />

@@ -13,6 +13,7 @@ const Categories = ({ categories }: any) => {
     slidesToScroll: 6,
   };
 
+  console.log('선택된 카테고리', router.query.category);
   const onClickCategory = (category: number) => {
     if (category === 0) {
       return router.replace({
@@ -28,13 +29,21 @@ const Categories = ({ categories }: any) => {
       },
     });
   };
-
   return (
     <Wrapper>
       <StyledSlider {...settings}>
-        <CategoryTag category={{ id: 0, name: '전체' }} onClick={onClickCategory} />
+        <CategoryTag
+          category={{ id: 0, name: '전체' }}
+          onClick={onClickCategory}
+          selectedCategory={router.query.category}
+        />
         {categories.map((category: any) => (
-          <CategoryTag key={category.name} category={category} onClick={onClickCategory} />
+          <CategoryTag
+            key={category.name}
+            category={category}
+            onClick={onClickCategory}
+            selectedCategory={router.query.category}
+          />
         ))}
       </StyledSlider>
     </Wrapper>
@@ -50,7 +59,8 @@ const Wrapper = styled('div')`
 
 const StyledSlider = styled(Slider)`
   .slick-list {
-    width: 600px;
+    width: 650px;
+    height: 3.5rem;
   }
   .slick-active {
     display: flex;
