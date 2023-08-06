@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { contentVariants, titleVariants } from '@/styles/interactions';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
+import Script from 'next/script';
 
 export default function Home({ banners }: any) {
   useEffect(() => {
@@ -18,6 +19,14 @@ export default function Home({ banners }: any) {
 
   return (
     <HomeWrapper>
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-SZD6RJ59WC"></Script>
+      <Script>
+        {` window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-SZD6RJ59WC');`}
+      </Script>
       <LandingBanner banners={banners} />
       <LandingSection>
         <TextWrapper
