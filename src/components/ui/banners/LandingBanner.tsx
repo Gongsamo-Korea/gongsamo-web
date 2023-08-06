@@ -40,6 +40,12 @@ const LandingBanner = ({ banners }: any) => {
     let target = ev.target as HTMLImageElement;
     target.src = '/images/banner.webp';
   };
+  const isInternalLink = (url: string) => {
+    const currentHostname = window.location.hostname;
+    const urlHostname = new URL(url).hostname;
+
+    return currentHostname === urlHostname;
+  };
 
   return (
     <Wrapper
@@ -167,7 +173,12 @@ const LandingBanner = ({ banners }: any) => {
                 key={`banner-${index}`}
                 src={banner.thumbnail_url}
                 alt={banner.banner_text}
-                onClick={() => window.open(banner.hyper_link_url, '_blank')}
+                onClick={() =>
+                  window.open(
+                    banner.hyper_link_url,
+                    isInternalLink(banner.hyper_link_url) ? '_self' : '_blank',
+                  )
+                }
                 onError={addDefaultSrc}
               />
             );
