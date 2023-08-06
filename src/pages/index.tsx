@@ -85,7 +85,7 @@ export default function Home({ banners }: any) {
               ></LandingButton>
             </Link>
             <LandingButton
-              text={'구독하기'}
+              text={'김칩 구독하기'}
               color={theme.colors.blue1}
               hoverColor={theme.colors.blue2}
               onClick={() => window.open(env.links.subscribe_newsletter)}

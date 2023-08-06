@@ -154,7 +154,7 @@ const LandingBanner = ({ banners }: any) => {
                   id="stb_form_submit_button"
                   style={{ backgroundColor: theme.colors.blue1 }}
                 >
-                  <Typography17 text={'구독하기'} color={theme.colors.gray9} weight={700} />
+                  <Typography17 text={'김칩 구독하기'} color={theme.colors.gray9} weight={700} />
                 </button>
               </fieldset>
             </form>
