@@ -72,6 +72,10 @@ const ItemWrapper = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 140rem;
+
+  @media screen and (max-width: 1024px) {
+    padding: 2.4rem 1.6rem;
+  }
 `;
 
 const LogoWrapper = styled.h1`
@@ -113,6 +117,14 @@ const BottomWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 16px;
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+  }
 `;
 
 const SocialMediaWrapper = styled.div`

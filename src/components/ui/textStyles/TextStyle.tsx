@@ -139,7 +139,7 @@ const Text = styled.p<TextStyledComponentsProps>`
   opacity: ${({ opacity }) => opacity};
   text-align: ${({ textAlign }) => textAlign};
 
-  @media screen and (max-width: var(--max-width)) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     font-size: ${({ mobileFontSize }) => mobileFontSize};
     line-height: ${({ mobileLineHeight }) => mobileLineHeight};
     letter-spacing: ${({ mobileLetterSpacing }) => mobileLetterSpacing};

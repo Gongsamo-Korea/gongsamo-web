@@ -1,19 +1,19 @@
-import Link from 'next/link';
-import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
+import theme from '@/styles/theme';
 
+import Link from 'next/link';
 import { useNewslettersStore } from '@/stores/newsletters';
 
 import SearchNewsletter from '@/components/Newsletter/SearchNewsletter';
 import Categories from '@/components/Category/Categories';
 import NewsletterPagination from '@/components/Newsletter/NewsletterPagination';
 import ContentCard from '@/components/ui/cards/ContentCard';
+import LoadingComponent from '@/components/ui/animations/LoadingComponent';
 import Typography24 from '@/components/ui/textStyles/Typography24';
-import theme from '@/styles/theme';
 import TitleBox from '@/components/ui/titleBoxes/TitleBox';
 import { motion } from 'framer-motion';
 import { contentVariants } from '@/styles/interactions';
-import LoadingComponent from '@/components/ui/animations/LoadingComponent';
 
 const Newsletter = ({ category, articles, page, totalPages, keyword, categories }: any) => {
   const [showLoading, setShowLoading] = useState(false);
@@ -101,6 +101,10 @@ const Newsletter = ({ category, articles, page, totalPages, keyword, categories 
 const PageWrapper = styled(motion.div)`
   padding: 14rem 8rem 30rem 8rem;
   width: 100%;
+
+  @media screen and (max-width: 1024px) {
+    padding: 5rem 1.6rem 15rem;
+  }
 `;
 
 const InfoSection = styled.section`
@@ -137,6 +141,10 @@ const ContentCardWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   margin-top: 10rem;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const NoContentsWrapper = styled.div`

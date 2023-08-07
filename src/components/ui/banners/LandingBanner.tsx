@@ -12,6 +12,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { contentVariants } from '@/styles/interactions';
 import { motion } from 'framer-motion';
+import Typography24 from '../textStyles/Typography24';
+import { useMediaQuery } from 'react-responsive';
 
 const NextArrow = ({ className, style, onClick }: ArrowProps) => {
   return <NextCustomArrow className={className} style={{ ...style }} onClick={onClick} />;
@@ -43,6 +45,7 @@ const LandingBanner = ({ banners }: any) => {
   const isInternalLink = (url: string) => {
     return url.includes('gongsamo.kr/');
   };
+  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
 
   return (
     <Wrapper
@@ -58,11 +61,19 @@ const LandingBanner = ({ banners }: any) => {
           <SymbolYellowIcon />
           <SymbolRedIcon />
         </SymbolIconWrapper>
-        <Typography34
-          text={`재미있는 국제개발협력\n생태계, 공적인사적모임과\n함께 작당해요!`}
-          color={theme.colors.gray9}
-          marginTop="2.4rem"
-        />
+        {isMobile ? (
+          <Typography24
+            text={`재미있는 국제개발협력\n생태계, 공적인사적모임과\n함께 작당해요!`}
+            color={theme.colors.gray9}
+            marginTop="2.4rem"
+          />
+        ) : (
+          <Typography34
+            text={`재미있는 국제개발협력\n생태계, 공적인사적모임과\n함께 작당해요!`}
+            color={theme.colors.gray9}
+            marginTop="2.4rem"
+          />
+        )}
         <InputWrapper>
           <link
             rel="stylesheet"
@@ -219,6 +230,14 @@ const Wrapper = styled(motion.div)`
   width: 100%;
   gap: 8rem;
 
+  @media screen and (max-width: 1024px) {
+    padding: 1.6rem;
+    gap: 2.4rem;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 3rem;
+  }
+
   #stb_subscribe {
     display: flex;
     flex-direction: column;
@@ -271,6 +290,10 @@ const BannerInfoWrapper = styled.div`
   justify-content: flex-start;
   flex-shrink: 0;
   flex: 1;
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 const SymbolIconWrapper = styled.div`
@@ -285,15 +308,13 @@ const InputWrapper = styled.div`
   margin-top: 32px;
 `;
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  margin-top: 24px;
-  gap: 8px;
-`;
-
 const BannerImageWrapper = styled.div`
   max-width: 50%;
   cursor: pointer;
+
+  @media screen and (max-width: 1024px) {
+    max-width: 100%;
+  }
 `;
 
 const BannerImg = styled.img`

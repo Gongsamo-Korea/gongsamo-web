@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import animationData from './lottie/loading.json';
+import animationData from '@/components/ui/animations/lottie/loading.json';
 
 const animationOptions = {
   loop: true,

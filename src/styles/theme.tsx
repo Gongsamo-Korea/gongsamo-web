@@ -61,12 +61,20 @@ const effects = {
   boxShadow3: '0 12px 40px rgba(0, 0, 0, 0.1)',
 };
 
+const breakpoints = {
+  mobile: '480px',
+  tablet: '768px',
+  desktop: '1024px',
+};
+
 export type ColorType = typeof colors;
 export type EffectType = typeof effects;
+export type BreakpointType = typeof breakpoints;
 
 const theme = {
   colors,
   effects,
+  breakpoints,
 };
 
 export default theme;
