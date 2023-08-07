@@ -215,7 +215,7 @@ const LandingSection = styled.section`
   width: 100%;
 
   @media screen and (max-width: 1024px) {
-    padding: 5rem 1.6rem;
+    padding: 5rem 1.6rem 20rem;
     gap: 4rem;
 
     &:nth-of-type(2n + 1) {

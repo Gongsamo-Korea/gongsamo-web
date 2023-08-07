@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import theme from '@/styles/theme';
-import Image from 'next/image';
 import Link from 'next/link';
 import Typography17 from '@/components/ui/textStyles/Typography17';
 import Typography15 from '@/components/ui/textStyles/Typography15';
@@ -9,9 +8,11 @@ import Typography13 from '@/components/ui/textStyles/Typography13';
 import { MEMBERS } from '@/contents/about';
 import { motion } from 'framer-motion';
 import { contentVariants } from '@/styles/interactions';
+import { useMediaQuery } from 'react-responsive';
 
 const MemberIntroductionCard = () => {
   const [selectedTeam, setSelectedTeam] = useState<number>(0);
+  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
 
   return (
     <Wrapper
@@ -28,22 +29,38 @@ const MemberIntroductionCard = () => {
             index={index}
             isCurrentIndex={selectedTeam === index}
           >
-            <Typography17
-              text={`${team.team}팀`}
-              color={selectedTeam === index ? theme.colors.gray9 : theme.colors.gray7}
-              weight={selectedTeam === index ? 700 : 400}
-            />
+            {isMobile ? (
+              <Typography15
+                text={`${team.team}팀`}
+                color={selectedTeam === index ? theme.colors.gray9 : theme.colors.gray7}
+                weight={selectedTeam === index ? 700 : 400}
+              />
+            ) : (
+              <Typography17
+                text={`${team.team}팀`}
+                color={selectedTeam === index ? theme.colors.gray9 : theme.colors.gray7}
+                weight={selectedTeam === index ? 700 : 400}
+              />
+            )}
           </IndexButton>
         ))}
       </IndexButtonWrapper>
       <TeamIntroductionWrapper>
         {MEMBERS[selectedTeam].introduction && (
           <TeamIntroduction>
-            <Typography17
-              text={MEMBERS[selectedTeam].introduction}
-              color={theme.colors.gray9}
-              textAlign="center"
-            />
+            {isMobile ? (
+              <Typography15
+                text={MEMBERS[selectedTeam].introduction}
+                color={theme.colors.gray9}
+                textAlign="center"
+              />
+            ) : (
+              <Typography17
+                text={MEMBERS[selectedTeam].introduction}
+                color={theme.colors.gray9}
+                textAlign="center"
+              />
+            )}
           </TeamIntroduction>
         )}
         <MembersWrapper>
@@ -115,6 +132,11 @@ const IndexButton = styled.button<{ index: number; isCurrentIndex: boolean }>`
     background: ${({ index, theme }) =>
       [theme.colors.green2, theme.colors.yellow2, theme.colors.blue2, theme.colors.red2][index]};
   }
+
+  @media screen and (max-width: 1024px) {
+    padding: 0.8rem 2rem;
+    width: max-content;
+  }
 `;
 
 const TeamIntroductionWrapper = styled.div`
@@ -133,6 +155,10 @@ const TeamIntroductionWrapper = styled.div`
   flex-grow: 0;
 
   padding: 4.8rem;
+
+  @media screen and (max-width: 1024px) {
+    padding: 2.4rem;
+  }
 `;
 
 const TeamIntroduction = styled.div`

@@ -4,20 +4,26 @@ import Image from 'next/image';
 import ContentCard from '@/components/ui/cards/ContentCard';
 import Typography17 from '@/components/ui/textStyles/Typography17';
 import Typography28 from '@/components/ui/textStyles/Typography28';
-import Typography34 from '@/components/ui/textStyles/Typography34';
+import Typography24 from '@/components/ui/textStyles/Typography24';
 import MemberIntroductionCard from '@/components/About/MemberIntroductionCard';
 import { MORE_INFO } from '@/contents/about';
 import Link from 'next/link';
 import TitleBox from '@/components/ui/titleBoxes/TitleBox';
 import { contentVariants, titleVariants } from '@/styles/interactions';
 import { motion } from 'framer-motion';
+import { useMediaQuery } from 'react-responsive';
 
 const About = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
   return (
     <Wrapper>
       <TitleBox
         title="공적인사적모임을 소개해요"
-        description="공적인사적모임이 궁금하셨다구요? 그렇다면 아주 잘 찾아오셨어요!"
+        description={
+          isMobile
+            ? '공적인사적모임이 궁금하셨다구요?\n그렇다면 아주 잘 찾아오셨어요!'
+            : '공적인사적모임이 궁금하셨다구요? 그렇다면 아주 잘 찾아오셨어요!'
+        }
       />
       <IntroductionWrapper>
         <IntroductionImageWrapper
@@ -66,11 +72,19 @@ const About = () => {
           whileInView="onscreen"
           viewport={{ once: true }}
         >
-          <Typography28
-            text="혹시 공적인사적모임 이야기가 더 궁금하다면"
-            color={theme.colors.gray9}
-            weight={700}
-          />
+          {isMobile ? (
+            <Typography24
+              text={`공적인사적모임 이야기가\n더 궁금하다면`}
+              color={theme.colors.gray9}
+              weight={700}
+            />
+          ) : (
+            <Typography28
+              text="공적인사적모임 이야기가 더 궁금하다면"
+              color={theme.colors.gray9}
+              weight={700}
+            />
+          )}
         </CustomTitle>
         <ContentCardWrapper
           variants={contentVariants}
@@ -126,9 +140,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 14rem;
-`;
 
-const TitleWrapper = styled.div``;
+  @media screen and (max-width: 1024px) {
+    padding: 5rem 1.6rem 20rem;
+    gap: 4rem;
+  }
+`;
 
 const IntroductionWrapper = styled.div`
   display: flex;
@@ -136,6 +153,11 @@ const IntroductionWrapper = styled.div`
   justify-content: center;
   gap: 8rem;
   max-width: 90rem;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    gap: 4rem;
+  }
 `;
 
 const IntroductionImageWrapper = styled(motion.div)`
@@ -167,6 +189,10 @@ const ContentCardWrapper = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(37rem, 1fr));
   gap: 2rem;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  }
 `;
 
 const MemberIntroductionWrapper = styled.div`
