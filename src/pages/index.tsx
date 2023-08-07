@@ -178,7 +178,7 @@ export default function Home({ banners }: any) {
           </RightButtonWrapper>
           <RightButtonWrapper marginTop={'4px'}>
             <LandingButton
-              text={'국개협 ON-AIR 제보하기'}
+              text={isMobile ? '국개협 ON-AIR\n제보하기' : '국개협 ON-AIR 제보하기'}
               color={theme.colors.blue1}
               hoverColor={theme.colors.blue2}
               onClick={() => {
@@ -186,7 +186,7 @@ export default function Home({ banners }: any) {
               }}
             />
             <LandingButton
-              text={'국개협 무물 제보하기'}
+              text={isMobile ? '국개협 무물\n제보하기' : '국개협 무물 제보하기'}
               color={theme.colors.blue1}
               hoverColor={theme.colors.blue2}
               onClick={() => {
