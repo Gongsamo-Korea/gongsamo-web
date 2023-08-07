@@ -1,16 +1,16 @@
+import { useEffect } from 'react';
+import Link from 'next/link';
+import Script from 'next/script';
+import styled from '@emotion/styled';
 import LandingBanner from '@/components/ui/banners/LandingBanner';
 import LandingButton from '@/components/ui/buttons/LandingButton';
 import Typography48 from '@/components/ui/textStyles/Typography48';
 import theme from '@/styles/theme';
-import styled from '@emotion/styled';
-import env from '@/config';
 import { useBannerStore } from '@/stores/banners';
-import { useEffect } from 'react';
-import Link from 'next/link';
 import { contentVariants, titleVariants } from '@/styles/interactions';
 import { motion } from 'framer-motion';
-import Script from 'next/script';
 import { useMediaQuery } from 'react-responsive';
+import env from '@/config';
 
 export default function Home({ banners }: any) {
   const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
