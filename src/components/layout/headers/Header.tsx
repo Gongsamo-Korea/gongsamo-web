@@ -5,6 +5,7 @@ import Typography17 from '@/components/ui/textStyles/Typography17';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Squash as Hamburger } from 'hamburger-react';
+import { css } from '@emotion/react';
 
 export const MENU_ITEMS = [
   {
@@ -29,29 +30,40 @@ const Header = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper isOpen={isMenuOpen}>
       <ItemWrapper>
-        <Link href="/">
-          <LogoWrapper>
-            {isMobile ? (
-              <LogoImg src="/images/gongsamo_simple_logo.webp" alt="logo"></LogoImg>
-            ) : (
-              <LogoImg src="/images/gongsamo_logo.png" alt="logo"></LogoImg>
-            )}
-          </LogoWrapper>
-        </Link>
-
-        <MenuButton>
-          <Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} size={20} />
-        </MenuButton>
+        <TitleWrapper isOpen={isMenuOpen}>
+          <Link
+            href="/"
+            onClick={() => {
+              if (isMenuOpen) setIsMenuOpen(false);
+            }}
+          >
+            <LogoWrapper>
+              {isMobile ? (
+                <LogoImg src="/images/gongsamo_simple_logo.webp" alt="logo"></LogoImg>
+              ) : (
+                <LogoImg src="/images/gongsamo_logo.png" alt="logo"></LogoImg>
+              )}
+            </LogoWrapper>
+          </Link>
+          <MenuButton>
+            <Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} size={20} />
+          </MenuButton>
+        </TitleWrapper>
         <HeaderContent isOpen={isMenuOpen}>
           {MENU_ITEMS.map((item) => {
             return (
-              <Link href={item.url} key={`header-${item.id}`}>
-                <MenuLink>
+              <MenuLink key={`header-${item.id}`}>
+                <Link
+                  href={item.url}
+                  onClick={() => {
+                    if (isMenuOpen) setIsMenuOpen(false);
+                  }}
+                >
                   <Typography17 text={item.name} color={theme.colors.gray9} />
-                </MenuLink>
-              </Link>
+                </Link>
+              </MenuLink>
             );
           })}
         </HeaderContent>
@@ -60,12 +72,11 @@ const Header = () => {
   );
 };
 
-const HeaderWrapper = styled.header`
+const HeaderWrapper = styled.header<{ isOpen: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray5};
   position: sticky;
   top: 0;
   z-index: 100;
@@ -74,17 +85,52 @@ const HeaderWrapper = styled.header`
   -moz-backdrop-filter: blur(5px);
   -o-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray5};
+
+  @media screen and (max-width: 1024px) {
+    ${({ isOpen }) =>
+      isOpen &&
+      css`
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        backdrop-filter: blur(27px);
+        -webkit-backdrop-filter: blur(27px);
+        -moz-backdrop-filter: blur(27px);
+        -o-backdrop-filter: blur(27px);
+        z-index: 99999;
+      `}
+  }
 `;
 
 const ItemWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
   max-width: 140rem;
   padding: 1.6rem 8rem;
   @media screen and (max-width: 1024px) {
-    padding: 0.8rem 1.6rem;
+    flex-direction: column;
+    padding: 0 1.6rem;
+    height: 100%;
+  }
+`;
+
+const TitleWrapper = styled.div<{ isOpen: boolean }>`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: 1024px) {
+    padding: 1.6rem 0;
+
+    ${({ isOpen, theme }) =>
+      isOpen &&
+      css`
+        border-bottom: 1px solid ${theme.colors.gray5};
+      `}
   }
 `;
 
@@ -115,18 +161,14 @@ const HeaderContent = styled.div<{ isOpen: boolean }>`
   align-items: center;
   gap: 2.6rem;
   color: ${({ theme }) => theme.colors.gray9};
+  width: max-content;
 
-  @media (max-width: 1024px) {
+  @media screen and (max-width: 1024px) {
     display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
     flex-direction: column;
-    position: absolute;
-    top: 6rem;
-    right: 0;
-    background: white;
-    border: 1px solid ${({ theme }) => theme.colors.gray5};
-    border-radius: 5px;
-    padding: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 4rem;
+    width: 100%;
+    gap: 4.8rem;
   }
 `;
 
@@ -135,9 +177,20 @@ const MenuLink = styled.div`
 
   p {
     font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
 
     &:hover {
       font-weight: 700;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+
+    p {
+      width: 100%;
+      font-size: 2rem;
     }
   }
 `;
