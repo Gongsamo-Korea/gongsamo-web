@@ -48,7 +48,7 @@ const Categories = ({ categories }: any) => {
           <CategoryTag
             category={{ id: 0, name: '전체' }}
             onClick={onClickCategory}
-            selectedCategory={router.query.category}
+            selectedCategory={0}
           />
           {categories.map((category: any) => (
             <CategoryTag
