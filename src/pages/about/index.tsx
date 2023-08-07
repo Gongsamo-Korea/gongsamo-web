@@ -171,6 +171,12 @@ const IntroductionImageWrapper = styled(motion.div)`
   display: flex;
   padding: 5rem;
   align-items: center;
+
+  @media screen and (max-width: 1024px) {
+    width: 20rem;
+    height: 20rem;
+    padding: 4rem;
+  }
 `;
 
 const IntroductionTextWrapper = styled(motion.div)``;
