@@ -6,6 +6,10 @@ import ChevronRight from '@/components/ui/icons/ChevronRight';
 
 export const dotts = '...';
 
+type LinkTextProps = {
+  selected: boolean;
+};
+
 const NewsletterPagination = ({ category, totalPages, page, keyword }: any) => {
   const pages = usePagination(totalPages, page);
 
@@ -41,9 +45,16 @@ const NewsletterPagination = ({ category, totalPages, page, keyword }: any) => {
   );
 };
 
-type LinkTextProps = {
-  selected: boolean;
-};
+const Wrapper = styled('nav')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem;
+
+  @media screen and (max-width: 1024px) {
+    margin: 2rem;
+  }
+`;
 
 const LinkText = styled.span<LinkTextProps>`
   border: ${(props: any) => (props.selected ? '1px solid black' : '1px solid white')};
@@ -52,12 +63,10 @@ const LinkText = styled.span<LinkTextProps>`
   padding: 5px 10px;
   background-color: ${(props: any) => (props.selected ? 'black' : 'white')};
   color: ${(props: any) => (props.selected ? 'white' : 'black')};
-`;
 
-const Wrapper = styled('nav')`
-  display: flex;
-  justify-content: center;
-  margin: 40px;
+  @media screen and (max-width: 1024px) {
+    line-height: 2.5;
+  }
 `;
 
 export default NewsletterPagination;

@@ -101,6 +101,10 @@ const Newsletter = ({ category, articles, page, totalPages, keyword, categories 
 const PageWrapper = styled(motion.div)`
   padding: 14rem 8rem 30rem 8rem;
   width: 100%;
+
+  @media screen and (max-width: 1024px) {
+    padding: 5rem 1.6rem 15rem;
+  }
 `;
 
 const InfoSection = styled.section`
@@ -137,6 +141,10 @@ const ContentCardWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   margin-top: 10rem;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const NoContentsWrapper = styled.div`

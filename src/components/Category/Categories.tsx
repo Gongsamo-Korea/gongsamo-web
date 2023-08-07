@@ -2,9 +2,11 @@ import styled from '@emotion/styled';
 import CategoryTag from '@/components/Category/CategoryTag';
 import { useRouter } from 'next/router';
 import Slider from 'react-slick';
+import { useMediaQuery } from 'react-responsive';
 
 const Categories = ({ categories }: any) => {
   const router = useRouter();
+  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
 
   const settings = {
     infinite: true,
@@ -13,7 +15,6 @@ const Categories = ({ categories }: any) => {
     slidesToScroll: 6,
   };
 
-  console.log('선택된 카테고리', router.query.category);
   const onClickCategory = (category: number) => {
     if (category === 0) {
       return router.replace({
@@ -31,21 +32,34 @@ const Categories = ({ categories }: any) => {
   };
   return (
     <Wrapper>
-      <StyledSlider {...settings}>
-        <CategoryTag
-          category={{ id: 0, name: '전체' }}
-          onClick={onClickCategory}
-          selectedCategory={router.query.category}
-        />
-        {categories.map((category: any) => (
+      {isMobile ? (
+        <>
+          {categories.map((category: any) => (
+            <CategoryTag
+              key={category.name}
+              category={category}
+              onClick={onClickCategory}
+              selectedCategory={router.query.category}
+            />
+          ))}
+        </>
+      ) : (
+        <StyledSlider {...settings}>
           <CategoryTag
-            key={category.name}
-            category={category}
+            category={{ id: 0, name: '전체' }}
             onClick={onClickCategory}
             selectedCategory={router.query.category}
           />
-        ))}
-      </StyledSlider>
+          {categories.map((category: any) => (
+            <CategoryTag
+              key={category.name}
+              category={category}
+              onClick={onClickCategory}
+              selectedCategory={router.query.category}
+            />
+          ))}
+        </StyledSlider>
+      )}
     </Wrapper>
   );
 };
