@@ -39,7 +39,7 @@ export default function Home({ banners }: any) {
         >
           <Typography48
             type={'span'}
-            text={`공적인 사적모임에서는\n국제개발협력 청년들을\n`}
+            text={`공적인사적모임에서는\n국제개발협력 청년들을\n`}
             color={theme.colors.gray9}
           />
           <Typography48 type={'span'} text={`연결`} color={theme.colors.red3} />
